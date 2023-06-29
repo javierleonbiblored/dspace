@@ -1,0 +1,28 @@
+<ds-themed-home-news></ds-themed-home-news>
+<div class="container-fluid px-0">
+  <ng-container *ngIf="(site$ | async) as site">
+    <ds-view-tracker [object]="site"></ds-view-tracker>
+  </ng-container>
+  <!--<ds-search-form [inPlaceSearch]="false" [searchPlaceholder]="'home.search-form.placeholder' | translate"></ds-search-form>-->
+
+  <!-- Tipo de contenido-->
+  <ds-type-content></ds-type-content>
+
+  <!-- Contenido recomendado Cards -->
+  <div class="contenidoRecomendado">
+    <ds-top-level-community-list></ds-top-level-community-list>
+  </div>
+
+  <!-- Contenido recomendado -->
+  <div>
+    <ds-recent-item-list *ngIf="recentSubmissionspageSize>0"></ds-recent-item-list>
+  </div>
+  <!-- Datos de la pagina -->
+  <div class="contenidoRecomendado">
+    <ds-page-data></ds-page-data>
+  </div>
+
+  <!--Preguntas Frecuentes-->
+  <ds-frequent-questions></ds-frequent-questions>
+
+</div>

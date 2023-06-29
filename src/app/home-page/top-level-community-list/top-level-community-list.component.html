@@ -1,0 +1,239 @@
+<ng-container *ngVar="(communitiesRD$ | async) as communitiesRD">
+
+  <!--<div class="container">
+    <div class="row">
+      <div class="col-lg-3 d-none d-lg-block" *ngFor="let img of images">
+        <div>
+          <div class="card" role="button">
+            <div class="content-image justify-content-center  align-items-center d-flex">
+              <img   [src]="img" alt="..." class="p-4"
+                     width="250" height="300">
+              <div class="icon-tag justify-content-center  align-items-center d-flex">
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="#fff" class="bi bi-play-fill" viewBox="0 0 16 16">
+                  <path d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"/>
+                </svg>
+              </div>
+            </div>
+            <div class="card-body pt-0">
+              <h5 class="card-title fs-montserrat-bold-h4">Bogotá: Leer para la Vida</h5>
+              <div class="text-uppercase">RED DISTRITAL DE BIBLIOTECAS PÚBLICA. BIBLIO RED (BOGOTÁ.CO)</div>
+              <div class="fs-tags pt-3">Memoria Oral</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+-->
+
+  <div class="container pb-5">
+    <!-- Vista computador -->
+    <div class="row">
+      <div class="col-12 py-5">
+        <div class="d-flex justify-content-lg-between justify-content-around">
+          <div class="fs-montserrat-bold-h3 text-lg-center ">Contenidos recomendados</div>
+          <button type="button" class="btn-bibliored btn-color-primary jumbotron d-none d-lg-block">Ver todos</button>
+        </div>
+      </div>
+      <br>
+      <div class="col-lg-3 d-none d-lg-block">
+        <div class="card" role="button">
+          <div class="content-image justify-content-center  align-items-center d-flex">
+            <img src="https://coleccionesdigitales.biblored.gov.co/files/fullsize/8162d553a01363530f7153abc93360d3.jpg" alt="..." class="p-4"
+                   width="250" height="300">
+          </div>
+          <div class="card-body pt-0">
+            <h5 class="card-title fs-montserrat-bold-h4">Bogotá: Leer para la Vida</h5>
+            <div class="text-uppercase">RED DISTRITAL DE BIBLIOTECAS PÚBLICA. BIBLIO RED (BOGOTÁ.CO)</div>
+            <div class="fs-tags pt-3">Memoria Oral</div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="col-lg-3 d-none d-lg-block">
+        <div class="card" role="button">
+          <div class="content-image justify-content-center  align-items-center d-flex">
+            <img   src="https://coleccionesdigitales.biblored.gov.co/files/fullsize/03a01d64fb0a9b40eb6ed80a87ef5b63.jpg" alt="..." class="p-4"
+                   width="250" height="300">
+            <div class="icon-tag justify-content-center  align-items-center d-flex">
+              <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="#fff" class="bi bi-play-fill" viewBox="0 0 16 16">
+                <path d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"/>
+              </svg>
+            </div>
+          </div>
+          <div class="card-body pt-0">
+            <h5 class="card-title fs-montserrat-bold-h4">Bogotá: Leer para la Vida</h5>
+            <div class="text-uppercase">RED DISTRITAL DE BIBLIOTECAS PÚBLICA. BIBLIO RED (BOGOTÁ.CO)</div>
+            <div class="fs-tags pt-3">Memoria Oral</div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="col-lg-3 d-none d-lg-block">
+        <div class="card" role="button">
+          <div class="content-image justify-content-center  align-items-center d-flex">
+            <img  src="https://coleccionesdigitales.biblored.gov.co/files/fullsize/aa77463ff92caa88c78656d1c6b60b15.jpg" alt="..." class="p-4"
+                   width="250" height="300">
+          </div>
+          <div class="card-body pt-0">
+            <h5 class="card-title fs-montserrat-bold-h4">Bogotá: Leer para la Vida</h5>
+            <div class="text-uppercase">RED DISTRITAL DE BIBLIOTECAS PÚBLICA. BIBLIO RED (BOGOTÁ.CO)</div>
+            <div class="fs-tags pt-3">Memoria Oral</div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="col-lg-3 d-none d-lg-block">
+        <div class="card" role="button">
+          <div class="content-image justify-content-center  align-items-center d-flex">
+            <img   src="https://coleccionesdigitales.biblored.gov.co/files/fullsize/5a844aa00e5abcd3baa272bfb408b558.jpg" alt="..." class="p-4"
+                   width="250" height="300">
+            <div class="icon-tag justify-content-center  align-items-center d-flex">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#fff" class="bi bi-headphones" viewBox="0 0 16 16">
+                <path d="M8 3a5 5 0 0 0-5 5v1h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V8a6 6 0 1 1 12 0v5a1 1 0 0 1-1 1h-1a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h1V8a5 5 0 0 0-5-5z"/>
+              </svg>
+            </div>
+          </div>
+          <div class="card-body pt-0">
+            <h5 class="card-title fs-montserrat-bold-h4">Bogotá: Leer para la Vida</h5>
+            <div class="text-uppercase">RED DISTRITAL DE BIBLIOTECAS PÚBLICA. BIBLIO RED (BOGOTÁ.CO)</div>
+            <div class="fs-tags pt-3">Memoria Oral</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <!-- Vista Movil -->
+    <div class="row">
+      <div class="col-12 d-lg-none pb-3">
+        <div class="row">
+          <div class="col-5 col-md-4 text-center">
+            <img
+              src="https://coleccionesdigitales.biblored.gov.co/files/fullsize/8162d553a01363530f7153abc93360d3.jpg"
+              class="img-movil" alt="...">
+          </div>
+          <div class="col-7 col-md-8">
+            <h5 class="fs-montserrat-bold-h4">Bogotá: Leer para la Vida</h5>
+            <div class="text-uppercase">RED DISTRITAL DE BIBLIOTECAS PÚBLICA. BIBLIO RED (BOGOTÁ.CO)</div>
+            <div class="fs-tags pt-3">Memoria Oral</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 d-lg-none pb-3">
+        <div class="row">
+          <div class="col-5 col-md-4 text-center">
+            <img src="https://coleccionesdigitales.biblored.gov.co/files/fullsize/03a01d64fb0a9b40eb6ed80a87ef5b63.jpg"
+                 class="img-movil" alt="...">
+          </div>
+          <div class="col-7 col-md-8">
+            <h5 class="fs-montserrat-bold-h4"> Las aventuras de Gato: El triángulo de La Candelaria</h5>
+            <div class="text-uppercase">Rabanal, Daniel</div>
+            <div class="fs-tags pt-3">Historieta</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 d-lg-none pb-3">
+        <div class="row">
+          <div class="col-5 col-md-4 text-center">
+            <img src="https://coleccionesdigitales.biblored.gov.co/files/fullsize/aa77463ff92caa88c78656d1c6b60b15.jpg"
+                 class="img-movil" alt="...">
+          </div>
+          <div class="col-7 col-md-8">
+            <h5 class="fs-montserrat-bold-h4">¡Líbranos de todo mal!</h5>
+            <div class="text-uppercase">Reyes, Gustavo. Presentador</div>
+            <div class="fs-tags pt-3">Literatura</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 d-lg-none pb-3">
+        <div class="row">
+          <div class="col-5 col-md-4 text-center">
+            <img src="https://coleccionesdigitales.biblored.gov.co/files/fullsize/5a844aa00e5abcd3baa272bfb408b558.jpg"
+                 class="img-movil" alt="...">
+          </div>
+          <div class="col-7 col-md-8">
+            <h5 class=" fs-montserrat-bold-h4">Cartas en el asunto</h5>
+            <div class="text-uppercase">RMoreno-Durán, R. H.</div>
+            <div class="fs-tags pt-3">Cuento</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="col-12 d-flex justify-content-center pt-5">
+      <button type="button" class="btn-bibliored btn-color-primary jumbotron d-lg-none">Ver todos</button>
+    </div>
+  </div>
+
+
+  <!-- Estrutura de tipografias y tamaño de fuente -->
+  <!-- <div class="container">
+    <h2>Estrutura de tipografias y tamaño de fuente</h2>
+
+    <div class="fs-montserrat-bold-h1">Montserrat-Bold h1</div>
+    <div class="fs-montserrat-bold-h2">Montserrat-Bold h2</div>
+    <div class="fs-montserrat-bold-h3">Montserrat-Bold h3</div>
+    <div class="fs-montserrat-bold-h4">Montserrat-Bold h4</div>
+    <div class="fs-montserrat-bold-h5">Montserrat-Bold h5</div>
+
+    <hr>
+
+    <div class="fs-workSans-regular">WorkSans-Regular</div>
+    <div class="fs-workSans-semiBold">WorkSans-SemiBold</div>
+    <div class="fs-workSans-bold">WorkSans-Bold</div>
+    <div class="fs-workSans-blackitalic">WorkSans-BlackItalic</div>
+
+    <hr>
+
+
+    &lt;!&ndash; <div class="fs-titulo-biblored">Biblio Red</div>
+
+     <hr>&ndash;&gt;
+
+
+    <h2 class=""> Boton</h2>
+    <button type="button" class="btn btn-color-primary disabled">Ver todos</button>
+    <button type="button" class="btn btn-color-primary">Ver todos</button>
+
+    <hr>
+
+    <h2 class=""> Tags</h2>
+    <button type="button" class="btn btn-tags disabled">Tags</button>
+    <button type="button" class="btn btn-tags">Familia</button>
+    <br>
+    <button type="button" class="btn btn-tags-number">10</button>
+    <br>
+    <button type="button" class="btn btn-tags-number">4</button>
+    <hr>
+    <br>
+    <br>
+    <br>
+  </div>-->
+
+  <!--<div class="container">
+    <div *ngIf="communitiesRD?.hasSucceeded ">
+      <h2>
+        {{'home.top-level-communities.head' | translate}}
+      </h2>
+      <p class="lead">{{'home.top-level-communities.help' | translate}}</p>
+      <ds-viewable-collection
+        [config]="config"
+        [sortConfig]="sortConfig"
+        [objects]="communitiesRD$ | async"
+        [hideGear]="true">
+      </ds-viewable-collection>
+    </div>
+    <ds-error *ngIf="communitiesRD?.hasFailed " message="{{'error.top-level-communites' | translate}}"></ds-error>
+    <ds-themed-loading *ngIf="communitiesRD?.isLoading "
+                       message="{{'loading.top-level-communities' | translate}}"></ds-themed-loading>
+  </div>-->
+
+
+</ng-container>

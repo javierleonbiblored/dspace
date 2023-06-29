@@ -1,0 +1,39 @@
+.btn {
+  border-radius: 0px;
+  color: var(--color-dos);
+  background-color: white;
+  border-color: var(--color-seis);
+}
+
+.btn:hover {
+  border-radius: 0px;
+  color: var(--color-dos);
+  background-color: white;
+  border-color: var(--color-seis);
+}
+
+.btn:active {
+  border-radius: 0px;
+  color: var(--color-dos) !important;
+  background-color: white !important;
+  border-color: var(--color-seis)!important;
+}
+.btn:before {
+  border-radius: 0px;
+  color: var(--color-dos);
+  background-color: white;
+  border-color: var(--color-seis);
+}
+
+.btn-group{
+  border-color: var(--color-seis);
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+.btn-secondary:not(:disabled):not(.disabled):active, .btn-secondary:not(:disabled):not(.disabled).active, .show > .btn-secondary.dropdown-toggle {
+  border-radius: 0px;
+  color: var(--color-dos) !important;
+  background-color: white !important;
+  border-color: var(--color-seis)!important;
+}
