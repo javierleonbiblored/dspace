@@ -3,3 +3,9 @@
   align-items: center;
   height: 100%;
 }
+
+.navbar-section:hover {
+  background-color: var(--color-uno);
+  color: white;
+  text-decoration: underline;
+}
