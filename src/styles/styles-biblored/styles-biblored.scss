@@ -11,7 +11,7 @@
    --color-purple: #A333C8;*/
   --color-nav-bar: #5F249F; // navbar
   --color-footer: #251536; // footer
-
+  --color-badge: #707070; // badge
   // Fuentes
   --f-workSans-regular: WorkSans-Regular;
   --f-workSans-semiBold: WorkSans-SemiBold;
@@ -86,6 +86,10 @@ Text color
 
 .text-color-siete {
   color: var(--color-siete);
+}
+
+.text-color-badge {
+  color: var(--color-badge);
 }
 
 /****************
@@ -267,3 +271,7 @@ Botones
   padding: 0 5px;
 }
 
+.badge-biblored{
+  color: white;
+  background-color: var(--color-badge);
+}

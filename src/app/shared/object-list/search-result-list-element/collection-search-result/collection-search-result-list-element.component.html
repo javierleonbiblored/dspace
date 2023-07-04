@@ -1,9 +1,15 @@
-<div class="row">
-  <div *ngIf="showThumbnails" class="offset-3 offset-md-2 "></div>
-  <div [ngClass]="showThumbnails ? 'col-9' : 'col-md-12'">
-    <ds-type-badge *ngIf="showLabel" [object]="dso"></ds-type-badge>
-    <a *ngIf="linkType != linkTypes.None" [target]="(linkType == linkTypes.ExternalLink) ? '_blank' : '_self'" rel="noopener noreferrer" [routerLink]="['/collections/' + dso.id]" class="lead" [innerHTML]="dsoTitle"></a>
+<div class="row m-2 my-4">
+  <!--<div *ngIf="showThumbnails" class="offset-3 offset-md-2 "></div>-->
+  <!--<div [ngClass]="showThumbnails ? 'col-9' : 'col-md-12'">-->
+  <div class="col-12">
+    <div class="d-flex">
+      <ds-type-badge *ngIf="showLabel" [object]="dso"></ds-type-badge> <div class="pl-2 fs-workSans-semiBold text-color-badge">[99 contenidos]</div>
+    </div>
+    <a *ngIf="linkType != linkTypes.None" [target]="(linkType == linkTypes.ExternalLink) ? '_blank' : '_self'"
+       rel="noopener noreferrer" [routerLink]="['/collections/' + dso.id]"
+       class="lead fs-montserrat-bold-h4 text-color-uno text-capitalize" [innerHTML]="dsoTitle"></a>
     <span *ngIf="linkType == linkTypes.None" class="lead" [innerHTML]="dsoTitle"></span>
-    <div *ngIf="dso.shortDescription" class="text-muted abstract-text" [innerHTML]="firstMetadataValue('dc.description.abstract')"></div>
+    <div *ngIf="dso.shortDescription" class="text-muted abstract-text"
+         [innerHTML]="firstMetadataValue('dc.description.abstract')"></div>
   </div>
 </div>
