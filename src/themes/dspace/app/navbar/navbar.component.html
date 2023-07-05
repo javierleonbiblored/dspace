@@ -24,7 +24,7 @@
         <ng-container *ngFor="let section of (sections | async)">
           <ng-container *ngComponentOutlet="(sectionMap$ | async).get(section.id)?.component; injector: (sectionMap$ | async).get(section.id)?.injector;"></ng-container>
         </ng-container>
-        <ds-themed-auth-nav-menu class="navbar-collapsed pt-4 d-none d-lg-block"></ds-themed-auth-nav-menu>
+        <ds-themed-auth-nav-menu class="navbar-collapsed pt-4 m-1 d-none d-lg-block"></ds-themed-auth-nav-menu>
       </ul>
     </div>
   </div>
