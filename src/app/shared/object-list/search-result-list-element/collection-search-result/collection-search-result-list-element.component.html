@@ -9,7 +9,7 @@
        rel="noopener noreferrer" [routerLink]="['/collections/' + dso.id]"
        class="lead fs-montserrat-bold-h4 text-color-uno text-capitalize" [innerHTML]="dsoTitle"></a>
     <span *ngIf="linkType == linkTypes.None" class="lead" [innerHTML]="dsoTitle"></span>
-    <div *ngIf="dso.shortDescription" class="text-muted abstract-text"
+    <div *ngIf="dso.shortDescription" class="text-muted abstract-text fs-workSans-regular"
          [innerHTML]="firstMetadataValue('dc.description.abstract')"></div>
   </div>
 </div>

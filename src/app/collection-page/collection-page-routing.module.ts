@@ -68,7 +68,7 @@ import { DSOEditMenuResolver } from '../shared/dso-page/dso-edit-menu.resolver';
             pathMatch: 'full',
           }
         ],
-        data: {
+       /* data: {
           menu: {
             public: [{
               id: 'statistics_collection_:id',
@@ -82,7 +82,7 @@ import { DSOEditMenuResolver } from '../shared/dso-page/dso-edit-menu.resolver';
               } as LinkMenuItemModel,
             }],
           },
-        },
+        },*/
       },
     ])
   ],
