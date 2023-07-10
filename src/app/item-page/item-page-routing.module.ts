@@ -61,7 +61,7 @@ import { DSOEditMenuResolver } from '../shared/dso-page/dso-edit-menu.resolver';
             canActivate: [AuthenticatedGuard, OrcidPageGuard]
           }
         ],
-        data: {
+        /*data: {
           menu: {
             public: [{
               id: 'statistics_item_:id',
@@ -75,7 +75,7 @@ import { DSOEditMenuResolver } from '../shared/dso-page/dso-edit-menu.resolver';
               } as LinkMenuItemModel,
             }],
           },
-        },
+        },*/
       },
       {
         path: 'version',
