@@ -19,6 +19,8 @@ export class ViewTrackerComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    console.log('--------------------------------  object --------------------------------')
+    console.log(JSON.stringify(this.object))
     this.angulartics2.eventTrack.next({
       action: 'page_view',
       properties: {object: this.object},

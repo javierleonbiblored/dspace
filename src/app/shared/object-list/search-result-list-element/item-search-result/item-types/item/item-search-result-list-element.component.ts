@@ -31,6 +31,6 @@ export class ItemSearchResultListElementComponent extends SearchResultListElemen
     super.ngOnInit();
     this.showThumbnails = this.appConfig.browseBy.showThumbnails;
     this.itemPageRoute = getItemPageRoute(this.dso);
-    console.log(JSON.stringify(this.dso))
+    // console.log(JSON.stringify(this.dso))
   }
 }
