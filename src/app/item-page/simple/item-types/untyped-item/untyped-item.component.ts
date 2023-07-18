@@ -1,8 +1,10 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { Item } from '../../../../core/shared/item.model';
-import { ViewMode } from '../../../../core/shared/view-mode.model';
-import { listableObjectComponent } from '../../../../shared/object-collection/shared/listable-object/listable-object.decorator';
-import { ItemComponent } from '../shared/item.component';
+import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
+import {Item} from '../../../../core/shared/item.model';
+import {ViewMode} from '../../../../core/shared/view-mode.model';
+import {
+  listableObjectComponent
+} from '../../../../shared/object-collection/shared/listable-object/listable-object.decorator';
+import {ItemComponent} from '../shared/item.component';
 
 /**
  * Component that represents a publication Item page
@@ -15,6 +17,10 @@ import { ItemComponent } from '../shared/item.component';
   templateUrl: './untyped-item.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class UntypedItemComponent extends ItemComponent {
+export class UntypedItemComponent extends ItemComponent implements OnInit {
+  linkpage: string;
 
+  ngOnInit() {
+    this.linkpage = window.location.href;
+  }
 }

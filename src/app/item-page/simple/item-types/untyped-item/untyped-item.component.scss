@@ -3,3 +3,6 @@
 .background-init {
   background: var(--color-siete);
 }
+::ng-deep ngx-sharebuttons svg:not(:root).svg-inline--fa, svg:not(:host).svg-inline--fa {
+  color: brown;
+}

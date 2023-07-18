@@ -53,7 +53,18 @@ import { BitstreamRequestACopyPageComponent } from './bitstreams/request-a-copy/
 import { FileSectionComponent } from './simple/field-components/file-section/file-section.component';
 import { ItemSharedModule } from './item-shared.module';
 import { DsoPageModule } from '../shared/dso-page/dso-page.module';
+import {ShareButtonsModule} from "ngx-sharebuttons/buttons";
+import {ShareIconsModule} from "ngx-sharebuttons/icons";
+import {ShareButtonsConfig, SharerMethod} from "ngx-sharebuttons";
 
+
+const shareButtonsConfig: ShareButtonsConfig = {
+  theme: 'circles-dark',
+  include: ['whatsapp', 'facebook', 'twitter', 'sms'],
+  autoSetMeta: true,
+  sharerMethod: SharerMethod.Anchor,
+  debug: false,
+};
 
 const ENTRY_COMPONENTS = [
   // put only entry components that use custom decorator
@@ -110,13 +121,19 @@ const DECLARATIONS = [
     ResultsBackButtonModule,
     UploadModule,
     DsoPageModule,
+    ShareButtonsModule,
+    ShareButtonsModule.withConfig(shareButtonsConfig),
+    ShareIconsModule
   ],
   declarations: [
     ...DECLARATIONS,
 
   ],
   exports: [
+    ShareButtonsModule,
+    ShareIconsModule,
     ...DECLARATIONS,
+
   ]
 })
 export class ItemPageModule {
