@@ -5,6 +5,7 @@ import {
   listableObjectComponent
 } from '../../../../shared/object-collection/shared/listable-object/listable-object.decorator';
 import {ItemComponent} from '../shared/item.component';
+import {VerbosityLevel} from 'ngx-extended-pdf-viewer';
 
 /**
  * Component that represents a publication Item page
@@ -18,7 +19,9 @@ import {ItemComponent} from '../shared/item.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UntypedItemComponent extends ItemComponent implements OnInit {
+  logLevel = VerbosityLevel.ERRORS;
   linkpage: string;
+  pdfSrc = 'https://apimarketplace.demopolys.com/api/marketplace/media/public/getMedia/privacypolicy.pdf';
 
   ngOnInit() {
     this.linkpage = window.location.href;

@@ -80,6 +80,20 @@
         <a class="nav-link" href="#">Meta data</a>
       </li>
     </ul>
+<!--[logLevel]="logLevel"  -->
+    <ngx-extended-pdf-viewer *ngIf="pdfSrc" [src]="pdfSrc" [height]="'70vh'" [useBrowserLocale]="true" [zoom]="'auto'"
+                              [mobileFriendlyZoom]="'70%'" [logLevel]="logLevel"
+                             [showHandToolButton]="false" [enablePinchOnMobile]="true"
+                             [showSecondaryToolbarButton]="false" [textLayer]="false">
+    </ngx-extended-pdf-viewer>
+
+  <!--  <ngx-extended-pdf-viewer
+      [src]="pdfSrc"
+      [height]="'auto'"
+    [useBrowserLocale]="true"
+    [textLayer]="true"
+    [showHandToolButton]="true">
+    </ngx-extended-pdf-viewer>-->
 
     <!--Data item -->
     <div class="pt-5">

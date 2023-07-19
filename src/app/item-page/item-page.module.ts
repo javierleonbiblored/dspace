@@ -55,16 +55,7 @@ import { ItemSharedModule } from './item-shared.module';
 import { DsoPageModule } from '../shared/dso-page/dso-page.module';
 import {ShareButtonsModule} from "ngx-sharebuttons/buttons";
 import {ShareIconsModule} from "ngx-sharebuttons/icons";
-import {ShareButtonsConfig, SharerMethod} from "ngx-sharebuttons";
-
-
-const shareButtonsConfig: ShareButtonsConfig = {
-  theme: 'circles-dark',
-  include: ['whatsapp', 'facebook', 'twitter', 'sms'],
-  autoSetMeta: true,
-  sharerMethod: SharerMethod.Anchor,
-  debug: false,
-};
+import {NgxExtendedPdfViewerModule} from "ngx-extended-pdf-viewer";
 
 const ENTRY_COMPONENTS = [
   // put only entry components that use custom decorator
@@ -122,8 +113,8 @@ const DECLARATIONS = [
     UploadModule,
     DsoPageModule,
     ShareButtonsModule,
-    ShareButtonsModule.withConfig(shareButtonsConfig),
-    ShareIconsModule
+    ShareIconsModule,
+    NgxExtendedPdfViewerModule
   ],
   declarations: [
     ...DECLARATIONS,
@@ -132,6 +123,7 @@ const DECLARATIONS = [
   exports: [
     ShareButtonsModule,
     ShareIconsModule,
+    NgxExtendedPdfViewerModule,
     ...DECLARATIONS,
 
   ]
