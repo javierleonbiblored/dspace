@@ -66,7 +66,7 @@
 
     <!--Tags-->
 
-    <ul class="nav nav-tabs mt-5">
+    <ul class="nav nav-tabs my-5">
       <li class="nav-item">
         <a class="nav-link active" href="#">Info general</a>
       </li>
@@ -80,22 +80,15 @@
         <a class="nav-link" href="#">Meta data</a>
       </li>
     </ul>
-<!--[logLevel]="logLevel"  -->
-    <ngx-extended-pdf-viewer *ngIf="pdfSrc" [src]="pdfSrc" [height]="'70vh'" [useBrowserLocale]="true" [zoom]="'auto'"
-                              [mobileFriendlyZoom]="'70%'" [logLevel]="logLevel"
-                             [showHandToolButton]="false" [enablePinchOnMobile]="true"
-                             [showSecondaryToolbarButton]="false" [textLayer]="false">
-    </ngx-extended-pdf-viewer>
 
-  <!--  <ngx-extended-pdf-viewer
-      [src]="pdfSrc"
-      [height]="'auto'"
-    [useBrowserLocale]="true"
-    [textLayer]="true"
-    [showHandToolButton]="true">
-    </ngx-extended-pdf-viewer>-->
+    <div *ngIf="pdfSrc" >
+      <ngx-extended-pdf-viewer [src]="pdfSrc" [useBrowserLocale]="true"
+                               [height]="'40vh'"  [zoom]="'auto'"  [mobileFriendlyZoom]="'70%'" [logLevel]="logLevel"
+                               [showHandToolButton]="false" [enablePinchOnMobile]="true"
+                               [showSecondaryToolbarButton]="false" [textLayer]="false" >
+      </ngx-extended-pdf-viewer>
+    </div>
 
-    <!--Data item -->
     <div class="pt-5">
       <ds-item-page-abstract-field [item]="object"></ds-item-page-abstract-field>
       <ds-generic-item-page-field [item]="object"

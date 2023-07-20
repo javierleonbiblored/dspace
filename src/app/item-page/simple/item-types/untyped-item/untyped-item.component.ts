@@ -21,9 +21,11 @@ import {VerbosityLevel} from 'ngx-extended-pdf-viewer';
 export class UntypedItemComponent extends ItemComponent implements OnInit {
   logLevel = VerbosityLevel.ERRORS;
   linkpage: string;
-  pdfSrc = 'https://apimarketplace.demopolys.com/api/marketplace/media/public/getMedia/privacypolicy.pdf';
+  pdfSrc: string | Blob = 'https://api7.dspace.org/server/api/core/bitstreams/27805bc3-96b6-4824-a00b-fcf61f89c20a/content';
 
   ngOnInit() {
+    console.log('------------------------------ this.object----------------------')
+    console.log(JSON.stringify(this.object.thumbnail))
     this.linkpage = window.location.href;
   }
 }

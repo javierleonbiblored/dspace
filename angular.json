@@ -40,8 +40,14 @@
             "tsConfig": "tsconfig.app.json",
             "aot": true,
             "assets": [
+              "src/favicon.ico",
               "src/assets",
-              "src/robots.txt"
+              "src/robots.txt",
+              {
+                "glob": "**/*",
+                "input": "node_modules/ngx-extended-pdf-viewer/assets/",
+                "output": "/assets/"
+              }
             ],
             "styles": [
               "src/styles/startup.scss",
