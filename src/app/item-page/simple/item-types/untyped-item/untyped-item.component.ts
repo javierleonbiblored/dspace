@@ -19,13 +19,11 @@ import {VerbosityLevel} from 'ngx-extended-pdf-viewer';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UntypedItemComponent extends ItemComponent implements OnInit {
-  logLevel = VerbosityLevel.ERRORS;
-  linkpage: string;
   pdfSrc: string | Blob = 'https://api7.dspace.org/server/api/core/bitstreams/67e561e7-6bfd-4e25-9c13-8cdf9f827a92/content';
+  logLevel = VerbosityLevel.ERRORS;
 
   ngOnInit() {
     console.log('------------------------------ this.object----------------------')
     console.log(JSON.stringify(this.object.thumbnail))
-    this.linkpage = window.location.href;
   }
 }

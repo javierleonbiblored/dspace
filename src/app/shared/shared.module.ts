@@ -267,6 +267,9 @@ import {
 import { EpersonGroupListComponent } from './eperson-group-list/eperson-group-list.component';
 import { EpersonSearchBoxComponent } from './eperson-group-list/eperson-search-box/eperson-search-box.component';
 import { GroupSearchBoxComponent } from './eperson-group-list/group-search-box/group-search-box.component';
+import { ShareButtonsComponent } from './share-buttons/share-buttons.component';
+import {ShareButtonsModule} from "ngx-sharebuttons/buttons";
+import {ShareIconsModule} from "ngx-sharebuttons/icons";
 
 const MODULES = [
   CommonModule,
@@ -463,15 +466,18 @@ const DIRECTIVES = [
 ];
 
 @NgModule({
-  imports: [
-    ...MODULES,
-    ...ROOT_MODULES
-  ],
+    imports: [
+        ...MODULES,
+        ...ROOT_MODULES,
+      ShareButtonsModule,
+      ShareIconsModule,
+    ],
   declarations: [
     ...PIPES,
     ...COMPONENTS,
     ...ENTRY_COMPONENTS,
     ...DIRECTIVES,
+    ShareButtonsComponent,
   ],
   providers: [
     ...PROVIDERS
@@ -483,6 +489,9 @@ const DIRECTIVES = [
     ...ENTRY_COMPONENTS,
     ...DIRECTIVES,
     TranslateModule,
+    ShareButtonsModule,
+    ShareIconsModule,
+    ShareButtonsComponent,
   ]
 })
 

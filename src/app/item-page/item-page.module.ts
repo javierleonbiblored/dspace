@@ -53,8 +53,6 @@ import { BitstreamRequestACopyPageComponent } from './bitstreams/request-a-copy/
 import { FileSectionComponent } from './simple/field-components/file-section/file-section.component';
 import { ItemSharedModule } from './item-shared.module';
 import { DsoPageModule } from '../shared/dso-page/dso-page.module';
-import {ShareButtonsModule} from "ngx-sharebuttons/buttons";
-import {ShareIconsModule} from "ngx-sharebuttons/icons";
 import {NgxExtendedPdfViewerModule} from "ngx-extended-pdf-viewer";
 
 const ENTRY_COMPONENTS = [
@@ -112,8 +110,7 @@ const DECLARATIONS = [
     ResultsBackButtonModule,
     UploadModule,
     DsoPageModule,
-    ShareButtonsModule,
-    ShareIconsModule,
+
     NgxExtendedPdfViewerModule
   ],
   declarations: [
@@ -121,8 +118,7 @@ const DECLARATIONS = [
 
   ],
   exports: [
-    ShareButtonsModule,
-    ShareIconsModule,
+
     NgxExtendedPdfViewerModule,
     ...DECLARATIONS,
 

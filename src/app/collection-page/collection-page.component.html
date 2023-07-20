@@ -24,10 +24,13 @@
               <!-- Collection description -->
               <div class="col-7 mt-2">
                 <ds-truncatable-part [id]="collection.id" [minLines]="1" class="item-list-abstract">
-              <span [ngClass]="{'text-muted': !collection.firstMetadataValue('dc.description.abstract')}"
-                    [innerHTML]="(collection.firstMetadataValue('dc.description.abstract')) || ('mydspace.results.no-abstract' | translate)">
-              </span>
+                  <span [ngClass]="{'text-muted': !collection.firstMetadataValue('dc.description.abstract')}"
+                        [innerHTML]="(collection.firstMetadataValue('dc.description.abstract')) || ('mydspace.results.no-abstract' | translate)">
+                  </span>
                 </ds-truncatable-part>
+                <div class="fixed-bottom position-absolute">
+                  <ds-share-buttons></ds-share-buttons>
+                </div>
               </div>
               <!-- Collection logo -->
               <div class="col-5">
@@ -36,6 +39,8 @@
                                      [alternateText]="'Collection Logo'">
                 </ds-comcol-page-logo>
               </div>
+
+
             </div>
 
 
@@ -60,6 +65,7 @@
           <div class="pl-2 space-children-mr">
             <ds-dso-page-subscription-button [dso]="collection"></ds-dso-page-subscription-button>
           </div>
+
         </div>
         <ds-themed-search-page></ds-themed-search-page>
         <!-- <section class="comcol-page-browse-section">
