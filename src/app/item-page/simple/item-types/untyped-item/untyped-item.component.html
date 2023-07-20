@@ -25,35 +25,36 @@
     </ng-container>
 
     <div class="pl-5">
-      <share-buttons [show]=4 [include]="['whatsapp', 'facebook', 'twitter', 'sms']"
-                     [url]="linkpage"></share-buttons>
+   <!--   <share-buttons [show]=4 [include]="['whatsapp', 'facebook', 'twitter', 'sms']"
+                     [url]="linkpage"></share-buttons>-->
 
+      <!-- Descargar -->
       <ds-themed-item-page-file-section [item]="object"></ds-themed-item-page-file-section>
-      <ds-item-page-date-field [item]="object"></ds-item-page-date-field>
+
       <ds-metadata-representation-list class="ds-item-page-mixed-author-field"
                                        [parentItem]="object"
                                        [itemType]="'Person'"
                                        [metadataFields]="['dc.contributor.author', 'dc.creator']"
                                        [label]="'relationships.isAuthorOf' | translate">
       </ds-metadata-representation-list>
-      <ds-generic-item-page-field [item]="object"
-                                  [fields]="['journal.title']"
-                                  [label]="'item.page.journal-title'">
-      </ds-generic-item-page-field>
-      <ds-generic-item-page-field [item]="object"
-                                  [fields]="['journal.identifier.issn']"
-                                  [label]="'item.page.journal-issn'">
-      </ds-generic-item-page-field>
-      <ds-generic-item-page-field [item]="object"
-                                  [fields]="['journalvolume.identifier.name']"
-                                  [label]="'item.page.volume-title'">
-      </ds-generic-item-page-field>
+      <!-- Autor -->
       <ds-generic-item-page-field [item]="object"
                                   [fields]="['dc.publisher']"
                                   [label]="'item.page.publisher'">
       </ds-generic-item-page-field>
+      <!-- Fecha -->
+      <ds-item-page-date-field [item]="object"></ds-item-page-date-field>
+      <!-- Colección -->
+      <ds-generic-item-page-field [item]="object"
+                                  [fields]="['dc.publisher']"
+                                  [label]="'Colección'">
+      </ds-generic-item-page-field>
+      <!-- Tema -->
+      <ds-generic-item-page-field [item]="object"
+                                  [fields]="['dc.publisher']"
+                                  [label]="'Tema'">
+      </ds-generic-item-page-field>
     </div>
-
 
   </div>
   <div class="col-xs-12 col-md-7 pt-5 mt-5">
@@ -65,7 +66,6 @@
     </div>
 
     <!--Tags-->
-
     <ul class="nav nav-tabs my-5">
       <li class="nav-item">
         <a class="nav-link active" href="#">Info general</a>
@@ -96,12 +96,8 @@
                                   [label]="'item.page.description'">
       </ds-generic-item-page-field>
 
-      <ds-generic-item-page-field [item]="object"
-                                  [fields]="['dc.subject']"
-                                  [separator]="', '"
-                                  [label]="'item.page.subject'">
-      </ds-generic-item-page-field>
-      <ds-generic-item-page-field [item]="object"
+
+     <!-- <ds-generic-item-page-field [item]="object"
                                   [fields]="['dc.identifier.citation']"
                                   [label]="'item.page.citation'">
       </ds-generic-item-page-field>
@@ -114,13 +110,41 @@
         <a class="btn btn-outline-primary" [routerLink]="[itemPageRoute + '/full']" role="button">
           <i class="fas fa-info-circle"></i> {{"item.page.link.full" | translate}}
         </a>
-      </div>
+      </div>-->
     </div>
 
   </div>
   <div class="col-xs-12 col-md-1">
     <ds-dso-edit-menu></ds-dso-edit-menu>
+
+    dc.type
+    <ds-generic-item-page-field [item]="object"
+                                [fields]="['dc.type']"
+                                [label]="'Tippo de contenido'">
+    </ds-generic-item-page-field>
+
+    <ds-generic-item-page-field [item]="object"
+                                [fields]="['dc.language.iso']"
+                                [label]="'Idioma'">
+    </ds-generic-item-page-field>
+
+
+    <ds-generic-item-page-field [item]="object"
+                                [fields]="['dc.subject']"
+                                [separator]="', '"
+                                [label]="'item.page.subject'">
+    </ds-generic-item-page-field>
+
+    <div>
+      <span class="fs-montserrat-bold-h5">Compartir:</span>
+      <share-buttons [show]=4 [include]="['whatsapp', 'facebook', 'twitter', 'sms']"
+                     [url]="linkpage"></share-buttons>
+    </div>
+
+
   </div>
+
+
 </div>
 
 

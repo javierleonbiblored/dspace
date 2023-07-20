@@ -21,7 +21,7 @@ import {VerbosityLevel} from 'ngx-extended-pdf-viewer';
 export class UntypedItemComponent extends ItemComponent implements OnInit {
   logLevel = VerbosityLevel.ERRORS;
   linkpage: string;
-  pdfSrc: string | Blob = 'https://api7.dspace.org/server/api/core/bitstreams/27805bc3-96b6-4824-a00b-fcf61f89c20a/content';
+  pdfSrc: string | Blob = 'https://api7.dspace.org/server/api/core/bitstreams/67e561e7-6bfd-4e25-9c13-8cdf9f827a92/content';
 
   ngOnInit() {
     console.log('------------------------------ this.object----------------------')

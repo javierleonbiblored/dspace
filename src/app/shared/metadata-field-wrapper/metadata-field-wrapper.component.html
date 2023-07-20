@@ -1,5 +1,5 @@
 <div class="simple-view-element" [class.d-none]="hideIfNoTextContent && content.textContent.trim().length === 0">
-  <h5 class="simple-view-element-header" *ngIf="label">{{ label }}</h5>
+  <h5 class="simple-view-element-header fs-montserrat-bold-h5" *ngIf="label">{{ label + ':' }}</h5>
   <div #content class="simple-view-element-body">
     <ng-content></ng-content>
   </div>
