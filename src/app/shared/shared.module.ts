@@ -270,6 +270,9 @@ import { GroupSearchBoxComponent } from './eperson-group-list/group-search-box/g
 import { ShareButtonsComponent } from './share-buttons/share-buttons.component';
 import {ShareButtonsModule} from "ngx-sharebuttons/buttons";
 import {ShareIconsModule} from "ngx-sharebuttons/icons";
+import { FrequentQuestionsComponent } from '../shared/frequent-questions/frequent-questions.component';
+import { RecommendedContentsComponent } from './recommended-contents/recommended-contents.component';
+import { ContentTypeComponent } from './content-type/content-type.component';
 
 const MODULES = [
   CommonModule,
@@ -374,7 +377,10 @@ const COMPONENTS = [
   ContextHelpWrapperComponent,
   EpersonGroupListComponent,
   EpersonSearchBoxComponent,
-  GroupSearchBoxComponent
+  GroupSearchBoxComponent,
+  FrequentQuestionsComponent,
+  RecommendedContentsComponent,
+  ContentTypeComponent,
 ];
 
 const ENTRY_COMPONENTS = [

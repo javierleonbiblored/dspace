@@ -14,7 +14,6 @@ import { JournalEntitiesModule } from '../entity-groups/journal-entities/journal
 import { ResearchEntitiesModule } from '../entity-groups/research-entities/research-entities.module';
 import { TypeContentComponent } from './type-content/type-content.component';
 import { PageDataComponent } from './page-data/page-data.component';
-import { FrequentQuestionsComponent } from './frequent-questions/frequent-questions.component';
 
 const DECLARATIONS = [
   HomePageComponent,
@@ -25,7 +24,6 @@ const DECLARATIONS = [
   RecentItemListComponent,
   TypeContentComponent,
   PageDataComponent,
-  FrequentQuestionsComponent
 ];
 
 @NgModule({
