@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {VerbosityLevel} from "ngx-extended-pdf-viewer";
+import {NativeWindowRef, NativeWindowService} from "../../core/services/window.service";
 
 @Component({
   selector: 'ds-share-buttons',
@@ -9,10 +10,11 @@ import {VerbosityLevel} from "ngx-extended-pdf-viewer";
 export class ShareButtonsComponent implements OnInit {
 
   linkpage: string;
-  constructor() { }
+  constructor(@Inject(NativeWindowService) private _window: NativeWindowRef,
+  ) { }
 
   ngOnInit(): void {
-    this.linkpage = window.location.href;
+    this.linkpage = this._window.nativeWindow.location.href;
   }
 
 }

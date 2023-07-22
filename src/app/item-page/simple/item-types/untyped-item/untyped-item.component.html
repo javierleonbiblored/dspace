@@ -81,11 +81,17 @@
       </li>
     </ul>
 
+    <!--
+
+                               -->
     <div *ngIf="pdfSrc">
-      <ngx-extended-pdf-viewer [src]="pdfSrc" [useBrowserLocale]="true"
-                               [height]="'40vh'" [zoom]="'auto'" [mobileFriendlyZoom]="'70%'" [logLevel]="logLevel"
-                               [showHandToolButton]="false" [enablePinchOnMobile]="true"
-                               [showSecondaryToolbarButton]="false" [textLayer]="false">
+      <ngx-extended-pdf-viewer [src]="pdfSrc" [useBrowserLocale]="true" [mobileFriendlyZoom]="'70%'"
+                               [logLevel]="logLevel"
+                               [height]="'40vh'" [zoom]="'100%'" [showPresentationModeButton]="true"
+                               [showHandToolButton]="false"
+                               [enablePinchOnMobile]="true" [showSecondaryToolbarButton]="false" [textLayer]="false"
+                               [replaceBrowserPrint]="true">
+
       </ngx-extended-pdf-viewer>
     </div>
 
@@ -141,10 +147,7 @@
   </div>
 
 
-
-
 </div>
-
 
 
 <!--<ds-content-type></ds-content-type>-->
