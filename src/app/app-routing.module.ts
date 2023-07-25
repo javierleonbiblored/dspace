@@ -41,6 +41,8 @@ import { ServerCheckGuard } from './core/server-check/server-check.guard';
 import { MenuResolver } from './menu.resolver';
 import { ThemedPageErrorComponent } from './page-error/themed-page-error.component';
 import {DiscoverPageModule} from "./discover-page/discover-page.module";
+import {FrequentQuestionsPageModule} from "./frequent-questions-page/frequent-questions-page.module";
+import {BibloredDigitalRepositoryModule} from "./biblored-digital-repository/biblored-digital-repository.module";
 
 @NgModule({
   imports: [
@@ -260,6 +262,22 @@ import {DiscoverPageModule} from "./discover-page/discover-page.module";
             data: { showBreadcrumbs: false },
             canActivate: [EndUserAgreementCurrentUserGuard]
           },
+          {
+            path: 'frequent-questions',
+            loadChildren: () => import('./frequent-questions-page/frequent-questions-page.module')
+              .then((m) => m.FrequentQuestionsPageModule),
+            data: { showBreadcrumbs: false },
+            canActivate: [EndUserAgreementCurrentUserGuard]
+          },
+          {
+            path: 'biblored-digital-repository',
+            loadChildren: () => import('./biblored-digital-repository/biblored-digital-repository.module')
+              .then((m) => m.BibloredDigitalRepositoryModule),
+            data: { showBreadcrumbs: false },
+            canActivate: [EndUserAgreementCurrentUserGuard]
+          },
+
+
           { path: '**', pathMatch: 'full', component: ThemedPageNotFoundComponent },
         ]
       }

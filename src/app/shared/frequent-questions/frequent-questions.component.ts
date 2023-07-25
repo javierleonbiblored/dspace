@@ -7,9 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FrequentQuestionsComponent implements OnInit {
 
+  href = false;
   constructor() { }
 
   ngOnInit(): void {
+    this.href = window.location.href.endsWith('frequent-questions');
   }
 
 }
