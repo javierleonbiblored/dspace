@@ -273,6 +273,7 @@ import {ShareIconsModule} from "ngx-sharebuttons/icons";
 import { FrequentQuestionsComponent } from '../shared/frequent-questions/frequent-questions.component';
 import { RecommendedContentsComponent } from './recommended-contents/recommended-contents.component';
 import { ContentTypeComponent } from './content-type/content-type.component';
+import {PageDataComponent} from "./page-data/page-data.component";
 
 const MODULES = [
   CommonModule,
@@ -287,7 +288,7 @@ const MODULES = [
   RouterModule,
   DragDropModule,
   GoogleRecaptchaModule,
-  MenuModule
+  MenuModule,
 ];
 
 const ROOT_MODULES = [
@@ -381,6 +382,7 @@ const COMPONENTS = [
   FrequentQuestionsComponent,
   RecommendedContentsComponent,
   ContentTypeComponent,
+  PageDataComponent,
 ];
 
 const ENTRY_COMPONENTS = [

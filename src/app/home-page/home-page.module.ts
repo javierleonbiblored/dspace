@@ -13,7 +13,6 @@ import { RecentItemListComponent } from './recent-item-list/recent-item-list.com
 import { JournalEntitiesModule } from '../entity-groups/journal-entities/journal-entities.module';
 import { ResearchEntitiesModule } from '../entity-groups/research-entities/research-entities.module';
 import { TypeContentComponent } from './type-content/type-content.component';
-import { PageDataComponent } from './page-data/page-data.component';
 
 const DECLARATIONS = [
   HomePageComponent,
@@ -23,7 +22,6 @@ const DECLARATIONS = [
   HomeNewsComponent,
   RecentItemListComponent,
   TypeContentComponent,
-  PageDataComponent,
 ];
 
 @NgModule({

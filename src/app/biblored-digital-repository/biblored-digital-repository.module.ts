@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { BibloredDigitalRepositoryPageComponent } from './biblored-digital-repository-page/biblored-digital-repository-page.component';
 import {BibloredDigitalRepositoryPageRoutingModule} from "./biblored-digital-repository-page-routing.module";
 import {SharedModule} from "../shared/shared.module";
+import {HomePageModule} from "../home-page/home-page.module";
 
 
 
@@ -10,10 +11,10 @@ import {SharedModule} from "../shared/shared.module";
   declarations: [
     BibloredDigitalRepositoryPageComponent
   ],
-  imports: [
-    CommonModule,
-    BibloredDigitalRepositoryPageRoutingModule,
-    SharedModule,
-  ]
+    imports: [
+        CommonModule,
+        BibloredDigitalRepositoryPageRoutingModule,
+        SharedModule,
+    ]
 })
 export class BibloredDigitalRepositoryModule { }
