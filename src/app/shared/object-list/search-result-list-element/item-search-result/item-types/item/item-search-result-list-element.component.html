@@ -26,7 +26,7 @@
       <span *ngIf="linkType == linkTypes.None" class="lead item-list-title dont-break-out"
             [innerHTML]="dsoTitle"></span>
       <span class="text-muted">
-        <ds-truncatable-part [id]="dso.id" [minLines]="4">
+        <ds-truncatable-part [id]="dso.id" [minLines]="5">
 
           <!-- 'dc.contributor.author', 'dc.creator', 'dc.contributor.*' -->
           <span *ngIf="dso.allMetadata(['dc.contributor.author']).length > 0" class="item-list-authors fs-workSans-regular">
@@ -50,8 +50,8 @@
             </span>
           </span>
           <br>
-          <span *ngIf="dso.allMetadata(['dc.subject']).length > 0" class="item-list-subject fs-workSans-regular">
-            <span *ngFor="let type of allMetadataValues(['dc.subject']); let last=last;">
+          <span *ngIf="dso.allMetadata(['dc.tag']).length > 0" class="item-list-subject fs-workSans-regular">
+            <span *ngFor="let type of allMetadataValues(['dc.tag']); let last=last;">
                 <span [innerHTML]="type"><span [innerHTML]="type"></span></span>
                 <span *ngIf="!last">, </span>
             </span>
