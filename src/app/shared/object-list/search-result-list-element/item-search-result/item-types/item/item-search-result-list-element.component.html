@@ -50,8 +50,8 @@
             </span>
           </span>
           <br>
-          <span *ngIf="dso.allMetadata(['dc.tag']).length > 0" class="item-list-subject fs-workSans-regular">
-            <span *ngFor="let type of allMetadataValues(['dc.tag']); let last=last;">
+          <span *ngIf="dso.allMetadata(['local.tag']).length > 0" class="item-list-subject fs-workSans-regular">
+            <span *ngFor="let type of allMetadataValues(['local.tag']); let last=last;">
                 <span [innerHTML]="type"><span [innerHTML]="type"></span></span>
                 <span *ngIf="!last">, </span>
             </span>
