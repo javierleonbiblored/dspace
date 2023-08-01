@@ -97,7 +97,7 @@
             </div>
 
             <div *ngIf="file.name.includes('.mp4')" class="text-center">
-              <video width="450" height="240" controls>
+              <video width="500" height="300" controls>
                 <source [src]="file._links.content.href" type="video/mp4">
                 <source [src]="file._links.content.href" type="video/ogg">
               </video>
