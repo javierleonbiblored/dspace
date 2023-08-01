@@ -193,6 +193,15 @@ Links
   text-decoration: underline;
 }
 
+.link {
+  color: var(--color-dos) !important;
+  text-decoration: none;
+}
+
+.link:hover {
+  color: var(--color-dos) !important;
+  text-decoration: underline;
+}
 
 /****************
 Botones

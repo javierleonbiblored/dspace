@@ -18,6 +18,7 @@ import { AppConfig, APP_CONFIG } from 'src/config/app-config.interface';
  */
 @Component({
   selector: 'ds-item-page-file-section',
+  styleUrls: ['./file-section.component.scss'],
   templateUrl: './file-section.component.html'
 })
 export class FileSectionComponent implements OnInit {
@@ -75,6 +76,9 @@ export class FileSectionComponent implements OnInit {
         this.notificationsService.error(this.translateService.get('file-section.error.header'), `${bitstreamsRD.statusCode} ${bitstreamsRD.errorMessage}`);
       } else if (hasValue(bitstreamsRD.payload)) {
         const current: Bitstream[] = this.bitstreams$.getValue();
+        console.log(JSON.stringify('++++++++++++++++++++++  bitstreamsRD.payload.page ++++++++++++++++++++++'))
+
+        console.log(JSON.stringify(bitstreamsRD.payload.page))
         this.bitstreams$.next([...current, ...bitstreamsRD.payload.page]);
         this.isLoading = false;
         this.isLastPage = this.currentPage === bitstreamsRD.payload.totalPages;
