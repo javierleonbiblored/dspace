@@ -50,6 +50,9 @@ export class UntypedItemComponent extends ItemComponent implements OnInit {
 
   ngOnInit(): void {
     this.archivo();
+
+    console.log('++++++++++++++++++++++++++++++++++++++++++++++++++');
+    console.log(JSON.stringify(this.object));
   }
 
   archivo() {
@@ -59,10 +62,7 @@ export class UntypedItemComponent extends ItemComponent implements OnInit {
       if (bitstreamsRD.errorMessage) {
         this.notificationsService.error(this.translateService.get('file-section.error.header'), `${bitstreamsRD.statusCode} ${bitstreamsRD.errorMessage}`);
       } else if (hasValue(bitstreamsRD.payload)) {
-        console.log('***********************Prueba***************************')
-        console.log(JSON.stringify(bitstreamsRD.payload.page))
         this.bitstreamsOriginal = bitstreamsRD.payload.page;
-
       }
     });
   }

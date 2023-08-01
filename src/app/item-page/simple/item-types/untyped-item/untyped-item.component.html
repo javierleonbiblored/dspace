@@ -81,18 +81,18 @@
 
     <div class="container">
       <div class="row">
-        <div class="col-8">
+        <div class="col-9">
 
           <div *ngFor="let file of bitstreamsOriginal;">
-            <div>{{file._links.content.href}}</div>
+          <!--  <div>{{file._links.content.href}}</div>-->
             <div *ngIf="file.name.includes('.pdf')" class="pb-5">
               <ngx-extended-pdf-viewer [src]="file._links.content.href" [useBrowserLocale]="true" [mobileFriendlyZoom]="'70%'"
                                        [logLevel]="logLevel"
                                        [height]="'40vh'" [zoom]="'auto'" [showPresentationModeButton]="true"
                                        [showHandToolButton]="false"
-                                       [enablePinchOnMobile]="true" [showSecondaryToolbarButton]="false"
+                                       [enablePinchOnMobile]="true" [showSecondaryToolbarButton]="true"
                                        [textLayer]="false"
-                                       [replaceBrowserPrint]="true" [showFindHighlightAll]="true">
+                                       [replaceBrowserPrint]="true" [showFindHighlightAll]="false">
               </ngx-extended-pdf-viewer>
             </div>
 
@@ -119,7 +119,7 @@
                                       [label]="'item.page.description'">
           </ds-generic-item-page-field>
         </div>
-        <div class="col-4 pl-3">
+        <div class="col-3 pl-3">
           <ds-dso-edit-menu></ds-dso-edit-menu>
 
           <ds-generic-item-page-field [item]="object"
@@ -133,7 +133,7 @@
           </ds-generic-item-page-field>
 
           <ds-generic-item-page-field [item]="object"
-                                      [fields]="['dc.tag']"
+                                      [fields]="['local.tag']"
                                       [separator]="', '"
                                       [label]="'item.page.subject'">
           </ds-generic-item-page-field>
