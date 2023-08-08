@@ -110,18 +110,14 @@ const DECLARATIONS = [
     ResultsBackButtonModule,
     UploadModule,
     DsoPageModule,
-
-    NgxExtendedPdfViewerModule
+    NgxExtendedPdfViewerModule,
   ],
   declarations: [
     ...DECLARATIONS,
-
   ],
   exports: [
-
-    NgxExtendedPdfViewerModule,
     ...DECLARATIONS,
-
+    NgxExtendedPdfViewerModule,
   ]
 })
 export class ItemPageModule {

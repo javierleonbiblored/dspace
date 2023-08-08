@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Inject, OnInit, PLATFORM_ID} from '@angular/core';
+import {isPlatformBrowser} from "@angular/common";
 
 @Component({
   selector: 'ds-frequent-questions',
@@ -8,10 +9,17 @@ import { Component, OnInit } from '@angular/core';
 export class FrequentQuestionsComponent implements OnInit {
 
   href = false;
-  constructor() { }
+
+  constructor(
+    @Inject(PLATFORM_ID) private _platformId: Object
+  ) {
+  }
 
   ngOnInit(): void {
-    this.href = window.location.href.endsWith('frequent-questions');
+    if (isPlatformBrowser(this._platformId)) {
+      this.href = window.location.href.endsWith('frequent-questions');
+    }
   }
+
 
 }

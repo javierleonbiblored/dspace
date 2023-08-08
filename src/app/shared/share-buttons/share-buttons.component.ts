@@ -1,6 +1,5 @@
-import {Component, Inject, OnInit} from '@angular/core';
-import {VerbosityLevel} from "ngx-extended-pdf-viewer";
-import {NativeWindowRef, NativeWindowService} from "../../core/services/window.service";
+import {Component, Inject, PLATFORM_ID} from '@angular/core';
+import {isPlatformBrowser} from "@angular/common";
 
 @Component({
   selector: 'ds-share-buttons',
@@ -10,8 +9,11 @@ import {NativeWindowRef, NativeWindowService} from "../../core/services/window.s
 export class ShareButtonsComponent{
 
   linkpage: string;
-  constructor(@Inject(NativeWindowService) private _window: NativeWindowRef,
+  constructor(
+    @Inject(PLATFORM_ID) private _platformId: Object
   ) {
-    this.linkpage = this._window.nativeWindow.location.href;
+    if (isPlatformBrowser(this._platformId)) {
+      this.linkpage = window.location.href;
+    }
   }
 }

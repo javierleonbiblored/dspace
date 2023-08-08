@@ -84,8 +84,8 @@
         <div class="col-9">
 
           <div *ngFor="let file of bitstreamsOriginal;">
-          <!--  <div>{{file._links.content.href}}</div>-->
-            <div *ngIf="file.name.includes('.pdf')" class="pb-5">
+            <!--  <div>{{file._links.content.href}}</div>-->
+            <div *ngIf="file.name.includes('.pdf') || file.name.includes('.epub')" class="pb-5">
               <ngx-extended-pdf-viewer [src]="file._links.content.href" [useBrowserLocale]="true" [mobileFriendlyZoom]="'70%'"
                                        [logLevel]="logLevel"
                                        [height]="'40vh'" [zoom]="'auto'" [showPresentationModeButton]="true"

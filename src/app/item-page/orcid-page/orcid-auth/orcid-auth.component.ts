@@ -1,4 +1,14 @@
-import { Component, EventEmitter, Inject, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Inject,
+  Input,
+  OnChanges,
+  OnInit,
+  Output,
+  PLATFORM_ID,
+  SimpleChanges
+} from '@angular/core';
 
 import { TranslateService } from '@ngx-translate/core';
 import { BehaviorSubject, Observable } from 'rxjs';
@@ -10,6 +20,7 @@ import { RemoteData } from '../../../core/data/remote-data';
 import { ResearcherProfile } from '../../../core/profile/model/researcher-profile.model';
 import { getFirstCompletedRemoteData } from '../../../core/shared/operators';
 import { OrcidAuthService } from '../../../core/orcid/orcid-auth.service';
+import {isPlatformBrowser} from "@angular/common";
 
 @Component({
   selector: 'ds-orcid-auth',
@@ -68,6 +79,7 @@ export class OrcidAuthComponent implements OnInit, OnChanges {
     private translateService: TranslateService,
     private notificationsService: NotificationsService,
     @Inject(NativeWindowService) private _window: NativeWindowRef,
+    @Inject(PLATFORM_ID) private platformId: any
   ) {
   }
 
@@ -160,7 +172,9 @@ export class OrcidAuthComponent implements OnInit, OnChanges {
    */
   linkOrcid(): void {
     this.orcidAuthService.getOrcidAuthorizeUrl(this.item).subscribe((authorizeUrl) => {
-      this._window.nativeWindow.location.href = authorizeUrl;
+      if (isPlatformBrowser(this.platformId)) {
+        this._window.nativeWindow.location.href = authorizeUrl;
+      }
     });
   }
 
