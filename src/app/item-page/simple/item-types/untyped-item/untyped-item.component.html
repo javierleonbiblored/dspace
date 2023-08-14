@@ -110,6 +110,11 @@
                 Your browser does not support the audio element.
               </audio>
             </div>
+
+            <div *ngIf="file.name.includes('.jpg') || file.name.includes('.png') || file.name.includes('.jpeg') || file.name.includes('.webp')"  class="text-center">
+              <img [src]="file._links.content.href"
+                   class="img-fluid" [attr.alt]="file.name">
+            </div>
           </div>
 
 
