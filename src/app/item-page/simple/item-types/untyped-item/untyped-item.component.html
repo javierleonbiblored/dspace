@@ -79,11 +79,15 @@
     </ul>
 
 
-    <div class="container">
+    <div class="container mb-3">
       <div class="row">
         <div class="col-9">
+          <!--<div style="height: 300px;" class="img-fluid"
+               leaflet
+               [leafletOptions]="options">
+          </div>-->
 
-          <div *ngFor="let file of bitstreamsOriginal;">
+          <div *ngFor="let file of bitstreamsOriginal;" class="mb-3">
             <!--  <div>{{file._links.content.href}}</div>-->
             <div *ngIf="file.name.includes('.pdf') || file.name.includes('.epub')" class="pb-5">
               <ngx-extended-pdf-viewer [src]="file._links.content.href" [useBrowserLocale]="true" [mobileFriendlyZoom]="'70%'"
@@ -111,6 +115,8 @@
               </audio>
             </div>
 
+
+
             <div *ngIf="file.name.includes('.jpg') || file.name.includes('.png') || file.name.includes('.jpeg') || file.name.includes('.webp')"  class="text-center">
               <img [src]="file._links.content.href"
                    class="img-fluid" [attr.alt]="file.name">
@@ -118,11 +124,16 @@
           </div>
 
 
+
           <ds-item-page-abstract-field [item]="object"></ds-item-page-abstract-field>
           <ds-generic-item-page-field [item]="object"
                                       [fields]="['dc.description']"
                                       [label]="'item.page.description'">
           </ds-generic-item-page-field>
+
+          <div *ngIf="this.longitud && this.latitud">
+            <div id="map"></div>
+          </div>
         </div>
         <div class="col-3 pl-3">
           <ds-dso-edit-menu></ds-dso-edit-menu>

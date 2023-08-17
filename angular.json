@@ -47,10 +47,16 @@
                 "glob": "**/*",
                 "input": "node_modules/ngx-extended-pdf-viewer/assets/",
                 "output": "/assets/"
+              },
+              {
+                "glob": "**/*",
+                "input": "./node_modules/leaflet/dist/images/",
+                "output": "/assets/"
               }
             ],
             "styles": [
               "src/styles/startup.scss",
+              "./node_modules/leaflet/dist/leaflet.css",
               {
                 "input": "src/styles/base-theme.scss",
                 "inject": false,
