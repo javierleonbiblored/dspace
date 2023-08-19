@@ -274,7 +274,6 @@ import { FrequentQuestionsComponent } from '../shared/frequent-questions/frequen
 import { RecommendedContentsComponent } from './recommended-contents/recommended-contents.component';
 import { ContentTypeComponent } from './content-type/content-type.component';
 import {PageDataComponent} from "./page-data/page-data.component";
-import {LeafletModule} from "@asymmetrik/ngx-leaflet";
 
 const MODULES = [
   CommonModule,
@@ -290,7 +289,6 @@ const MODULES = [
   DragDropModule,
   GoogleRecaptchaModule,
   MenuModule,
-  LeafletModule,
 ];
 
 const ROOT_MODULES = [
