@@ -122,7 +122,7 @@
     "ng-mocks": "^13.1.1",
     "ng2-file-upload": "1.4.0",
     "ng2-nouislider": "^1.8.3",
-    "ngx-extended-pdf-viewer": "^15.2.2",
+    "ngx-extended-pdf-viewer": "15.0.0-alpha.7",
     "ngx-infinite-scroll": "^10.0.1",
     "ngx-pagination": "5.0.0",
     "ngx-sharebuttons": "^10.0.0",
