@@ -18,5 +18,5 @@ import {ItemComponent} from '../shared/item.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UntypedItemComponent extends ItemComponent implements OnInit {
-
+  visibleModal: boolean = false;
 }

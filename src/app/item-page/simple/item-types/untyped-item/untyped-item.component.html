@@ -89,12 +89,13 @@
 
           <div *ngFor="let file of bitstreamsOriginal;" class="mb-3">
             <div *ngIf="file.name.includes('.pdf') || file.name.includes('.epub')" class="pb-5">
-              <ngx-extended-pdf-viewer [src]="file._links.content.href" [useBrowserLocale]="true" [mobileFriendlyZoom]="'70%'"
+              <ngx-extended-pdf-viewer [src]="file._links.content.href" [useBrowserLocale]="true"
+                                       [mobileFriendlyZoom]="'70%'"
                                        [logLevel]="logLevel"
                                        [height]="'40vh'" [zoom]="'auto'" [showPresentationModeButton]="true"
                                        [showHandToolButton]="false"
                                        [enablePinchOnMobile]="true" [showSecondaryToolbarButton]="true"
-                                       [textLayer]="false"[showFindHighlightAll]="false">
+                                       [textLayer]="false" [showFindHighlightAll]="false">
               </ngx-extended-pdf-viewer>
             </div>
             <div *ngIf="file.name.includes('.mp4')" class="text-center">
@@ -113,13 +114,32 @@
             </div>
 
 
+            <div *ngIf="file.name.includes('.jpg') || file.name.includes('.png') || file.name.includes('.webp')"
+                 class="text-center pointer-event" type="button">
+              <img [src]="file._links.content.href "
+                   class="img-fluid " [attr.alt]="file.name" data-toggle="modal" data-target="#exampleModal"
+                   (click)="visibleModal =true">
+              <!-- Modal -->
+              <!--<div class="modal  align-items-center d-flex justify-content-center text-center" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                   aria-hidden="true">-->
 
-            <div *ngIf="file.name.includes('.jpg') || file.name.includes('.png') || file.name.includes('.webp')"  class="text-center">
-              <img [src]="file._links.content.href"
-                   class="img-fluid" [attr.alt]="file.name">
+              <div class="modal"
+                   (click)="visibleModal = false" [ngClass]="{'d-flex': visibleModal }" id="exampleModal" tabindex="-1"
+                   aria-labelledby="exampleModalLabel"
+                   aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable">
+                  <!--                  <div class="modal-content">
+                                    <div class="modal-body">-->
+                  <img [src]="file._links.content.href"
+                       class="h-75" [attr.alt]="file.name" data-dismiss="modal">
+                </div>
+                <!-- </div>
+              </div>-->
+              </div>
             </div>
-          </div>
 
+
+          </div>
 
 
           <!--<ds-item-page-abstract-field [item]="object"></ds-item-page-abstract-field>-->

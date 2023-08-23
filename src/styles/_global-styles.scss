@@ -24,7 +24,8 @@ body {
 }
 
 .main-content {
-  z-index: var(--ds-main-z-index);
+  // Se comento Z-index para poder organizar el modal que esta en untyped-item.html
+  // z-index: var(--ds-main-z-index);
   flex: 1 1 100%;
   margin-top: var(--ds-content-spacing);
   margin-bottom: var(--ds-content-spacing);
