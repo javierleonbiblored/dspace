@@ -1,8 +1,9 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
-import { Router } from '@angular/router';
-import { SearchService } from '../core/shared/search/search.service';
-import { expandSearchInput } from '../shared/animations/slide';
+import {Component, ElementRef, Inject, OnInit, PLATFORM_ID, ViewChild} from '@angular/core';
+import {FormBuilder} from '@angular/forms';
+import {Router} from '@angular/router';
+import {SearchService} from '../core/shared/search/search.service';
+import {expandSearchInput} from '../shared/animations/slide';
+import {isPlatformBrowser} from "@angular/common";
 
 /**
  * The search box in the header that expands on focus and collapses on focus out
@@ -24,11 +25,33 @@ export class SearchNavbarComponent {
   // Search input field
   @ViewChild('searchInput') searchField: ElementRef;
 
-  constructor(private formBuilder: FormBuilder, private router: Router, private searchService: SearchService) {
+  constructor(
+    private formBuilder: FormBuilder,
+    private router: Router,
+    private searchService: SearchService,
+    @Inject(PLATFORM_ID) private _platformId: Object
+  ) {
     this.searchForm = this.formBuilder.group(({
       query: '',
     }));
   }
+
+
+  reconocimientoVoz(): void {
+    if ('webkitSpeechRecognition' in window) {
+      const voz = new webkitSpeechRecognition();
+      voz.lang = "es-ES";
+      voz.start();
+      voz.addEventListener("result", evento => {
+        // console.log(evento.results)
+        this.searchForm = this.formBuilder.group(({
+          query: evento.results[0][0].transcript,
+        }));
+        this.onSubmit(this.searchForm.value)
+      })
+    }
+  }
+
 
   /**
    * Expands search bar by angular animation, see expandSearchInput
@@ -60,6 +83,8 @@ export class SearchNavbarComponent {
    * @param data  Data for the searchForm, containing the search query
    */
   onSubmit(data: any) {
+    console.log('---------------------------- onSubmit ----------------------------')
+    console.log(data)
     this.collapse();
     const queryParams = Object.assign({}, data);
     const linkToNavigateTo = [this.searchService.getSearchLink().replace('/', '')];

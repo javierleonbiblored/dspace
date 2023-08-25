@@ -6,7 +6,8 @@
   },
   "files": [
     "src/main.browser.ts",
-    "src/polyfills.ts"
+    "src/polyfills.ts",
+    "node_modules/@types/dom-speech-recognition/index.d.ts"
   ],
   "include": [
     "src/**/*.d.ts",
