@@ -113,33 +113,45 @@
               </audio>
             </div>
 
-
+            <!--data-toggle="modal" data-target="#exampleModal"-->
             <div *ngIf="file.name.includes('.jpg') || file.name.includes('.png') || file.name.includes('.webp')"
-                 class="text-center pointer-event" type="button">
-              <img [src]="file._links.content.href "
-                   class="img-fluid " [attr.alt]="file.name" data-toggle="modal" data-target="#exampleModal"
-                   (click)="visibleModal =true">
+                  class="text-center" type="button">
+            <!--  <img [src]="file._links.content.href "
+                   class="img-fluid " [attr.alt]="file.name"
+                   (click)="visibleModal =true">-->
+              <angular-image-viewer [src]="[file._links.content.href, 'https://demo.dspace.org/server/api/core/bitstreams/a760a310-b6de-44ef-b837-1bd2284d2b62/content']"
+                                    [config]="config" [(index)]="imageIndex">
+              </angular-image-viewer>
               <!-- Modal -->
               <!--<div class="modal  align-items-center d-flex justify-content-center text-center" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                    aria-hidden="true">-->
+              <!-- {{images}}
+                  <angular-image-viewer [src]="images"
+                                   [config]="{customBtns:[{name: 'link', icon: 'fa fa-paperclip'}]}">
+                     </angular-image-viewer>-->
 
-              <div class="modal"
-                   (click)="visibleModal = false" [ngClass]="{'d-flex': visibleModal }" id="exampleModal" tabindex="-1"
-                   aria-labelledby="exampleModalLabel"
-                   aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable">
-                  <!--                  <div class="modal-content">
-                                    <div class="modal-body">-->
-                  <img [src]="file._links.content.href"
-                       class="h-75" [attr.alt]="file.name" data-dismiss="modal">
+               <div class="modal"
+                    [ngClass]="{'d-flex': visibleModal }" id="exampleModal" tabindex="-1"
+                    aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable">
+                <div class="modal-content">
+                  <div class="modal-body">
+
+                    <angular-image-viewer [src]="[file._links.content.href]"
+                                          [config]="config">
+                    </angular-image-viewer>
+                  </div>
                 </div>
-                <!-- </div>
-              </div>-->
               </div>
             </div>
 
+            </div>
 
           </div>
+          <!--  <angular-image-viewer [src]="images"
+                                  [config]="{customBtns:[{name: 'link', icon: 'fa fa-paperclip'}]}">
+            </angular-image-viewer>-->
 
 
           <!--<ds-item-page-abstract-field [item]="object"></ds-item-page-abstract-field>-->

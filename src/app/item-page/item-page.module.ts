@@ -56,7 +56,7 @@ import { DsoPageModule } from '../shared/dso-page/dso-page.module';
 import {ShareButtonsModule} from "ngx-sharebuttons/buttons";
 import {ShareIconsModule} from "ngx-sharebuttons/icons";
 import {NgxExtendedPdfViewerModule} from "ngx-extended-pdf-viewer";
-
+import { AngularImageViewerModule } from "@clarivate/angular-image-viewer";
 const ENTRY_COMPONENTS = [
   // put only entry components that use custom decorator
   PublicationComponent,
@@ -114,7 +114,8 @@ const DECLARATIONS = [
     DsoPageModule,
     ShareButtonsModule,
     ShareIconsModule,
-    NgxExtendedPdfViewerModule
+    AngularImageViewerModule,
+    NgxExtendedPdfViewerModule,
   ],
   declarations: [
     ...DECLARATIONS,
@@ -124,8 +125,8 @@ const DECLARATIONS = [
     ShareButtonsModule,
     ShareIconsModule,
     NgxExtendedPdfViewerModule,
+    AngularImageViewerModule,
     ...DECLARATIONS,
-
   ]
 })
 export class ItemPageModule {

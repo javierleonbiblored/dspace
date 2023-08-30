@@ -15,3 +15,21 @@
 .pointer-event{
   pointer-events: auto !important;
 }
+::ng-deep .img-container .drag-element {
+  position: revert !important;
+}
+
+::ng-deep .img-containe{
+  background-color: #FFFFFF !important;
+}
+
+::ng-deep .footer-section .image-txt-count-left-align {
+  color: transparent !important;
+}
+::ng-deep .footer-section .footer-txt-right-align {
+  color: transparent !important;
+}
+
+::ng-deep .footer-section .footer-txt-right-align span.footer-txt-right-align-note {
+  color: transparent !important;
+}

@@ -67,6 +67,7 @@
     "@angular/platform-server": "~13.3.12",
     "@angular/router": "~13.3.12",
     "@babel/runtime": "7.17.2",
+    "@clarivate/angular-image-viewer": "^2.0.8",
     "@fortawesome/angular-fontawesome": "^0.10.2",
     "@fortawesome/fontawesome-svg-core": "^6.1.1",
     "@fortawesome/free-brands-svg-icons": "^6.1.1",

@@ -113,6 +113,8 @@ export class ItemComponent implements OnInit {
       this.ubicacion();
       this.archivo();
     }
+   // 'footer-section'.removeChild(footer-section);
+
   }
 
   ubicacion(): void {
@@ -127,9 +129,7 @@ export class ItemComponent implements OnInit {
       if (bitstreamsRD.errorMessage) {
         this.notificationsService.error(this.translateService.get('file-section.error.header'), `${bitstreamsRD.statusCode} ${bitstreamsRD.errorMessage}`);
       } else if (hasValue(bitstreamsRD.payload)) {
-        // console.log(JSON.stringify(bitstreamsRD.payload.page))
         this.bitstreamsOriginal = bitstreamsRD.payload.page;
-        console.log(JSON.stringify(this.bitstreamsOriginal));
       }
     });
   }
