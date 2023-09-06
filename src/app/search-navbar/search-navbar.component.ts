@@ -4,7 +4,7 @@ import {Router} from '@angular/router';
 import {SearchService} from '../core/shared/search/search.service';
 import {expandSearchInput} from '../shared/animations/slide';
 import {isPlatformBrowser} from "@angular/common";
-
+declare let webkitSpeechRecognition: any;
 /**
  * The search box in the header that expands on focus and collapses on focus out
  */
@@ -38,7 +38,6 @@ export class SearchNavbarComponent {
 
 
   reconocimientoVoz(): void {
-    if ('webkitSpeechRecognition' in window) {
       const voz = new webkitSpeechRecognition();
       voz.lang = "es-ES";
       voz.start();
@@ -49,7 +48,6 @@ export class SearchNavbarComponent {
         }));
         this.onSubmit(this.searchForm.value)
       })
-    }
   }
 
 
