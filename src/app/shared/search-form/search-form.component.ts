@@ -1,17 +1,17 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { DSpaceObject } from '../../core/shared/dspace-object.model';
-import { Router } from '@angular/router';
-import { isNotEmpty } from '../empty.util';
-import { SearchService } from '../../core/shared/search/search.service';
-import { currentPath } from '../utils/route.utils';
-import { PaginationService } from '../../core/pagination/pagination.service';
-import { SearchConfigurationService } from '../../core/shared/search/search-configuration.service';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { ScopeSelectorModalComponent } from './scope-selector-modal/scope-selector-modal.component';
-import { take } from 'rxjs/operators';
-import { BehaviorSubject } from 'rxjs';
-import { DSpaceObjectDataService } from '../../core/data/dspace-object-data.service';
-import { getFirstSucceededRemoteDataPayload } from '../../core/shared/operators';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {DSpaceObject} from '../../core/shared/dspace-object.model';
+import {Router} from '@angular/router';
+import {isNotEmpty} from '../empty.util';
+import {SearchService} from '../../core/shared/search/search.service';
+import {currentPath} from '../utils/route.utils';
+import {PaginationService} from '../../core/pagination/pagination.service';
+import {SearchConfigurationService} from '../../core/shared/search/search-configuration.service';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {ScopeSelectorModalComponent} from './scope-selector-modal/scope-selector-modal.component';
+import {take} from 'rxjs/operators';
+import {BehaviorSubject} from 'rxjs';
+import {DSpaceObjectDataService} from '../../core/data/dspace-object-data.service';
+import {getFirstSucceededRemoteDataPayload} from '../../core/shared/operators';
 
 /**
  * This component renders a simple item page.
@@ -74,6 +74,12 @@ export class SearchFormComponent implements OnInit {
    */
   @Output() submitSearch = new EventEmitter<any>();
 
+  tipo = 'f.author';
+
+  condicion = 'contains';
+
+  busquedaAvanzada: string;
+
   constructor(private router: Router,
               private searchService: SearchService,
               private paginationService: PaginationService,
@@ -99,10 +105,32 @@ export class SearchFormComponent implements OnInit {
    */
   onSubmit(data: any) {
     if (isNotEmpty(this.scope)) {
-      data = Object.assign(data, { scope: this.scope });
+      data = Object.assign(data, {scope: this.scope});
     }
     this.updateSearch(data);
     this.submitSearch.emit(data);
+  }
+
+  onChangePriceFilter(tipo: string, condicion: string, busquedaAvanzada: string): void {
+    this.router.navigate([window.location.pathname],
+      {
+        queryParams:
+          {
+           [tipo] : `${busquedaAvanzada},${condicion}`,
+          },
+        queryParamsHandling: 'merge',
+      });
+  }
+
+  onSubmitAvanzada(data: any) {
+    if (isNotEmpty(this.scope)) {
+      data = Object.assign(data, {scope: this.scope});
+    }
+    /*  console.log('************Data************')
+      console.log(JSON.stringify(data))
+      console.log(getFilterByOperator('autor', 'prueba', 'notequals'));*/
+    // this.updateSearch(data);
+    // this.submitSearch.emit(data);
   }
 
   /**
@@ -110,7 +138,7 @@ export class SearchFormComponent implements OnInit {
    * @param {string} scope The new scope
    */
   onScopeChange(scope: DSpaceObject) {
-    this.updateSearch({ scope: scope ? scope.uuid : undefined });
+    this.updateSearch({scope: scope ? scope.uuid : undefined});
   }
 
   /**
