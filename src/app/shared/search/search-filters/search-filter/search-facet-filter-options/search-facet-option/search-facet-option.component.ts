@@ -106,15 +106,11 @@ export class SearchFacetOptionComponent implements OnInit, OnDestroy {
    * @param {string[]} selectedValues The values that are currently selected for this filter
    */
   private updateAddParams(selectedValues: FacetValue[]): void {
-    console.log('*********** filterValue *************')
-    console.log(JSON.stringify(this.filterValue))
     const page = this.paginationService.getPageParam(this.searchConfigService.paginationID);
     this.addQueryParams = {
       [this.filterConfig.paramName]: [...selectedValues.map((facetValue: FacetValue) => getFacetValueForType(facetValue, this.filterConfig)), this.getFacetValue()],
       [page]: 1
     };
-  /*  console.log('*********** addQueryParams *************')
-    console.log(JSON.stringify(this.addQueryParams))*/
   }
 
   /**
