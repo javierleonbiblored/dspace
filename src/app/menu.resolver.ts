@@ -103,7 +103,7 @@ export class MenuResolver implements Resolve<boolean> {
         model: {
           type: MenuItemType.LINK,
           text: `Colecciones`,
-          link: `/community-list`
+          link: `/home`
         } as LinkMenuItemModel
       }
     ];
@@ -127,7 +127,7 @@ export class MenuResolver implements Resolve<boolean> {
       model: {
         type: MenuItemType.LINK,
         text: `Sobre nosotros`,
-        link: `/about-us`
+        link: `/biblored-digital-repository`
       } as LinkMenuItemModel
     });
 
@@ -139,7 +139,7 @@ export class MenuResolver implements Resolve<boolean> {
       model: {
         type: MenuItemType.LINK,
         text: `Ayuda`,
-        link: `/help`
+        link: `/frequent-questions`
       } as LinkMenuItemModel
     });
     // Read the different Browse-By types from config and add them to the browse menu
