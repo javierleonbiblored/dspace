@@ -34,12 +34,7 @@ export class UntypedItemComponent extends ItemComponent implements OnInit {
 
   config = {
     containerBackgroundColor: '#fff', // The color to use for the background. This can provided in hex, or rgb(a).
-
-    btnClass: 'default', // The CSS class(es) that will apply to the buttons
-    // zoomFactor: 0.1, // The amount that the scale will be increased by
-    // wheelZoom: true, // If true, the mouse wheel can be used to zoom in
-    // allowFullscreen: true, // If true, the fullscreen button will be shown, allowing the user to enter fullscreen mode
-    //  allowKeyboardNavigation: true, // If true, the left / right arrow keys can be used for navigation
+    btnClass: 'default',
     btnIcons: { // The icon classes that will apply to the buttons. By default, font-awesome is used.
       zoomIn: 'fa fa-plus',
       zoomOut: 'fa fa-minus',
@@ -57,13 +52,4 @@ export class UntypedItemComponent extends ItemComponent implements OnInit {
     },
   };
 
-  /* handleEvent(event: any) {
-     console.log( `${event.name} has been click on img ${event.imageIndex + 1}` );
-
-     switch (event.name) {
-       case 'print':
-         console.log('run print logic');
-         break;
-     }
-   }*/
 }
