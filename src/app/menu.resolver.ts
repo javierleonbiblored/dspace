@@ -115,7 +115,7 @@ export class MenuResolver implements Resolve<boolean> {
       model: {
         type: MenuItemType.LINK,
         text: `Descubre`,
-        link: `/discover`
+        link: `/search`
       } as LinkMenuItemModel
     });
 

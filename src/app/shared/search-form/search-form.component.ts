@@ -93,6 +93,18 @@ export class SearchFormComponent implements OnInit {
               private fb: FormBuilder,
               private activatedRoute: ActivatedRoute,
   ) {
+    if (window.location.pathname.includes('/collections/')) {
+      this.activatedRoute.paramMap.pipe().subscribe(params => {
+        this.router.navigate([window.location.pathname],
+          {
+            queryParams: {
+              scope :params.get('id'),
+            },
+            queryParamsHandling: 'merge',
+          })
+      });
+    }
+
     this.crearFormulario();
     this.activatedRoute.snapshot.queryParamMap.getAll('f.author').forEach((value, index) => {
       this.anadirBusqueda('f.author', value.slice(value.search(',') + 1), value.slice(0, value.search(',')));

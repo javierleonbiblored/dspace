@@ -17,8 +17,8 @@
       </span>
     </div>
     <div class="d-flex justify-content-end">
-      <span *ngIf="!habilitarBusquedaAvanzada" class="link" (click)="metodoHabilitarBusquedaAvanzada(true)">Mostrar filtros avanzados</span>
-      <span *ngIf="habilitarBusquedaAvanzada" class="link" (click)="metodoHabilitarBusquedaAvanzada(false)">Ocultar filtros avanzados</span>
+      <span *ngIf="!habilitarBusquedaAvanzada" class="link" (click)="metodoHabilitarBusquedaAvanzada(true)">Mostrar busqueda avanzados</span>
+      <span *ngIf="habilitarBusquedaAvanzada" class="link" (click)="metodoHabilitarBusquedaAvanzada(false)">Ocultar busqueda avanzados</span>
     </div>
   </div>
 </form>
@@ -79,7 +79,7 @@
       </div>
       <div class="d-flex justify-content-end">
         <a  class="btn btn-primary mr-2" (click)="restablecerBusqueda( ) ">
-          Restablecer
+          Restablecer busqueda
         </a>
 
         <a class="btn btn-primary"  (click)="onChangeBuscador()">Aplicar</a>
