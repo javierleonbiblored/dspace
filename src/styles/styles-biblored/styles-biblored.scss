@@ -203,6 +203,16 @@ Links
   text-decoration: underline;
 }
 
+.link-title {
+  color: var(--color-uno) !important;
+  text-decoration: none;
+}
+
+.link-title:hover {
+  color: var(--color-dos) !important;
+  text-decoration: underline;
+}
+
 /****************
 Botones
 ****************/

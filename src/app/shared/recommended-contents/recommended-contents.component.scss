@@ -2,14 +2,23 @@
   border-radius: 25px;
 }
 
-.content-image {
+/*.content-image {
   height: 300px;
-}
+}*/
 
 .card {
   border-radius: 10px;
   // width: 16rem;
-  height: 500px;
+  //  height: 500px;
+}
+
+
+h5 {
+  display: -webkit-box;
+  max-width: 200px;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 img {
@@ -18,8 +27,19 @@ img {
   border-radius: 30px;
 }
 
+.background-fondo {
+  border-radius: 15px;
+  background: var(--color-seis);
+  // margin: 10%;
+}
+
+.h-100 {
+  // padding: 10%;
+}
+
 .card-body {
-  height: 200px;
+   height: 200px;
+   min-height: 1px !important;
 }
 
 .icon-tag {

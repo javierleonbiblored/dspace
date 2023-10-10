@@ -1,83 +1,140 @@
-<div class="container pb-5">
+<div class="container pb-5" *ngVar="(itemRD$ | async) as itemRD">
   <!-- Vista computador -->
   <div class="row">
+    <!--  <ng-container>
+          <div class="mt-4"
+               *ngIf="itemRD?.hasSucceeded && itemRD?.payload?.page.length > 0">
+              <div class="d-flex flex-row border-bottom mb-4 pb-4 ng-tns-c416-2"></div>
+              <div class="my-4" *ngFor="let item of itemRD?.payload?.page">
+                  <div class="text-uppercase">{{ item?.allMetadata('dc.title')[0]?.value }}</div>
+
+
+                  &lt;!&ndash;   let items: Item[] = value.payload.page
+                    let itemValue: Item = items[0]
+                    console.log(JSON.stringify(itemValue.allMetadata('dc.title')))&ndash;&gt;
+              </div>
+          </div>
+      </ng-container>-->
+
     <div class="col-12 py-5">
       <div class="d-flex justify-content-lg-between justify-content-around">
         <div class="fs-montserrat-bold-h3 text-lg-center ">Contenidos recomendados</div>
-        <button type="button" class="btn-bibliored btn-color-primary jumbotron d-none d-lg-block">Ver todos</button>
+        <button type="button" class="btn-bibliored btn-color-primary jumbotron d-none d-lg-block">Ver todos
+        </button>
       </div>
     </div>
     <br>
-    <div class="col-lg-3 d-none d-lg-block">
-      <div class="card" role="button">
-        <div class="content-image justify-content-center  align-items-center d-flex">
-          <img src="https://coleccionesdigitales.biblored.gov.co/files/fullsize/8162d553a01363530f7153abc93360d3.jpg" alt="..." class="p-4"
-               width="250" height="300">
-        </div>
-        <div class="card-body pt-0">
-          <h5 class="card-title fs-montserrat-bold-h4">Bogotá: Leer para la Vida</h5>
-          <div class="text-uppercase">RED DISTRITAL DE BIBLIOTECAS PÚBLICA. BIBLIO RED (BOGOTÁ.CO)</div>
-          <div class="fs-tags pt-3">Memoria Oral</div>
-        </div>
-      </div>
 
-    </div>
-
-    <div class="col-lg-3 d-none d-lg-block">
-      <div class="card" role="button">
-        <div class="content-image justify-content-center  align-items-center d-flex">
-          <img   src="https://coleccionesdigitales.biblored.gov.co/files/fullsize/03a01d64fb0a9b40eb6ed80a87ef5b63.jpg" alt="..." class="p-4"
-                 width="250" height="300">
-          <div class="icon-tag justify-content-center  align-items-center d-flex">
-            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="#fff" class="bi bi-play-fill" viewBox="0 0 16 16">
-              <path d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"/>
-            </svg>
-          </div>
-        </div>
-        <div class="card-body pt-0">
-          <h5 class="card-title fs-montserrat-bold-h4">Bogotá: Leer para la Vida</h5>
-          <div class="text-uppercase">RED DISTRITAL DE BIBLIOTECAS PÚBLICA. BIBLIO RED (BOGOTÁ.CO)</div>
-          <div class="fs-tags pt-3">Memoria Oral</div>
-        </div>
-      </div>
-
-    </div>
-
-    <div class="col-lg-3 d-none d-lg-block">
-      <div class="card" role="button">
-        <div class="content-image justify-content-center  align-items-center d-flex">
-          <img  src="https://coleccionesdigitales.biblored.gov.co/files/fullsize/aa77463ff92caa88c78656d1c6b60b15.jpg" alt="..." class="p-4"
-                width="250" height="300">
-        </div>
-        <div class="card-body pt-0">
-          <h5 class="card-title fs-montserrat-bold-h4">Bogotá: Leer para la Vida</h5>
-          <div class="text-uppercase">RED DISTRITAL DE BIBLIOTECAS PÚBLICA. BIBLIO RED (BOGOTÁ.CO)</div>
-          <div class="fs-tags pt-3">Memoria Oral</div>
-        </div>
-      </div>
-
-    </div>
-
-    <div class="col-lg-3 d-none d-lg-block">
-      <div class="card" role="button">
-        <div class="content-image justify-content-center  align-items-center d-flex">
-          <img   src="https://coleccionesdigitales.biblored.gov.co/files/fullsize/5a844aa00e5abcd3baa272bfb408b558.jpg" alt="..." class="p-4"
-                 width="250" height="300">
-          <div class="icon-tag justify-content-center  align-items-center d-flex">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#fff" class="bi bi-headphones" viewBox="0 0 16 16">
-              <path d="M8 3a5 5 0 0 0-5 5v1h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V8a6 6 0 1 1 12 0v5a1 1 0 0 1-1 1h-1a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h1V8a5 5 0 0 0-5-5z"/>
-            </svg>
-          </div>
-        </div>
-        <div class="card-body pt-0">
-          <h5 class="card-title fs-montserrat-bold-h4">Bogotá: Leer para la Vida</h5>
-          <div class="text-uppercase">RED DISTRITAL DE BIBLIOTECAS PÚBLICA. BIBLIO RED (BOGOTÁ.CO)</div>
-          <div class="fs-tags pt-3">Memoria Oral</div>
-        </div>
-      </div>
-
-    </div>
+    <span class="row" *ngIf="itemRD?.hasSucceeded && itemRD?.payload?.page.length > 0">
+            <div class="col-lg-3 d-none d-lg-block" *ngFor="let item of itemRD?.payload?.page; index as i">
+             <!-- <div class="card h-100" *ngIf="i < 4">
+                 <div class=" justify-content-center  align-items-center d-flex  h-100">
+                   <ds-thumbnail [thumbnail]="item?.thumbnail | async" [limitWidth]="false"
+                                 class="background-fondo"></ds-thumbnail>
+                 </div>
+                    <div class="card-body">
+                      <h5 class="card-title fs-montserrat-bold-h4 link-title"
+                          data-toggle="tooltip" data-placement="top"
+                          title="{{item?.allMetadata('dc.title')[0]?.value }}">{{item?.allMetadata('dc.title')[0]?.value }}</h5>
+                            <div class="text-uppercase">{{item?.allMetadata('dc.author')[0]?.value }}</div>
+                            <div class="fs-tags">{{item?.allMetadata('dc.subject')[0]?.value }}</div>
+                    </div>
+              </div>-->
+                 <div class="card h-100" role="button" *ngIf="i < 4"
+                      (click)="abrirLink(item?.allMetadata('dc.identifier.uri'))" [routerLink]="">
+                   <!-- content-image -->
+                   <!-- background-fondo -->
+                     <div class=" justify-content-center  align-items-center d-flex h-100 background-fondo m-3">
+                       <ds-thumbnail [thumbnail]="item?.thumbnail | async" [limitWidth]="false" class=""></ds-thumbnail>
+                     </div>
+                     <div class="card-body ">
+                         <h5 class="card-title fs-montserrat-bold-h4 link-title"
+                             data-toggle="tooltip" data-placement="top"
+                             title="{{item?.allMetadata('dc.title')[0]?.value }}">{{item?.allMetadata('dc.title')[0]?.value }}</h5>
+                         <div class="text-uppercase">{{item?.allMetadata('dc.author')[0]?.value }}</div>
+                         <div class="fs-tags pt-3 fixed-bottom position-absolute m-4">
+                           {{item?.allMetadata('dc.subject')[0]?.value }}
+                         </div>
+                     </div>
+                 </div>
+            </div>
+        </span>
   </div>
+  <!--  <div class="col-lg-3 d-none d-lg-block">
+    <div class="card" role="button">
+        <div class="content-image justify-content-center  align-items-center d-flex">
+            <img src="https://coleccionesdigitales.biblored.gov.co/files/fullsize/8162d553a01363530f7153abc93360d3.jpg"
+                 alt="..." class="p-4"
+                 width="250" height="300">
+        </div>
+        <div class="card-body pt-0">
+            <h5 class="card-title fs-montserrat-bold-h4">Bogotá: Leer para la Vida</h5>
+            <div class="text-uppercase">RED DISTRITAL DE BIBLIOTECAS PÚBLICA. BIBLIO RED (BOGOTÁ.CO)</div>
+            <div class="fs-tags pt-3">Memoria Oral</div>
+        </div>
+    </div>
+
+</div>
+
+<div class="col-lg-3 d-none d-lg-block">
+    <div class="card" role="button">
+        <div class="content-image justify-content-center  align-items-center d-flex">
+            <img src="https://coleccionesdigitales.biblored.gov.co/files/fullsize/03a01d64fb0a9b40eb6ed80a87ef5b63.jpg"
+                 alt="..." class="p-4"
+                 width="250" height="300">
+            <div class="icon-tag justify-content-center  align-items-center d-flex">
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="#fff"
+                     class="bi bi-play-fill" viewBox="0 0 16 16">
+                    <path d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"/>
+                </svg>
+            </div>
+        </div>
+        <div class="card-body pt-0">
+            <h5 class="card-title fs-montserrat-bold-h4">Bogotá: Leer para la Vida</h5>
+            <div class="text-uppercase">RED DISTRITAL DE BIBLIOTECAS PÚBLICA. BIBLIO RED (BOGOTÁ.CO)</div>
+            <div class="fs-tags pt-3">Memoria Oral</div>
+        </div>
+    </div>
+
+</div>
+
+<div class="col-lg-3 d-none d-lg-block">
+    <div class="card" role="button">
+        <div class="content-image justify-content-center  align-items-center d-flex">
+            <img src="https://coleccionesdigitales.biblored.gov.co/files/fullsize/aa77463ff92caa88c78656d1c6b60b15.jpg"
+                 alt="..." class="p-4"
+                 width="250" height="300">
+        </div>
+        <div class="card-body pt-0">
+            <h5 class="card-title fs-montserrat-bold-h4">Bogotá: Leer para la Vida</h5>
+            <div class="text-uppercase">RED DISTRITAL DE BIBLIOTECAS PÚBLICA. BIBLIO RED (BOGOTÁ.CO)</div>
+            <div class="fs-tags pt-3">Memoria Oral</div>
+        </div>
+    </div>
+
+</div>
+
+<div class="col-lg-3 d-none d-lg-block">
+    <div class="card" role="button">
+        <div class="content-image justify-content-center  align-items-center d-flex">
+            <img src="https://coleccionesdigitales.biblored.gov.co/files/fullsize/5a844aa00e5abcd3baa272bfb408b558.jpg"
+                 alt="..." class="p-4"
+                 width="250" height="300">
+            <div class="icon-tag justify-content-center  align-items-center d-flex">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#fff"
+                     class="bi bi-headphones" viewBox="0 0 16 16">
+                    <path d="M8 3a5 5 0 0 0-5 5v1h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V8a6 6 0 1 1 12 0v5a1 1 0 0 1-1 1h-1a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h1V8a5 5 0 0 0-5-5z"/>
+                </svg>
+            </div>
+        </div>
+        <div class="card-body pt-0">
+            <h5 class="card-title fs-montserrat-bold-h4">Bogotá: Leer para la Vida</h5>
+            <div class="text-uppercase">RED DISTRITAL DE BIBLIOTECAS PÚBLICA. BIBLIO RED (BOGOTÁ.CO)</div>
+            <div class="fs-tags pt-3">Memoria Oral</div>
+        </div>
+    </div>
+
+</div>-->
   <!-- Vista Movil -->
   <div class="row">
     <div class="col-12 d-lg-none pb-3">
