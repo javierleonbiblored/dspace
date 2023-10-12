@@ -160,8 +160,12 @@
                                       [label]="'item.page.description'">
           </ds-generic-item-page-field>
 
-          <div *ngIf="longitud && latitud">
+          <!--<div *ngIf="longitud && latitud">
             <div id="map"></div>
+          </div>-->
+
+          <div class="map-wrapper" *ngIf="longitud && latitud">
+            <ng-leaflet-universal></ng-leaflet-universal>
           </div>
         </div>
 

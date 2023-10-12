@@ -274,6 +274,7 @@ import { FrequentQuestionsComponent } from '../shared/frequent-questions/frequen
 import { RecommendedContentsComponent } from './recommended-contents/recommended-contents.component';
 import { ContentTypeComponent } from './content-type/content-type.component';
 import {PageDataComponent} from "./page-data/page-data.component";
+import { NgLeafletUniversalModule } from 'ng-leaflet-universal';
 
 const MODULES = [
   CommonModule,
@@ -479,6 +480,7 @@ const DIRECTIVES = [
         ...ROOT_MODULES,
       ShareButtonsModule,
       ShareIconsModule,
+      NgLeafletUniversalModule,
     ],
   declarations: [
     ...PIPES,
@@ -500,6 +502,7 @@ const DIRECTIVES = [
     ShareButtonsModule,
     ShareIconsModule,
     ShareButtonsComponent,
+    NgLeafletUniversalModule,
   ]
 })
 

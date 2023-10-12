@@ -7544,7 +7544,7 @@ lazy-ass@^1.6.0:
   resolved "https://registry.npmjs.org/lazy-ass/-/lazy-ass-1.6.0.tgz"
   integrity sha512-cc8oEVoctTvsFZ/Oje/kGnHbpWHYBe8IAJe4C0QNc3t8uM/0Y8+erSz/7Y1ALuXTEZTMvxXwO6YbX1ey3ujiZw==
 
-leaflet@^1.7.1:
+leaflet@^1.4.0:
   version "1.9.4"
   resolved "https://registry.yarnpkg.com/leaflet/-/leaflet-1.9.4.tgz#23fae724e282fa25745aff82ca4d394748db7d8d"
   integrity sha512-nxS1ynzJOmOlHp+iL3FyWqK89GtNL8U8rvlMOsQdTTssxZwCXh8N2NB3GDQOL+YR3XnWyZAxwQixURb+FA74PA==
@@ -8267,6 +8267,13 @@ neo-async@^2.6.2:
   version "2.6.2"
   resolved "https://registry.npmjs.org/neo-async/-/neo-async-2.6.2.tgz"
   integrity sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==
+
+ng-leaflet-universal@^0.13.0:
+  version "0.13.0"
+  resolved "https://registry.yarnpkg.com/ng-leaflet-universal/-/ng-leaflet-universal-0.13.0.tgz#c8c87393fc6e648d56e17060d731228512cfc4bf"
+  integrity sha512-T98+tg4bXO8a2dtWhJlN+KJ2NwExTjYGrUqex1SSuTJXcJdCuK90qdX6UntI5HsgfaXG7Ylrk+uzLdC/6i5x3Q==
+  dependencies:
+    tslib "^2.3.0"
 
 ng-mocks@^13.1.1:
   version "13.5.2"
