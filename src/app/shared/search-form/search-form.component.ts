@@ -1,7 +1,7 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
 import {DSpaceObject} from '../../core/shared/dspace-object.model';
 import {ActivatedRoute, Router} from '@angular/router';
-import {isNotEmpty} from '../empty.util';
+import {hasValue, isNotEmpty} from '../empty.util';
 import {SearchService} from '../../core/shared/search/search.service';
 import {currentPath} from '../utils/route.utils';
 import {PaginationService} from '../../core/pagination/pagination.service';
@@ -29,7 +29,7 @@ import {FormArray, FormBuilder, FormControl, FormGroup} from '@angular/forms';
 /**
  * Component that represents the search form
  */
-export class SearchFormComponent implements OnInit {
+export class SearchFormComponent implements OnInit, OnChanges {
   /**
    * The search query
    */
@@ -84,6 +84,11 @@ export class SearchFormComponent implements OnInit {
 
   formularioBusquedaAvanzada: FormGroup;
 
+  /*Query*/
+  formularioBusquedaAvanzadaQuery: FormGroup;
+
+  queryBusquedaAvanzada: string = '';
+
   constructor(private router: Router,
               private searchService: SearchService,
               private paginationService: PaginationService,
@@ -98,28 +103,74 @@ export class SearchFormComponent implements OnInit {
         this.router.navigate([window.location.pathname],
           {
             queryParams: {
-              scope :params.get('id'),
+              scope: params.get('id'),
             },
             queryParamsHandling: 'merge',
           })
       });
     }
 
-    this.crearFormulario();
-    this.activatedRoute.snapshot.queryParamMap.getAll('f.author').forEach((value, index) => {
-      this.anadirBusqueda('f.author', value.slice(value.search(',') + 1), value.slice(0, value.search(',')));
-      this.habilitarBusquedaAvanzada = true
-    });
+    this.queryBusquedaAvanzada = this.activatedRoute.snapshot.queryParamMap.get('query');
+    if (this.queryBusquedaAvanzada.includes('dc.subject:') || this.queryBusquedaAvanzada.includes('dc.creator:') || this.queryBusquedaAvanzada.includes('dc.title:')) {
+      let i = 0
+      while (this.queryBusquedaAvanzada.includes('dc.subject:') || this.queryBusquedaAvanzada.includes('dc.creator:') || this.queryBusquedaAvanzada.includes('dc.title:')) {
+     /*   if (i < 100) {
+          console.log('------------- Contiene uno o varios dc. ----------------')
+          this.queryBusquedaAvanzada = 'dc.subject:'
+        } else {
+          break
+        }
+        i++*/
+      }
 
-    this.activatedRoute.snapshot.queryParamMap.getAll('f.subject').forEach((value, index) => {
-      this.anadirBusqueda('f.subject', value.slice(value.search(',') + 1), value.slice(0, value.search(',')));
-      this.habilitarBusquedaAvanzada = true
-    });
+      console.log(this.contarPalabras(this.queryBusquedaAvanzada, 'dc.subject:'));
+      /*console.log(this.contarPalabras('Esa tortuga es la mas rapida', 'tortuga')); //hay 1 "tortuga"
+      console.log(this.contarPalabras('Esa tortuga, es la tortuga mas rapida', 'tortuga')); //hay 2 "tortuga"
+      console.log(this.contarPalabras('Esa tortuga, es la tortuga mas rapida, la mejor tortuga', 'tortuga')); //hay 3 "tortuga"*/
+    }
 
-    this.activatedRoute.snapshot.queryParamMap.getAll('f.title').forEach((value, index) => {
-      this.anadirBusqueda('f.title', value.slice(value.search(',') + 1), value.slice(0, value.search(',')));
-      this.habilitarBusquedaAvanzada = true
-    });
+
+    /*
+      this.crearFormulario();
+      this.activatedRoute.snapshot.queryParamMap.getAll('f.author').forEach((value, index) => {
+        this.anadirBusqueda('f.author', value.slice(value.search(',') + 1), value.slice(0, value.search(',')));
+        this.habilitarBusquedaAvanzada = true
+      });
+
+      this.activatedRoute.snapshot.queryParamMap.getAll('f.subject').forEach((value, index) => {
+        this.anadirBusqueda('f.subject', value.slice(value.search(',') + 1), value.slice(0, value.search(',')));
+        this.habilitarBusquedaAvanzada = true
+      });
+
+      this.activatedRoute.snapshot.queryParamMap.getAll('f.title').forEach((value, index) => {
+        this.anadirBusqueda('f.title', value.slice(value.search(',') + 1), value.slice(0, value.search(',')));
+        this.habilitarBusquedaAvanzada = true
+      });*/
+
+
+    /*Query*/
+    this.crearFormularioQuery();
+  }
+
+  contarPalabras(frase, palabra) {
+    console.log('---------- frase ----------')
+    console.log(frase)
+    console.log('---------- palabra ----------')
+    console.log(palabra)
+    let fraseArr = frase.replace(":", " ").split(" "); //quitamos las comas de la frase y usamos a los espacios como separador, devolviendo un array => ["Esa", "tortuga", "es", "la", "mas"...]
+    // console.log(fraseArr)
+    let obj = []; // inicializamos a "obj" en donde se acumularán los repetidos
+    for (let i = 0; i < fraseArr.length; i++) { //recorremos el array que nos trae el split()
+      obj[fraseArr[i]] = 1;
+      for (let j = 0; j < fraseArr.length; j++) { //volvemos a recorrer el array
+        if (i !== j) {
+          if (fraseArr[i] === fraseArr[j]) { //si encuentra elementos repetidos...
+            obj[fraseArr[i]]++; // acumulamos los repetidos
+          }
+        }
+      }
+    }
+    return (obj[palabra]); //retornamos la cantidad de repetidos de "palabra", osea de tortuga
   }
 
   /**
@@ -132,83 +183,171 @@ export class SearchFormComponent implements OnInit {
     }
   }
 
-  crearFormulario() {
-    this.formularioBusquedaAvanzada = this.fb.group({
-      busquedaAvanzada: this.fb.array([])
+  ngOnChanges(changes: SimpleChanges) {
+    /* if (hasValue(changes.query)) {
+       this.query = changes.query.currentValue;
+     }*/
+  }
+
+
+  /* crearFormulario() {
+     this.formularioBusquedaAvanzada = this.fb.group({
+       busquedaAvanzada: this.fb.array([])
+     });
+   }
+
+
+   get busquedaAvanzadaArray(): FormArray {
+     return this.formularioBusquedaAvanzada.get('busquedaAvanzada') as FormArray;
+   }
+
+   anadirBusqueda(tipo?: string, condicion?: string, busqueda?: string) {
+     const busquedaForm = this.fb.group({
+       tipo: new FormControl(tipo ?? 'dc.author',),
+       condicion: new FormControl(condicion ?? 'contains'),
+       busqueda: new FormControl(busqueda ?? '')
+     });
+     this.busquedaAvanzadaArray.push(busquedaForm);
+   }
+
+   restablecerBusqueda() {
+     this.crearFormulario();
+     console.log(this.formularioBusquedaAvanzada.value)
+     this.onChangeBuscador();
+     this.habilitarBusquedaAvanzada = false;
+   }
+
+
+   borrarIndexBusqueda(indice: number) {
+     this.busquedaAvanzadaArray.removeAt(indice);
+     this.onChangeBuscador()
+     if (this.busquedaAvanzadaArray.length === 0) {
+       this.metodoHabilitarBusquedaAvanzada(false);
+     }
+   }
+
+
+   metodoHabilitarBusquedaAvanzada(opcion: boolean): void {
+     this.habilitarBusquedaAvanzada = opcion;
+     if (!this.habilitarBusquedaAvanzada) {
+       this.crearFormulario();
+       this.onChangeBuscador()
+     } else if (this.habilitarBusquedaAvanzada && this.busquedaAvanzadaArray.length < 1) {
+       this.anadirBusqueda();
+     }
+   }
+
+   onChangeBuscador(): void {
+       let title = [];
+       let author = [];
+       let subject = [];
+       this.busquedaAvanzadaArray.value.map((element) => {
+         if (element.tipo === 'f.title') {
+           title.push(element)
+         } else if (element.tipo === 'f.author') {
+           author.push(element)
+         } else if (element.tipo === 'f.subject') {
+           subject.push(element)
+         }
+       })
+
+       this.router.navigate(this.getSearchLinkParts(),
+         {
+           queryParams: {
+             'f.title': title.map((element) =>
+               `${element.busqueda},${element.condicion}`
+             ) ?? null,
+             'f.author': author.map((element) =>
+               `${element.busqueda},${element.condicion}`
+             ) ?? null,
+             'f.subject': subject.map((element) =>
+               `${element.busqueda},${element.condicion}`
+             ) ?? null,
+             query: this.query,
+             'spc.page': null,
+           },
+           queryParamsHandling: 'merge',
+         })
+   }*/
+
+
+  /*Query*/
+  crearFormularioQuery() {
+    this.formularioBusquedaAvanzadaQuery = this.fb.group({
+      busquedaAvanzadaQuery: this.fb.array([])
     });
   }
 
-  get busquedaAvanzadaArray(): FormArray {
-    return this.formularioBusquedaAvanzada.get('busquedaAvanzada') as FormArray;
+  get busquedaAvanzadaArrayQuery(): FormArray {
+    return this.formularioBusquedaAvanzadaQuery.get('busquedaAvanzadaQuery') as FormArray;
   }
 
-  anadirBusqueda(tipo?: string, condicion?: string, busqueda?: string) {
+  anadirBusquedaQuery(tipo?: string, condicion?: string, busqueda?: string) {
     const busquedaForm = this.fb.group({
-      tipo: new FormControl(tipo ?? 'f.author',),
-      condicion: new FormControl(condicion ?? 'contains'),
-      busqueda: new FormControl(busqueda ?? '')
+      tipoQuery: new FormControl(tipo ?? 'dc.subject',),
+      condicionQuery: new FormControl(condicion ?? ''),
+      busquedaQuery: new FormControl(busqueda ?? '')
     });
-    this.busquedaAvanzadaArray.push(busquedaForm);
+    this.busquedaAvanzadaArrayQuery.push(busquedaForm);
   }
 
-  restablecerBusqueda() {
-    this.crearFormulario();
-    console.log(this.formularioBusquedaAvanzada.value)
-    this.onChangeBuscador();
+  restablecerBusquedaQuery() {
+    this.crearFormularioQuery();
+    console.log(this.formularioBusquedaAvanzadaQuery.value)
+    this.query = '';
+    this.queryBusquedaAvanzada = '';
+    this.onChangeBuscadorQuery();
     this.habilitarBusquedaAvanzada = false;
   }
 
-  borrarIndexBusqueda(indice: number) {
-    this.busquedaAvanzadaArray.removeAt(indice);
-    this.onChangeBuscador()
-    if (this.busquedaAvanzadaArray.length === 0) {
-      this.metodoHabilitarBusquedaAvanzada(false);
+
+  borrarIndexBusquedaQuery(indice: number) {
+    this.busquedaAvanzadaArrayQuery.removeAt(indice);
+    this.onChangeBuscadorQuery()
+    if (this.busquedaAvanzadaArrayQuery.length === 0) {
+      this.metodoHabilitarBusquedaAvanzadaQuery(false);
     }
   }
 
 
-  metodoHabilitarBusquedaAvanzada(opcion: boolean): void {
+  metodoHabilitarBusquedaAvanzadaQuery(opcion: boolean): void {
     this.habilitarBusquedaAvanzada = opcion;
     if (!this.habilitarBusquedaAvanzada) {
-      this.crearFormulario();
-      this.onChangeBuscador()
-    } else if (this.habilitarBusquedaAvanzada && this.busquedaAvanzadaArray.length < 1) {
-      this.anadirBusqueda();
+      this.crearFormularioQuery();
+      this.onChangeBuscadorQuery()
+    } else if (this.habilitarBusquedaAvanzada && this.busquedaAvanzadaArrayQuery.length < 1) {
+      this.anadirBusquedaQuery();
     }
   }
 
-  onChangeBuscador(): void {
-      let title = [];
-      let author = [];
-      let subject = [];
-      this.busquedaAvanzadaArray.value.map((element) => {
-        if (element.tipo === 'f.title') {
-          title.push(element)
-        } else if (element.tipo === 'f.author') {
-          author.push(element)
-        } else if (element.tipo === 'f.subject') {
-          subject.push(element)
-        }
-      })
+  onChangeBuscadorQuery(): void {
+    let title = [];
+    let author = [];
+    let subject = [];
+    this.busquedaAvanzadaArrayQuery.value.map((element) => {
+      // console.log(JSON.stringify(element.tipoQuery.toString() + ':' + element.busquedaQuery.toString()  + ' ' + element.condicionQuery.toString()))
+      this.queryBusquedaAvanzada = this.queryBusquedaAvanzada.toString() + ' ' + element.condicionQuery.toString() + ' ' + element.tipoQuery.toString() + ':' + element.busquedaQuery.toString();
+      /* if (element.tipo === 'f.title') {
+         title.push(element)
+       } else if (element.tipo === 'f.author') {
+         author.push(element)
+       } else if (element.tipo === 'f.subject') {
+         subject.push(element)
+       }*/
+    })
+    console.log(this.query)
+    console.log(this.queryBusquedaAvanzada)
 
-      this.router.navigate(this.getSearchLinkParts(),
-        {
-          queryParams: {
-            'f.title': title.map((element) =>
-              `${element.busqueda},${element.condicion}`
-            ) ?? null,
-            'f.author': author.map((element) =>
-              `${element.busqueda},${element.condicion}`
-            ) ?? null,
-            'f.subject': subject.map((element) =>
-              `${element.busqueda},${element.condicion}`
-            ) ?? null,
-            query: this.query,
-            'spc.page': null,
-          },
-          queryParamsHandling: 'merge',
-        })
+    this.router.navigate(this.getSearchLinkParts(),
+      {
+        queryParams: {
+          query: this.query.toString() + this.queryBusquedaAvanzada,
+          'spc.page': null,
+        },
+        queryParamsHandling: 'merge',
+      })
   }
+
 
   /**
    * Updates the search when the form is submitted
@@ -281,4 +420,6 @@ export class SearchFormComponent implements OnInit {
       this.onScopeChange(scope);
     });
   }
+
+
 }
