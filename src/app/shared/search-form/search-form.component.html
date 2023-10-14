@@ -25,7 +25,7 @@
   <h4>Busqueda avanzada</h4>
 
   <form [formGroup]="formularioBusquedaAvanzadaQuery">
-    <div formArrayName="busquedaAvanzadaQuery">
+    <div formArrayName="busquedaAvanzadaArrayQuery">
       <div *ngFor="let busquedaAvanzadaQuery of busquedaAvanzadaArrayQuery.controls; let i = index;">
 
         <div [formGroupName]="i">
@@ -39,7 +39,7 @@
 
             <select class="form-control col-3" formControlName="tipoQuery" name="tipoQuery">
               <option value="dc.subject" [selected]="busquedaAvanzadaQuery.value.tipoQuery === 'dc.subject'">Tema</option>
-              <option value="dc.author" [selected]="busquedaAvanzadaQuery.value.tipoQuery === 'dc.creator'">Autor</option>
+              <option value="dc.creator" [selected]="busquedaAvanzadaQuery.value.tipoQuery === 'dc.creator'">Autor</option>
               <option value="dc.title" [selected]="busquedaAvanzadaQuery.value.tipoQuery === 'dc.title'">Titulo</option>
             </select>
 

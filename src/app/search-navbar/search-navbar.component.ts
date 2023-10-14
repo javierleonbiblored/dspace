@@ -81,9 +81,8 @@ export class SearchNavbarComponent {
    * @param data  Data for the searchForm, containing the search query
    */
   onSubmit(data: any) {
-    console.log('---------------------------- onSubmit ----------------------------')
-    console.log(data)
     this.collapse();
+    data.query = this.quitarEspacios(data.query)
     const queryParams = Object.assign({}, data);
     const linkToNavigateTo = [this.searchService.getSearchLink().replace('/', '')];
     this.searchForm.reset();
@@ -92,5 +91,14 @@ export class SearchNavbarComponent {
       queryParams: queryParams,
       queryParamsHandling: 'merge'
     });
+  }
+
+  quitarEspacios(text: string): string {
+    const expRegular = /(\s{2,})/g;
+    text = text.trim();
+    text = text.replace(expRegular, " ").toString()
+    console.log('********************* quitarEspacios Buscador navbar Salida  ************************')
+    console.log(text)
+    return text;
   }
 }
