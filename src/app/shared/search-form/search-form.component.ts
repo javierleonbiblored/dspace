@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output, SimpleChanges} from '@angular/core';
+import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
 import {DSpaceObject} from '../../core/shared/dspace-object.model';
 import {ActivatedRoute, Router} from '@angular/router';
 import {hasValue, isNotEmpty} from '../empty.util';
@@ -30,7 +30,7 @@ import {lowerFirst} from "lodash";
 /**
  * Component that represents the search form
  */
-export class SearchFormComponent implements OnInit {
+export class SearchFormComponent implements OnInit, OnChanges {
   /**
    * The search query
    */
@@ -111,8 +111,7 @@ export class SearchFormComponent implements OnInit {
           })
       });
     }
-
-    /*Query*/
+    this.validarBusquedaAvanzada();
     this.crearFormularioQuery();
   }
 
@@ -123,24 +122,26 @@ export class SearchFormComponent implements OnInit {
         .subscribe((scope: DSpaceObject) => this.selectedScope.next(scope));
     }
 
-    this.queryBusquedaAvanzada = 'buscador buscador NOT dc.creator:creator1 OR dc.title: title2.1 title2.2 AND dc.subject:subject3.1 subject3.2 subject3.3'
-
-    if (this.queryBusquedaAvanzada.includes('dc.subject:') || this.queryBusquedaAvanzada.includes('dc.creator:') || this.queryBusquedaAvanzada.includes('dc.title:')) {
-      // this.organizarPalabras( this.quitarEspacios(this.queryBusquedaAvanzada), ['dc.title:', 'dc.subject:', 'dc.creator:']);
-      this.organizarPalabras(this.quitarEspacios(this.queryBusquedaAvanzada), ['dc.title:', 'dc.subject:', 'dc.creator:']);
-      // this.habilitarBusquedaAvanzada = true;
-
-    }
   }
 
+  ngOnChanges(changes: SimpleChanges): void {
+    this.validarBusquedaAvanzada();
+  }
 
-  organizarPalabras(frase: string, palabra: string[]) {
+  validarBusquedaAvanzada(): void {
+    this.queryBusquedaAvanzada = this.activatedRoute.snapshot.queryParamMap.get('query');
+    if (this.queryBusquedaAvanzada?.includes('dc.subject:') || this.queryBusquedaAvanzada?.includes('dc.creator:') || this.queryBusquedaAvanzada?.includes('dc.title:')) {
+      this.organizarPalabras(this.quitarEspacios(this.queryBusquedaAvanzada));
+    }
+  }
+  organizarPalabras(frase: string) {
+    this.crearFormularioQuery();
     this.query = ''
     while (frase.includes(":")) {
       frase = frase.replace(":", " ");
     }
     let fraseArr = frase.replace(":", " ").split(" ");
-    console.log(fraseArr)
+    // console.log(fraseArr)
     let encontroQuery: boolean = false;
     let palabrasBuscadorAvanzadoBoolean: boolean = false;
 
@@ -163,51 +164,40 @@ export class SearchFormComponent implements OnInit {
       }
 
       if (encontroQuery) {
-
-        console.log('---- ***************** ----')
-        console.log('DATO -- ' + fraseArr[i])
+        // console.log('---- ***************** ----')
+        // console.log('DATO -- ' + fraseArr[i])
         if (fraseArr[i] === "AND" || fraseArr[i] === "OR" || fraseArr[i] === "NOT" ||
           fraseArr[i] === "dc.subject" || fraseArr[i] === "dc.title" || fraseArr[i] === "dc.creator") {
-          console.log('VALIDA SI TIENE SI CONTIENE AND, OR, NOT, dc.subject, dc.title O dc.creator')
+          // console.log('VALIDA SI TIENE SI CONTIENE AND, OR, NOT, dc.subject, dc.title O dc.creator')
           palabrasBuscadorAvanzadoBoolean = false;
         } else {
-          console.log('NO TIENE AND, OR, NOT, dc.subject, dc.title O dc.creator')
+          // console.log('NO TIENE AND, OR, NOT, dc.subject, dc.title O dc.creator')
           palabrasBuscadorAvanzadoBoolean = true;
         }
 
         if (!palabrasBuscadorAvanzadoBoolean) {
           // Agrgega la condicion AND OR o NOT
           if ((fraseArr[i] === "AND" || fraseArr[i] === "OR" || fraseArr[i] === "NOT")) {
-            console.log('Agrgega la condicion AND OR o NOT')
+            // console.log('Agrgega la condicion AND OR o NOT')
             arrayBase.condicion = fraseArr[i];
           }
 
           // Agrgega la tipo dc.subject, dc.creator o dc.title
           if (fraseArr[i] === "dc.subject" || fraseArr[i] === "dc.title" || fraseArr[i] === "dc.creator") {
-            console.log('Agrgega la tipo dc.subject, dc.creator o dc.title')
+            //  console.log('Agrgega la tipo dc.subject, dc.creator o dc.title')
             arrayBase.tipo = fraseArr[i];
           }
 
-          /*if (arrayBase.tipo !== null && arrayBase.condicion !== null && arrayBase.busqueda === null && palabrasBuscadorAvanzadoBoolean) {
-            console.log('------ 1111 anadirBusquedaQuery ------')
-            this.anadirBusquedaQuery(arrayBase.tipo, arrayBase.condicion, arrayBase.busqueda);
-            palabrasBuscadorAvanzadoBoolean = false;
-            arrayBase = {
-              tipo: null,
-              condicion: null,
-              busqueda: null,
-            }
-          }*/
         } else {
           if (palabrasBuscadorAvanzadoBoolean) {
             // PALABRAS DEL BUSCADOR AVANZADO
-            console.log('PALABRAS DEL BUSCADOR AVANZADO')
+            //  console.log('PALABRAS DEL BUSCADOR AVANZADO')
             arrayBase.busqueda = this.quitarEspacios(arrayBase.busqueda + ' ' + fraseArr[i]);
-            console.log(arrayBase)
+            //  console.log(arrayBase)
 
             if (fraseArr[i + 1] === "AND" || fraseArr[i + 1] === "OR" || fraseArr[i + 1] === "NOT" ||
               fraseArr[i + 1] === "dc.subject" || fraseArr[i + 1] === "dc.title" || fraseArr[i + 1] === "dc.creator") {
-              console.log('2.2 el que sigue es ---- ' + fraseArr[i + 1])
+              //  console.log('2.2 el que sigue es ---- ' + fraseArr[i + 1])
               this.anadirBusquedaQuery(arrayBase.tipo, arrayBase.condicion, arrayBase.busqueda);
               arrayBase = {
                 tipo: null,
@@ -216,7 +206,7 @@ export class SearchFormComponent implements OnInit {
               }
             }
             if (fraseArr.length -1 === i) {
-              console.log('2.1 el que sigue es ---- ' + fraseArr[i + 1])
+              // console.log('2.1 el que sigue es ---- ' + fraseArr[i + 1])
               this.anadirBusquedaQuery(arrayBase.tipo, arrayBase.condicion, arrayBase.busqueda);
             }
 
@@ -230,10 +220,10 @@ export class SearchFormComponent implements OnInit {
            }*/
 
       }
+      this.habilitarBusquedaAvanzada = true;
     }
     // console.log(arrayBase)
-    console.log(JSON.stringify(this.busquedaAvanzadaArrayQuery.value))
-    this.habilitarBusquedaAvanzada = true;
+    //  console.log(JSON.stringify(this.busquedaAvanzadaArrayQuery.value))
   }
 
 
@@ -287,25 +277,23 @@ export class SearchFormComponent implements OnInit {
   }
 
   onChangeBuscadorQuery(): void {
-    let title = [];
-    let author = [];
-    let subject = [];
-    console.log(JSON.stringify(this.busquedaAvanzadaArrayQuery.value))
+    // console.log(JSON.stringify(this.busquedaAvanzadaArrayQuery.value))
 
     this.queryBusquedaAvanzada = '';
     this.busquedaAvanzadaArrayQuery.value.map((element) => {
 
       this.queryBusquedaAvanzada = this.queryBusquedaAvanzada.toString().trim() + ' ' + element.condicionQuery.toString().trim() + ' ' + element.tipoQuery.toString().trim() + ':' + element.busquedaQuery.toString().trim();
     })
-    this.quitarEspacios(this.query.toString() + ' ' + this.queryBusquedaAvanzada)
-    /*this.router.navigate(this.getSearchLinkParts(),
+    // console.log('/////////////////////////////////////////////')
+    //  console.log( this.quitarEspacios(this.query.toString() + ' ' + this.queryBusquedaAvanzada))
+    this.router.navigate(this.getSearchLinkParts(),
       {
         queryParams: {
-          query: this.quitarEspacios(this.query.toString() + this.queryBusquedaAvanzada),
+          query: this.quitarEspacios(this.query.toString() + ' ' + this.queryBusquedaAvanzada),
           'spc.page': null,
         },
         queryParamsHandling: 'merge',
-      })*/
+      })
   }
 
   quitarEspacios(text: string): string {
@@ -388,6 +376,5 @@ export class SearchFormComponent implements OnInit {
       this.onScopeChange(scope);
     });
   }
-
 
 }

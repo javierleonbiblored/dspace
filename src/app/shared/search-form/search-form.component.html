@@ -31,7 +31,7 @@
         <div [formGroupName]="i">
           <div class="form-group input-group">
 
-            <select class="form-control col-3" formControlName="condicionQuery" name="condicionQuery">
+            <select class="form-control col-3" formControlName="condicionQuery" name="condicionQuery" *ngIf="!(query.trim() === '') || i > 0 ">
               <option value="AND" [selected]="busquedaAvanzadaQuery.value.condicionQuery === 'AND'">Y</option>
               <option value="OR" [selected]="busquedaAvanzadaQuery.value.condicionQuery === 'OR'">O</option>
               <option value="NOT" [selected]="busquedaAvanzadaQuery.value.condicionQuery === 'NOT'">No contenga</option>
