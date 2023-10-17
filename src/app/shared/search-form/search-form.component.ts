@@ -1,4 +1,14 @@
-import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Inject,
+  Input,
+  OnChanges,
+  OnInit,
+  Output,
+  PLATFORM_ID,
+  SimpleChanges
+} from '@angular/core';
 import {DSpaceObject} from '../../core/shared/dspace-object.model';
 import {ActivatedRoute, Router} from '@angular/router';
 import {hasValue, isNotEmpty} from '../empty.util';
@@ -14,6 +24,7 @@ import {DSpaceObjectDataService} from '../../core/data/dspace-object-data.servic
 import {getFirstSucceededRemoteDataPayload} from '../../core/shared/operators';
 import {AbstractControl, FormArray, FormBuilder, FormControl, FormGroup} from '@angular/forms';
 import {lowerFirst} from "lodash";
+import {isPlatformBrowser} from "@angular/common";
 
 /**
  * This component renders a simple item page.
@@ -99,8 +110,8 @@ export class SearchFormComponent implements OnInit, OnChanges {
               private dsoService: DSpaceObjectDataService,
               private fb: FormBuilder,
               private activatedRoute: ActivatedRoute,
-  ) {
-    if (window.location.pathname.includes('/collections/')) {
+              @Inject(PLATFORM_ID) private _platformId: Object) {
+    if (isPlatformBrowser(this._platformId) && window.location.pathname.includes('/collections/')){
       this.activatedRoute.paramMap.pipe().subscribe(params => {
         this.router.navigate([window.location.pathname],
           {
@@ -134,6 +145,7 @@ export class SearchFormComponent implements OnInit, OnChanges {
       this.organizarPalabras(this.quitarEspacios(this.queryBusquedaAvanzada));
     }
   }
+
   organizarPalabras(frase: string) {
     this.crearFormularioQuery();
     this.query = ''
@@ -205,7 +217,7 @@ export class SearchFormComponent implements OnInit, OnChanges {
                 busqueda: ''
               }
             }
-            if (fraseArr.length -1 === i) {
+            if (fraseArr.length - 1 === i) {
               // console.log('2.1 el que sigue es ---- ' + fraseArr[i + 1])
               this.anadirBusquedaQuery(arrayBase.tipo, arrayBase.condicion, arrayBase.busqueda);
             }
