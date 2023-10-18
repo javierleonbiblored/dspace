@@ -62,14 +62,14 @@ export class RecommendedContentsComponent implements OnInit {
       let items: Item[] = value.payload.page
       /* console.log(JSON.stringify(value.payload.page))*/
       let itemValue: Item = items[1]
-      console.log(JSON.stringify(items))
+      //console.log(JSON.stringify(items))
       //  console.log(JSON.stringify(items[0]?._links));
       // console.log(JSON.stringify(items[0]?._links?.thumbnail?.href));
     })
   }
 
   abrirLink(urls): void{
-    console.log(JSON.stringify(urls))
+   //  console.log(JSON.stringify(urls))
     urls.map(url => {
       if (url.value.includes('handle/')){
         if (isPlatformBrowser(this._platformId)) {

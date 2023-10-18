@@ -8341,6 +8341,13 @@ ngx-ui-switch@^13.0.2:
   dependencies:
     tslib "^2.3.0"
 
+ngx-xml2json@^1.02:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/ngx-xml2json/-/ngx-xml2json-1.0.2.tgz#937e30724ff09a93f13f7ce047b1676d6095fd6c"
+  integrity sha512-n3uVaM+vJO+k8V9ZraT3aGuA32CywClDoyfMSLfQgdgOtpnO96AKZmCpzpBdfsffLpOdfkT9ezfVAOnZoPTfIw==
+  dependencies:
+    tslib "^1.9.0"
+
 nice-napi@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/nice-napi/-/nice-napi-1.0.2.tgz#dc0ab5a1eac20ce548802fc5686eaa6bc654927b"
