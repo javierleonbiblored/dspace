@@ -39,23 +39,23 @@
 Font size
 ****************/
 
-.font-size-h1{
+.font-size-h1 {
   font-size: var(--fs-h1) !important;
 }
 
-.font-size-h2{
+.font-size-h2 {
   font-size: var(--fs-h2) !important;
 }
 
-.font-size-h3{
+.font-size-h3 {
   font-size: var(--fs-h3) !important;
 }
 
-.font-size-h4{
+.font-size-h4 {
   font-size: var(--fs-h4) !important;
 }
 
-.font-size-h5{
+.font-size-h5 {
   font-size: var(--fs-h5) !important;
 }
 
@@ -254,8 +254,22 @@ Botones
   background: var(--color-siete);
   color: var(--color-dos);
 }
+
+.btn-color-four {
+  background: var(--color-dos);
+  color: var(--color-siete);
+  font-family: var(--f-workSans-semiBold);
+  font-size: var(--fs-h5) !important;
+  padding: 5px 32px;
+}
+
+.btn-color-four:hover {
+  background: var(--color-siete);
+  color: var(--color-dos);
+}
+
 .btn-bibliored {
-  border: 1px solid var(--color-uno) !important;
+  border: 1px solid var(--color-dos) !important;
   border-radius: 100rem;
 }
 
@@ -292,16 +306,16 @@ Botones
   padding: 0 5px;
 }
 
-.badge-biblored{
+.badge-biblored {
   color: white;
   background-color: var(--color-badge);
 }
 
 // background
-.background-color-siete{
+.background-color-siete {
   background-color: var(--color-siete);
 }
 
-.background-color-uno{
+.background-color-uno {
   background-color: var(--color-uno);
 }

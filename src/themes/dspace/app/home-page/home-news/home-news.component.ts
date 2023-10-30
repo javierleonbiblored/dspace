@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Inject, OnInit, PLATFORM_ID} from '@angular/core';
 import { HomeNewsComponent as BaseComponent } from '../../../../../app/home-page/home-news/home-news.component';
 import {isPlatformBrowser} from "@angular/common";
 
@@ -20,6 +20,11 @@ export class HomeNewsComponent extends BaseComponent implements OnInit{
         document.getElementById('carouselExampleIndicator')?.click();
       });
      }*/
+  }
+  paginaDestino(urlEnlace: string): void{
+    if (isPlatformBrowser(this._platformId)) {
+       window.location.href = urlEnlace;
+    }
   }
 }
 

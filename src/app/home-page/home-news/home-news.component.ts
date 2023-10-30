@@ -20,25 +20,18 @@ export class HomeNewsComponent {
   xml = `<?xml version="1.0" encoding="UTF-8" ?>
 <carruseles>
     <carrusel>
-        <titulo>titulo 1</titulo>
-        <Descripcion>Descripcion 1</Descripcion>
-        <urlImagen>https://www.biblored.gov.co/sites/default/files/2023-10/vuelta_convocatoria_banner%20home%20copia%20%281%29.jpg</urlImagen>
-        <urlEnlace>https://www.biblored.gov.co/noticias/resultados-convocatoria-2023-La-Vuelta</urlEnlace>
-        <txtBoton>txtBoton 1</txtBoton>
+        <titulo>Titulo 1</titulo>
+        <Descripcion>La colección "Patrimonio y Memoria" reúne contenidos que dan cuenta del papel de la biblioteca pública como escenario para la participación de la ciudadanía en el ejercicio de recopilar, sistematizar, divulgar y apropiar los saberes locales que reconocemos como parte de la memoria y patrimonio de nuestras comunidades.</Descripcion>
+        <urlImagen>https://www.biblored.gov.co/sites/default/files/2023-10/HOME722_banner%20home%20copia.jpg</urlImagen>
+        <urlEnlace>https://biblored.gov.co/noticias/festival-libros-ninos-jovenes-en-bibliotecas</urlEnlace>
+        <txtBoton>Ver más</txtBoton>
     </carrusel>
     <carrusel>
         <titulo>titulo 2</titulo>
-        <Descripcion>Descripcion 2</Descripcion>
-        <urlImagen>https://www.biblored.gov.co/sites/default/files/2023-10/HOME722_banner%20home%20copia.jpg</urlImagen>
-        <urlEnlace>https://biblored.gov.co/noticias/festival-libros-ninos-jovenes-en-bibliotecas</urlEnlace>
-        <txtBoton>txtBoton 2</txtBoton>
-    </carrusel>
-    <carrusel>
-        <titulo>titulo 3</titulo>
-        <Descripcion>Descripcion 3</Descripcion>
+        <Descripcion>La colección "Patrimonio y Memoria" reúne contenidos que dan cuenta del papel de la biblioteca pública como escenario para la participación de la ciudadanía en el ejercicio de recopilar, sistematizar, divulgar y apropiar los saberes locales que reconocemos como parte de la memoria y patrimonio de nuestras comunidades.</Descripcion>
         <urlImagen>https://www.biblored.gov.co/sites/default/files/2023-10/HOME721_banner%20home%20copia.jpg</urlImagen>
         <urlEnlace>https://biblored.gov.co/noticias/resenas-colecciones-BDB-octubre</urlEnlace>
-        <txtBoton>txtBoton 3</txtBoton>
+        <txtBoton>txtBoton 2</txtBoton>
     </carrusel>
 </carruseles>`;
 

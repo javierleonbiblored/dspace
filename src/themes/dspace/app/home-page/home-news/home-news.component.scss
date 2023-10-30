@@ -5,6 +5,11 @@
   div.background-image-container {
     color: white;
     position: relative;
+    // background: linear-gradient(to right, rgb(37, 21, 54, 0.5), transparent 50%);
+
+    @media only screen and (min-width: 992px) {
+      background: linear-gradient(to left,var(--ds-banner-text-background), var(--ds-banner-text-background) 50%, rgba(37, 21, 54, 0.8) 50%, rgba(37, 21, 54, 0.8) 50%);
+    }
 
     .background-image > img {
       background-color: var(--bs-info);
@@ -32,17 +37,17 @@
       }
 
       &:before {
-        background: linear-gradient(to left, var(--ds-banner-text-background), transparent);
-        left: calc(-1 * var(--ds-banner-background-gradient-width));
+        // background: linear-gradient(to left, var(--ds-banner-text-background), transparent);
+        // left: calc(-1 * var(--ds-banner-background-gradient-width));
 
       }
 
       &:after {
-        background: linear-gradient(to right, var(--ds-banner-text-background), transparent);
-        right: calc(-1 * var(--ds-banner-background-gradient-width));
+        // background: linear-gradient(to right, var(--ds-banner-text-background), transparent);
+        // right: calc(-1 * var(--ds-banner-background-gradient-width));
       }
 
-      background-color: var(--ds-banner-text-background);
+      // background-color: var(--ds-banner-text-background);
     }
 
 
@@ -74,4 +79,8 @@
 
 .carousel-indicators {
   left: auto !important;
+}
+
+.carousel-item {
+  cursor: pointer;
 }
