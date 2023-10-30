@@ -13,6 +13,7 @@ a.submit-icon {
   top: 0;
 
   color: var(--bs-white);
+
   &:hover, &:focus {
     color: var(--bs-white);
   }
@@ -23,16 +24,25 @@ a.submit-icon {
     max-width: 250px !important;
     width: 40vw !important;
   }
-
 }
 
-.widthInput {
-  width: 440px;
-  // border-radius: 20px;
-  /*border-top-left-radius: 20px;
-  border-bottom-left-radius: 20px;*/
-}
 
+
+@media  (min-width: 1199px)  {
+  .widthInput {
+    width: 420px;
+  }
+}
+@media  (max-width: 1199px)  {
+  .widthInput {
+    width: 320px;
+  }
+}
+/*@media  (max-width: 1200px) {
+  .widthInput {
+    width: 420px;
+  }
+}*/
 
 .radiusLeftInput {
   border-top-left-radius: 20px;
@@ -44,19 +54,14 @@ a.submit-icon {
   border-bottom-right-radius: 20px;
 }
 
-.backgroundInput{
+.backgroundInput {
   background: white;
   border-radius: 20px;
   color: var(--color-uno);
 
 }
 
-.backgroundInput:hover{
+.backgroundInput:hover {
   background: var(--color-uno);
   color: white;
 }
-
-/*.fa-search {
-  color: var(--color-dos);
-}*/
-
