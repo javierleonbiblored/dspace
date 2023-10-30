@@ -26,3 +26,37 @@ a.submit-icon {
 
 }
 
+.widthInput {
+  width: 440px;
+  // border-radius: 20px;
+  /*border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;*/
+}
+
+
+.radiusLeftInput {
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
+
+.radiusRightInput {
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+.backgroundInput{
+  background: white;
+  border-radius: 20px;
+  color: var(--color-uno);
+
+}
+
+.backgroundInput:hover{
+  background: var(--color-uno);
+  color: white;
+}
+
+/*.fa-search {
+  color: var(--color-dos);
+}*/
+

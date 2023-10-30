@@ -73,7 +73,7 @@ export class SearchNavbarComponent {
    * Focuses on input search bar so search can be edited
    */
   editSearch(): void {
-    this.searchField.nativeElement.focus();
+    this.searchField?.nativeElement.focus();
   }
 
   /**
@@ -81,7 +81,7 @@ export class SearchNavbarComponent {
    * @param data  Data for the searchForm, containing the search query
    */
   onSubmit(data: any) {
-    this.collapse();
+    // this.collapse();
     data.query = this.quitarEspacios(data.query)
     const queryParams = Object.assign({}, data);
     const linkToNavigateTo = [this.searchService.getSearchLink().replace('/', '')];
@@ -95,8 +95,8 @@ export class SearchNavbarComponent {
 
   quitarEspacios(text: string): string {
     const expRegular = /(\s{2,})/g;
-    text = text.trim();
-    text = text.replace(expRegular, " ").toString()
+    text = text?.trim();
+    text = text?.replace(expRegular, " ").toString()
     console.log('********************* quitarEspacios Buscador navbar Salida  ************************')
     console.log(text)
     return text;
