@@ -1,7 +1,7 @@
 <nav [ngClass]="{'open': !(menuCollapsed | async)}" [@slideMobileNav]="!(windowService.isXsOrSm() | async) ? 'default' : ((menuCollapsed | async) ? 'collapsed' : 'expanded')"
   class="navbar navbar-expand-lg navbar-light p-0 navbar-container" role="navigation" [attr.aria-label]="'nav.main.description' | translate">
   <div class="navbar-inner-container w-100 h-100" [class.container]="!(isXsOrSm$ | async)">
-    <a class="navbar-brand my-2" routerLink="/home">
+    <a class="navbar-brand  d-none d-lg-flex" routerLink="/home">
       <img src="assets/images/imagesBiblored/logo-repositorio.svg" width="200" height="49" [attr.alt]="'menu.header.image.logo' | translate" />
     </a>
     <!--assets/images/imagesBiblored/logo_biblored.svg-->

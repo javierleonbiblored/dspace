@@ -31,18 +31,45 @@ a.submit-icon {
 @media  (min-width: 1199px)  {
   .widthInput {
     width: 420px;
+    height: 22px;
   }
 }
-@media  (max-width: 1199px)  {
+@media  (max-width: 1199px) {
   .widthInput {
     width: 320px;
+    height: 22px;
   }
 }
-/*@media  (max-width: 1200px) {
+
+@media  (max-width: 992px)  {
   .widthInput {
-    width: 420px;
+    width: 440px;
+    height: 22px;
   }
-}*/
+}
+
+@media  (max-width: 767px)  {
+  .widthInput {
+    width: 290px;
+    height: 22px;
+  }
+}
+
+/*
+Extra small <576px
+Small ≥576px
+Medium≥768px
+Large ≥992px
+Extra large ≥1200px
+*/
+
+@media  (max-width: 576px)  {
+  .widthInput {
+    width: 320px;
+    height: 22px;
+  }
+}
+
 
 .radiusLeftInput {
   border-top-left-radius: 20px;
