@@ -47,8 +47,16 @@ Font size
   font-size: var(--fs-h2) !important;
 }
 
-.font-size-h3 {
-  font-size: var(--fs-h3) !important;
+@media  (min-width: 576px)  {
+  .font-size-h3 {
+    font-size: var(--fs-h3) !important;
+  }
+
+}
+@media  (max-width: 575px)  {
+  .font-size-h3 {
+    font-size: 20px !important;
+  }
 }
 
 .font-size-h4 {
@@ -135,9 +143,17 @@ Montserrat-Bold h1 - h5
   font-size: var(--fs-h1) !important;
 }
 
-.fs-montserrat-bold-h2 {
-  font-family: var(--f-montserrat-bold);
-  font-size: var(--fs-h2) !important;
+@media  (min-width: 576px)  {
+  .fs-montserrat-bold-h2 {
+    font-family: var(--f-montserrat-bold);
+    font-size: var(--fs-h2) !important;
+  }
+}
+@media  (max-width: 575px)  {
+  .fs-montserrat-bold-h2 {
+    font-family: var(--f-montserrat-bold);
+    font-size: 30px !important;
+  }
 }
 
 .fs-montserrat-bold-h3 {
