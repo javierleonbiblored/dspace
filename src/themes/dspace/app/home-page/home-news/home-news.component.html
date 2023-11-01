@@ -8,9 +8,9 @@
       <!-- active -->
       <div class="carousel-item " *ngFor="let json of dataXml; let i = index" [ngClass]="{'active': i === 0}" (click)="paginaDestino(json.urlEnlace)">
         <div class="background-image-container">
-          <div class="container-fluid py-5">
+          <div class="container py-5">
             <div class="jumbotron jumbotron-fluid">
-              <div class="d-none d-lg-block col-8 offset-1">
+              <div class="d-none d-lg-block col-10">
                 <div class="d-flex flex-wrap">
                   <div>
                     <h1 class="display-3 fs-titulo-biblored">{{json?.titulo}}</h1>

@@ -14,13 +14,13 @@
     <ds-impersonate-navbar class="navbar-collapsed"></ds-impersonate-navbar>-->
     <div id="collapsingNav" class="w-100 h-100">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0 h-100 justify-content-end">
-        <ds-search-navbar class="navbar-collapsed p-4 d-none"></ds-search-navbar>
+        <ds-search-navbar class="navbar-collapsed p-4"></ds-search-navbar> <!-- No quitar porque se daña en patallas en PC -->
         <ds-lang-switch class="navbar-collapsed"></ds-lang-switch>
         <ds-context-help-toggle class="navbar-collapsed"></ds-context-help-toggle>
         <ds-impersonate-navbar class="navbar-collapsed"></ds-impersonate-navbar>
-        <li *ngIf="(isXsOrSm$ | async) && (isAuthenticated$ | async)">
+     <!--   <li *ngIf="(isXsOrSm$ | async) && (isAuthenticated$ | async)">
           <ds-user-menu [inExpandableNavbar]="true"></ds-user-menu>
-        </li>
+        </li>-->
         <ng-container *ngFor="let section of (sections | async)">
           <ng-container *ngComponentOutlet="(sectionMap$ | async).get(section.id)?.component; injector: (sectionMap$ | async).get(section.id)?.injector;"></ng-container>
         </ng-container>

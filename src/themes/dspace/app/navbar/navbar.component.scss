@@ -15,7 +15,7 @@ nav.navbar {
     overflow: hidden;
     height: 0;
     &.open {
-      height: 100vh; //doesn't matter because wrapper is sticky
+      height: inherit; //doesn't matter because wrapper is sticky
     }
   }
 }
