@@ -1,28 +1,52 @@
-<nav [ngClass]="{'open': !(menuCollapsed | async)}" [@slideMobileNav]="!(windowService.isXsOrSm() | async) ? 'default' : ((menuCollapsed | async) ? 'collapsed' : 'expanded')"
-  class="navbar navbar-expand-lg navbar-light p-0 navbar-container" role="navigation" [attr.aria-label]="'nav.main.description' | translate">
+<!-- [@slideMobileNav]="!(windowService.isXsOrSm() | async) ? 'default' : ((menuCollapsed | async) ? 'collapsed' : 'expanded')" -->
+<nav [ngClass]="{'open': !(menuCollapsed | async)}"
+     [@slideMobileNav]="!(windowService.isXsOrSm() | async) ? 'default' : ((menuCollapsed | async) ? 'collapsed' : 'expanded')"
+     class="navbar navbar-expand-lg navbar-light p-0 navbar-container" role="navigation"
+     [attr.aria-label]="'nav.main.description' | translate">
   <div class="navbar-inner-container w-100 h-100" [class.container]="!(isXsOrSm$ | async)">
     <a class="navbar-brand  d-none d-lg-flex" routerLink="/home">
-      <img src="assets/images/imagesBiblored/logo-repositorio.svg" width="200" height="49" [attr.alt]="'menu.header.image.logo' | translate" />
+      <img src="assets/images/imagesBiblored/logo-repositorio.svg" width="200" height="49"
+           [attr.alt]="'menu.header.image.logo' | translate"/>
     </a>
     <!--assets/images/imagesBiblored/logo_biblored.svg-->
 
 
-<!--    <ds-search-navbar class="navbar-collapsed"></ds-search-navbar>
-    <ds-lang-switch class="navbar-collapsed"></ds-lang-switch>
-    <ds-context-help-toggle class="navbar-collapsed"></ds-context-help-toggle>
-    <ds-themed-auth-nav-menu class="navbar-collapsed"></ds-themed-auth-nav-menu>
-    <ds-impersonate-navbar class="navbar-collapsed"></ds-impersonate-navbar>-->
+    <!--    <ds-search-navbar class="navbar-collapsed"></ds-search-navbar>
+        <ds-lang-switch class="navbar-collapsed"></ds-lang-switch>
+        <ds-context-help-toggle class="navbar-collapsed"></ds-context-help-toggle>
+        <ds-themed-auth-nav-menu class="navbar-collapsed"></ds-themed-auth-nav-menu>
+        <ds-impersonate-navbar class="navbar-collapsed"></ds-impersonate-navbar>-->
     <div id="collapsingNav" class="w-100 h-100">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0 h-100 justify-content-end">
-        <ds-search-navbar class="navbar-collapsed p-4"></ds-search-navbar> <!-- No quitar porque se daña en patallas en PC -->
+        <ds-search-navbar class="navbar-collapsed p-4"
+                          *ngIf=" !(windowService.isSm() | async) && !(windowService.isMd() | async)"></ds-search-navbar>
+        <!-- No quitar porque se daña en patallas en PC -->
         <ds-lang-switch class="navbar-collapsed"></ds-lang-switch>
         <ds-context-help-toggle class="navbar-collapsed"></ds-context-help-toggle>
         <ds-impersonate-navbar class="navbar-collapsed"></ds-impersonate-navbar>
-     <!--   <li *ngIf="(isXsOrSm$ | async) && (isAuthenticated$ | async)">
-          <ds-user-menu [inExpandableNavbar]="true"></ds-user-menu>
-        </li>-->
+        <!--   <li *ngIf="(isXsOrSm$ | async) && (isAuthenticated$ | async)">
+             <ds-user-menu [inExpandableNavbar]="true"></ds-user-menu>
+           </li>-->
+
+        <ul class="pl-0" *ngIf="(windowService.isXs() | async) || (windowService.isSm() | async) || (windowService.isMd() | async)">
+          <li class="list-group-item opcionesCollapsed" routerLink="/home">
+            Colecciones
+          </li>
+          <li class="list-group-item opcionesCollapsed" routerLink="/search">
+            Descubre
+          </li>
+          <li class="list-group-item opcionesCollapsed" routerLink="/biblored-digital-repository">
+            Sobre nosotros
+          </li>
+          <li class="list-group-item opcionesCollapsed" routerLink="/frequent-questions">
+            Ayuda
+          </li>
+        </ul>
+
+
         <ng-container *ngFor="let section of (sections | async)">
-          <ng-container *ngComponentOutlet="(sectionMap$ | async).get(section.id)?.component; injector: (sectionMap$ | async).get(section.id)?.injector;"></ng-container>
+          <ng-container
+            *ngComponentOutlet="(sectionMap$ | async).get(section.id)?.component; injector: (sectionMap$ | async).get(section.id)?.injector;"></ng-container>
         </ng-container>
         <ds-themed-auth-nav-menu class="navbar-collapsed pt-4 m-1 d-none d-lg-block"></ds-themed-auth-nav-menu>
       </ul>

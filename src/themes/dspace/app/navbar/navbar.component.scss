@@ -56,3 +56,16 @@ a.navbar-brand img {
     color: var(--ds-navbar-link-color-hover);
   }
 }
+
+
+.opcionesCollapsed{
+  color: white;
+  background: var(--color-dos);
+  border: none;
+}
+
+.opcionesCollapsed:hover {
+  background-color: var(--color-uno);
+  color: white;
+  text-decoration: underline;
+}

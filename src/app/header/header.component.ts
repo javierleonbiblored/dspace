@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
-import { Observable } from 'rxjs';
-import { MenuService } from '../shared/menu/menu.service';
-import { MenuID } from '../shared/menu/menu-id.model';
+import {Component} from '@angular/core';
+import {Observable} from 'rxjs';
+import {MenuService} from '../shared/menu/menu.service';
+import {MenuID} from '../shared/menu/menu-id.model';
+import {HostWindowService} from "../shared/host-window.service";
 
 /**
  * Represents the header with the logo and simple navigation
@@ -21,7 +22,8 @@ export class HeaderComponent {
   menuID = MenuID.PUBLIC;
 
   constructor(
-    private menuService: MenuService
+    private menuService: MenuService,
+    public windowService: HostWindowService,
   ) {
   }
 

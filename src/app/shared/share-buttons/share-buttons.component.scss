@@ -1,0 +1,19 @@
+::ng-deep .sb-default .sb-wrapper {
+ /* --sb-background: var(--button-color);
+  --sb-border-radius: 4px;
+  --sb-overflow: hidden;*/
+  --sb-background: none;
+  --sb-color: var(--color-cuatro);
+  --sb-min-width: fit-content;
+  margin: -6px;
+}
+::ng-deep .sb-default .sb-wrapper:hover {
+  /* --sb-background: var(--button-color);
+   --sb-border-radius: 4px;
+   --sb-overflow: hidden;*/
+  --sb-background: none;
+  --sb-color: var(--color-dos);
+}
+::ng-deep .sb-group {
+  flex-wrap: nowrap !important;
+}

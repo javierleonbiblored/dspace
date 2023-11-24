@@ -4,6 +4,7 @@ import {Router} from '@angular/router';
 import {SearchService} from '../core/shared/search/search.service';
 import {expandSearchInput} from '../shared/animations/slide';
 import {isPlatformBrowser} from "@angular/common";
+import {HostWindowService} from "../shared/host-window.service";
 declare let webkitSpeechRecognition: any;
 /**
  * The search box in the header that expands on focus and collapses on focus out
@@ -29,7 +30,8 @@ export class SearchNavbarComponent {
     private formBuilder: FormBuilder,
     private router: Router,
     private searchService: SearchService,
-    @Inject(PLATFORM_ID) private _platformId: Object
+    @Inject(PLATFORM_ID) private _platformId: Object,
+    public windowService: HostWindowService,
   ) {
     this.searchForm = this.formBuilder.group(({
       query: '',

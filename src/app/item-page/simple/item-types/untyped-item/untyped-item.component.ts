@@ -5,6 +5,8 @@ import {
   listableObjectComponent
 } from '../../../../shared/object-collection/shared/listable-object/listable-object.decorator';
 import {ItemComponent} from '../shared/item.component';
+import {Observable} from "rxjs";
+import {RemoteData} from "../../../../core/data/remote-data";
 
 /**
  * Component that represents a publication Item page
@@ -18,9 +20,9 @@ import {ItemComponent} from '../shared/item.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UntypedItemComponent extends ItemComponent implements OnInit {
+
   visibleModal: boolean = false;
   title = "CodeSandbox";
-
   imageIndex = 0;
   images = [
     "https://p.bigstockphoto.com/GeFvQkBbSLaMdpKXF1Zv_bigstock-Aerial-View-Of-Blue-Lakes-And--227291596.jpg"
