@@ -30,7 +30,7 @@
       <ds-metadata-representation-list class="ds-item-page-mixed-author-field"
                                        [parentItem]="object"
                                        [itemType]="'Person'"
-                                       [metadataFields]="['dc.contributor.author', 'dc.creator']"
+                                       [metadataFields]="['dc.creator']"
                                        [label]="'relationships.isAuthorOf' | translate">
       </ds-metadata-representation-list>
       <!-- Autor -->
@@ -203,8 +203,8 @@
         <div class="tab-pane fade" id="tab3">
           <div id="accordion3">
             <div>
-              <span>{{object.firstMetadataValue(['dc.contributor.author', 'dc.creator'])}}</span>. <!-- Ajustar metadato -->
-              <span> ({{object.firstMetadataValue(['dc.date.issued'])}})</span>. <!-- Ajustar metadato -->
+              <span>{{object.firstMetadataValue(['dc.creator'])}}</span>.
+              <span> ({{object.firstMetadataValue(['dc.date'])}})</span>.
               <span class="font-italic"> {{object.firstMetadataValue(['dc.title'])}}</span>.
               <a href="{{urlPage}}"> {{urlPage}}</a>
             </div>
