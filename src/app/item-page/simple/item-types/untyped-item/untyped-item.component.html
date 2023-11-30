@@ -62,8 +62,167 @@
       </ds-item-page-title-field>
     </div>
 
+    <div class="container mt-5">
+      <ul class="nav nav-tabs my-5 fs-workSans-semiBold" id="myTabs">
+        <li class="nav-item">
+          <a class="nav-link active" id="tab1-tab" data-toggle="tab" href="#tab1">Info general</a>
+        </li>
+        <li class="nav-item" *ngIf="object.allMetadata('dc.description.tableOfContents').length > 0">
+          <a class="nav-link" id="tab2-tab" data-toggle="tab" href="#tab2">Tabla de contenido</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="tab3-tab" data-toggle="tab" href="#tab3" >Cómo citar</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="tab4-tab" data-toggle="tab" href="#tab4">Meta data</a>
+        </li>
+      </ul>
+
+
+      <div class="tab-content mt-2" id="myTabsContent">
+        <div class="tab-pane fade show active" id="tab1">
+          <div id="accordion1">
+            <div class="container mb-3">
+              <div class="row">
+                <div class="col-9" *ngIf="bitstreamsOriginal !== []">
+                  <div *ngFor="let file of bitstreamsOriginal;" class="mb-3">
+                    <div *ngIf="file.name.includes('.pdf') || file.name.includes('.epub')" class="pb-5">
+                      <ngx-extended-pdf-viewer [src]="file._links.content.href" [useBrowserLocale]="true"
+                                               [mobileFriendlyZoom]="'70%'"
+                                               [logLevel]="logLevel"
+                                               [height]="'40vh'" [zoom]="'auto'" [showPresentationModeButton]="true"
+                                               [showHandToolButton]="false"
+                                               [enablePinchOnMobile]="true" [showSecondaryToolbarButton]="true"
+                                               [textLayer]="false" [showFindHighlightAll]="false">
+                      </ngx-extended-pdf-viewer>
+                    </div>
+                    <div *ngIf="file.name.includes('.mp4')" class="text-center">
+                      <video width="500" height="300" controls>
+                        <source [src]="file._links.content.href" type="video/mp4">
+                        <source [src]="file._links.content.href" type="video/ogg">
+                      </video>
+                    </div>
+
+                    <div *ngIf="file.name.includes('.mp3')" class="text-center">
+                      <audio controls>
+                        <source [src]="file._links.content.href" type="audio/ogg">
+                        <source [src]="file._links.content.href" type="audio/mpeg">
+                        <!--Your browser does not support the audio element.-->
+                      </audio>
+                    </div>
+
+                    <!--data-toggle="modal" data-target="#exampleModal"-->
+                    <div *ngIf="file.name.includes('.jpg') || file.name.includes('.png') || file.name.includes('.webp')"
+                         class="text-center" type="button">
+                      <!--  <img [src]="file._links.content.href "
+                             class="img-fluid " [attr.alt]="file.name"
+                             (click)="visibleModal =true">-->
+                      <angular-image-viewer [src]="[file._links.content.href, 'https://demo.dspace.org/server/api/core/bitstreams/a760a310-b6de-44ef-b837-1bd2284d2b62/content']"
+                                            [config]="config" [(index)]="imageIndex">
+                      </angular-image-viewer>
+                      <!-- Modal -->
+                      <!--<div class="modal  align-items-center d-flex justify-content-center text-center" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                           aria-hidden="true">-->
+                      <!-- {{images}}
+                          <angular-image-viewer [src]="images"
+                                           [config]="{customBtns:[{name: 'link', icon: 'fa fa-paperclip'}]}">
+                             </angular-image-viewer>-->
+
+                      <div class="modal"
+                           [ngClass]="{'d-flex': visibleModal }" id="exampleModal" tabindex="-1"
+                           aria-labelledby="exampleModalLabel"
+                           aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable">
+                          <div class="modal-content">
+                            <div class="modal-body">
+
+                              <angular-image-viewer [src]="[file._links.content.href]"
+                                                    [config]="config">
+                              </angular-image-viewer>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                  <!--  <angular-image-viewer [src]="images"
+                                          [config]="{customBtns:[{name: 'link', icon: 'fa fa-paperclip'}]}">
+                    </angular-image-viewer>-->
+
+
+                  <!--<ds-item-page-abstract-field [item]="object"></ds-item-page-abstract-field>-->
+                  <ds-generic-item-page-field [item]="object"
+                                              [fields]="['dc.description']"
+                                              [label]="'item.page.description'">
+                  </ds-generic-item-page-field>
+
+                  <!--<div *ngIf="longitud && latitud">
+                    <div id="map"></div>
+                  </div>-->
+
+                  <div class="map-wrapper" *ngIf="longitud && latitud">
+                    <ng-leaflet-universal></ng-leaflet-universal>
+                  </div>
+                </div>
+                <!-- Columna 3 -->
+                <div class="col-3 pl-3">
+                  <ds-dso-edit-menu></ds-dso-edit-menu>
+
+                  <ds-generic-item-page-field [item]="object"
+                                              [fields]="['dc.type']"
+                                              [label]="'Tipo de contenido'">
+                  </ds-generic-item-page-field>
+
+                  <ds-generic-item-page-field [item]="object"
+                                              [fields]="['dc.language.iso']"
+                                              [label]="'Idioma'">
+                  </ds-generic-item-page-field>
+
+                  <ds-generic-item-page-field [item]="object"
+                                              [fields]="['local.tag']"
+                                              [separator]="', '"
+                                              [label]="'item.page.subject'">
+                  </ds-generic-item-page-field>
+                  <!-- botones de compartir  -->
+                  <ds-share-buttons></ds-share-buttons>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="tab-pane fade" id="tab2">
+          <div id="accordion2">
+            <h1>Tag2</h1>
+
+          </div>
+        </div>
+
+        <div class="tab-pane fade" id="tab3">
+          <div id="accordion3">
+            <div>
+              <span>{{object.firstMetadataValue(['dc.contributor.author', 'dc.creator'])}}</span>. <!-- Ajustar metadato -->
+              <span> ({{object.firstMetadataValue(['dc.date.issued'])}})</span>. <!-- Ajustar metadato -->
+              <span class="font-italic"> {{object.firstMetadataValue(['dc.title'])}}</span>.
+              <a href="{{urlPage}}"> {{urlPage}}</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="tab-pane fade" id="tab4">
+          <div id="accordion4">
+            <ds-full-item-page></ds-full-item-page>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
     <!--Tags-->
-    <ul class="nav nav-tabs my-5 fs-workSans-semiBold">
+    <!--Codigo viejo-->
+<!--    <ul class="nav nav-tabs my-5 fs-workSans-semiBold">
       <li class="nav-item">
         <a class="nav-link active" href="#">Info general</a>
       </li>
@@ -77,15 +236,13 @@
         <a class="nav-link" href="#">Meta data</a>
       </li>
     </ul>
-
-
     <div class="container mb-3">
       <div class="row">
         <div class="col-9" *ngIf="bitstreamsOriginal !== []">
-          <!--<div style="height: 300px;" class="img-fluid"
+          &lt;!&ndash;<div style="height: 300px;" class="img-fluid"
                leaflet
                [leafletOptions]="options">
-          </div>-->
+          </div>&ndash;&gt;
 
           <div *ngFor="let file of bitstreamsOriginal;" class="mb-3">
             <div *ngIf="file.name.includes('.pdf') || file.name.includes('.epub')" class="pb-5">
@@ -113,22 +270,22 @@
               </audio>
             </div>
 
-            <!--data-toggle="modal" data-target="#exampleModal"-->
+            &lt;!&ndash;data-toggle="modal" data-target="#exampleModal"&ndash;&gt;
             <div *ngIf="file.name.includes('.jpg') || file.name.includes('.png') || file.name.includes('.webp')"
                   class="text-center" type="button">
-            <!--  <img [src]="file._links.content.href "
+            &lt;!&ndash;  <img [src]="file._links.content.href "
                    class="img-fluid " [attr.alt]="file.name"
-                   (click)="visibleModal =true">-->
+                   (click)="visibleModal =true">&ndash;&gt;
               <angular-image-viewer [src]="[file._links.content.href, 'https://demo.dspace.org/server/api/core/bitstreams/a760a310-b6de-44ef-b837-1bd2284d2b62/content']"
                                     [config]="config" [(index)]="imageIndex">
               </angular-image-viewer>
-              <!-- Modal -->
-              <!--<div class="modal  align-items-center d-flex justify-content-center text-center" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                   aria-hidden="true">-->
-              <!-- {{images}}
+              &lt;!&ndash; Modal &ndash;&gt;
+              &lt;!&ndash;<div class="modal  align-items-center d-flex justify-content-center text-center" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                   aria-hidden="true">&ndash;&gt;
+              &lt;!&ndash; {{images}}
                   <angular-image-viewer [src]="images"
                                    [config]="{customBtns:[{name: 'link', icon: 'fa fa-paperclip'}]}">
-                     </angular-image-viewer>-->
+                     </angular-image-viewer>&ndash;&gt;
 
                <div class="modal"
                     [ngClass]="{'d-flex': visibleModal }" id="exampleModal" tabindex="-1"
@@ -149,27 +306,27 @@
             </div>
             <ds-full-item-page></ds-full-item-page>
           </div>
-          <!--  <angular-image-viewer [src]="images"
+          &lt;!&ndash;  <angular-image-viewer [src]="images"
                                   [config]="{customBtns:[{name: 'link', icon: 'fa fa-paperclip'}]}">
-            </angular-image-viewer>-->
+            </angular-image-viewer>&ndash;&gt;
 
 
-          <!--<ds-item-page-abstract-field [item]="object"></ds-item-page-abstract-field>-->
+          &lt;!&ndash;<ds-item-page-abstract-field [item]="object"></ds-item-page-abstract-field>&ndash;&gt;
           <ds-generic-item-page-field [item]="object"
                                       [fields]="['dc.description']"
                                       [label]="'item.page.description'">
           </ds-generic-item-page-field>
 
-          <!--<div *ngIf="longitud && latitud">
+          &lt;!&ndash;<div *ngIf="longitud && latitud">
             <div id="map"></div>
-          </div>-->
+          </div>&ndash;&gt;
 
           <div class="map-wrapper" *ngIf="longitud && latitud">
             <ng-leaflet-universal></ng-leaflet-universal>
           </div>
         </div>
 
-        <!-- Columna 3 -->
+        &lt;!&ndash; Columna 3 &ndash;&gt;
         <div class="col-3 pl-3">
           <ds-dso-edit-menu></ds-dso-edit-menu>
 
@@ -188,11 +345,11 @@
                                       [separator]="', '"
                                       [label]="'item.page.subject'">
           </ds-generic-item-page-field>
-          <!-- botones de compartir  -->
+          &lt;!&ndash; botones de compartir  &ndash;&gt;
           <ds-share-buttons></ds-share-buttons>
         </div>
       </div>
-    </div>
+    </div>-->
 
 
   </div>

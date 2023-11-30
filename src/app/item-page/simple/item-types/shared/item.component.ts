@@ -74,6 +74,7 @@ export class ItemComponent implements OnInit, AfterViewInit {
 
   bitstreamsOriginal: Bitstream[] = [];
   markers: Marker = null;
+  urlPage: string;
 
   constructor(protected routeService: RouteService,
               protected router: Router,
@@ -113,7 +114,7 @@ export class ItemComponent implements OnInit, AfterViewInit {
       this.iiifQuery$ = getDSpaceQuery(this.object, this.routeService);
     }
     if (isPlatformBrowser(this._platformId)) {
-
+      this.urlPage = window.location.href
       this.ubicacion();
       this.archivo();
 
@@ -127,10 +128,11 @@ export class ItemComponent implements OnInit, AfterViewInit {
         },
       };
     }
+    console.log(JSON.stringify(this.object))
   }
 
   ngAfterViewInit(): void {
-    this.mapComponent.updateMarkers([this.markers]);
+    this.mapComponent?.updateMarkers([this.markers]);
   }
 
   ubicacion(): void {
