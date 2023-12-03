@@ -166,6 +166,14 @@ Montserrat-Bold h1 - h5
   font-size: var(--fs-h4) !important;
 }
 
+@media screen and (max-width: map-get($grid-breakpoints, sm)) {
+  .fs-montserrat-bold-h4{
+    font-family: var(--f-montserrat-bold);
+    font-size: var(--fs-h5) !important;
+  }
+}
+
+
 .fs-montserrat-bold-h5 {
   font-family: var(--f-montserrat-bold);
   font-size: var(--fs-h5) !important;
