@@ -421,7 +421,7 @@
           <div id="accordion1-celular">
             <div class="container mb-3">
               <div class="row">
-                <div class="col-9" *ngIf="bitstreamsOriginal !== []">
+                <div class="col-12" *ngIf="bitstreamsOriginal !== []">
                   <div *ngFor="let file of bitstreamsOriginal;" class="mb-3">
                     <div *ngIf="file.name.includes('.pdf') || file.name.includes('.epub')" class="pb-5">
                       <ngx-extended-pdf-viewer [src]="file._links.content.href" [useBrowserLocale]="true"
@@ -482,26 +482,6 @@
                   </div>
                 </div>
                 <!-- Columna 3 -->
-                <div class="col-3 pl-3">
-                  <ds-dso-edit-menu></ds-dso-edit-menu>
-
-                  <ds-generic-item-page-field [item]="object"
-                                              [fields]="['dc.type']"
-                                              [label]="'Tipo de contenido'">
-                  </ds-generic-item-page-field>
-
-                  <ds-generic-item-page-field [item]="object"
-                                              [fields]="['dc.language.iso']"
-                                              [label]="'Idioma'">
-                  </ds-generic-item-page-field>
-
-                  <ds-generic-item-page-field [item]="object"
-                                              [fields]="['local.tag']"
-                                              [separator]="', '"
-                                              [label]="'item.page.subject'">
-                  </ds-generic-item-page-field>
-                  <!-- botones de compartir  -->
-                </div>
               </div>
             </div>
 
@@ -568,6 +548,28 @@
                                     [label]="'Tema'">
         </ds-generic-item-page-field>
       </div>
+
+      <div class="col-12">
+        <ds-dso-edit-menu></ds-dso-edit-menu>
+
+        <ds-generic-item-page-field [item]="object"
+                                    [fields]="['dc.type']"
+                                    [label]="'Tipo de contenido'">
+        </ds-generic-item-page-field>
+
+        <ds-generic-item-page-field [item]="object"
+                                    [fields]="['dc.language.iso']"
+                                    [label]="'Idioma'">
+        </ds-generic-item-page-field>
+
+        <ds-generic-item-page-field [item]="object"
+                                    [fields]="['local.tag']"
+                                    [separator]="', '"
+                                    [label]="'item.page.subject'">
+        </ds-generic-item-page-field>
+        <!-- botones de compartir  -->
+      </div>
+
       <div class="">
         <ds-share-buttons></ds-share-buttons>
       </div>
