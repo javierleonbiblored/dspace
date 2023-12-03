@@ -1,5 +1,5 @@
 .nav-breadcrumb {
-  background-color: var(--ds-breadcrumb-bg);
+  background-color: var(--color-siete);
 }
 
 .breadcrumb {
@@ -7,8 +7,17 @@
   margin-top: calc(-1 * var(--ds-content-spacing));
   padding-bottom: var(--ds-content-spacing / 3);
   padding-top: var(--ds-content-spacing / 3);
-  background-color: var(--ds-breadcrumb-bg);
+  background-color: var(--color-siete);
 }
+
+
+
+@media screen and (max-width: map-get($grid-breakpoints, sm)) {
+  .breadcrumb {
+    font-size: 11px;
+  }
+}
+
 
 li.breadcrumb-item {
   display: flex;
@@ -25,15 +34,16 @@ li.breadcrumb-item {
 
 li.breadcrumb-item {
     a {
-        color: var(--ds-breadcrumb-link-color);
+        color: var(--color-dos);
     }
 }
 
 li.breadcrumb-item.active {
-  color: var(--ds-breadcrumb-link-active-color);
+ /* color: var(--ds-breadcrumb-link-active-color);*/
 }
 
 .breadcrumb-item+ .breadcrumb-item::before {
+  color: var(--color-dos);
   display: block;
-  content: quote("•") !important;
+  // content: quote("•") !important;
 }

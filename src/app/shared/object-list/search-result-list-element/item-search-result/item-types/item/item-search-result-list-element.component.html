@@ -29,18 +29,18 @@
         <ds-truncatable-part [id]="dso.id" [minLines]="5">
 
           <!-- 'dc.contributor.author', 'dc.creator', 'dc.contributor.*' -->
-          <span *ngIf="dso.allMetadata(['dc.contributor.author']).length > 0" class="item-list-authors fs-workSans-regular">
-            <span *ngFor="let author of allMetadataValues(['dc.contributor.author']); let last=last;">
+          <span *ngIf="dso.allMetadata(['dc.creator']).length > 0" class="item-list-authors fs-workSans-regular">
+            <span *ngFor="let author of allMetadataValues(['dc.creator']); let last=last;">
                 <span [innerHTML]="author"><span [innerHTML]="author"></span></span>
                 <span *ngIf="!last">, </span>
             </span>
           </span>
           <br>
-          <ng-container *ngIf="dso.firstMetadataValue('dc.publisher') || dso.firstMetadataValue('dc.date.issued')">
+          <ng-container *ngIf="dso.firstMetadataValue('dc.publisher') || dso.firstMetadataValue('dc.date')">
             <span *ngIf="dso.firstMetadataValue('dc.publisher')" class="item-list-publisher fs-workSans-regular"
                    [innerHTML]="firstMetadataValue('dc.publisher') + ', '"></span>
-            <span *ngIf="dso.firstMetadataValue('dc.date.issued')" class="item-list-date fs-workSans-regular"
-                  [innerHTML]="firstMetadataValue('dc.date.issued')"></span>
+            <span *ngIf="dso.firstMetadataValue('dc.date')" class="item-list-date fs-workSans-regular"
+                  [innerHTML]="firstMetadataValue('dc.date')"></span>
           </ng-container>
           <br>
           <span *ngIf="dso.allMetadata(['dc.type']).length > 0" class="item-list-type fs-workSans-semiBold">

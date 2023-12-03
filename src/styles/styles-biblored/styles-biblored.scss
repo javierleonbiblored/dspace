@@ -322,6 +322,23 @@ Botones
   padding: 0 5px;
 }
 
+
+.btn-color-back {
+  // background: var(--color-dos);
+  border-color: var(--color-cinco);
+  color: var(--color-cinco);
+  font-family: var(--f-workSans-semiBold);
+  font-size: var(--fs-h5) !important;
+  padding: 5px 32px;
+  border-radius: 30px;
+
+}
+
+.btn-color-back:hover {
+  background: var(--color-cinco);
+  color: var(--color-cinco);
+}
+
 .badge-biblored {
   color: white;
   background-color: var(--color-badge);

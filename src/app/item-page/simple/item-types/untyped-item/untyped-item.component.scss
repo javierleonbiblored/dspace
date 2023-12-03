@@ -38,6 +38,10 @@
   color: transparent !important;
 }
 
-.nav-link{
-  color: var(--color-dos);
+@media screen and (max-width: map-get($grid-breakpoints, sm)) {
+  .nav-link{
+    color: var(--color-dos);
+    font-size: 14px;
+  }
 }
+
