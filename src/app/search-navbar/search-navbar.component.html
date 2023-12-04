@@ -1,6 +1,6 @@
 <div id="search-navbar-container" [title]="'nav.search' | translate">
   <div class="d-inline-block position-relative w-100">
-    <form [formGroup]="searchForm"  autocomplete="on">
+    <form [formGroup]="searchForm" (ngSubmit)="onSubmit(searchForm.value)" autocomplete="on">
       <div class="input-group mb-3 " [ngClass]="{'widthInput' : !(windowService.isXs() | async)}" > <!-- d-none  d-sm-flex -->
         <input name="query" formControlName="query" type="text" class="form-control mt-0 radiusLeftInput"
                placeholder="Buscar:  contenido, autor,colección..."

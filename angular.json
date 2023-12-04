@@ -31,7 +31,11 @@
               "jwt-decode",
               "uuid",
               "webfontloader",
-              "zone.js"
+              "zone.js",
+              "htmlparser2",
+              "postcss",
+              "date-fns-tz",
+              "ng-leaflet-universal"
             ],
             "outputPath": "dist/browser",
             "index": "src/index.html",

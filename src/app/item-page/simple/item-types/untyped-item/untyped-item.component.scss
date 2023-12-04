@@ -45,3 +45,23 @@
   }
 }
 
+
+::ng-deep .map-marker-icon .item-marker {
+  border-radius: 100% 100% 100% 35%;
+  border: none !important;
+  width: 22px !important;
+  height: 22px !important;
+  background-color: transparent !important;
+  box-shadow: 0 0 3px #0000005d;
+  transform: rotate(-45deg);
+  overflow: hidden;
+}
+::ng-deep .map-marker-icon .item-marker .icon-image {
+  width: 75% !important;
+  height: 100%;
+  border-radius: 100%;
+  background-position: center;
+  background-size: cover;
+  transform: rotate(38deg);
+}
+
