@@ -3,7 +3,7 @@
      [@slideMobileNav]="!(windowService.isXsOrSm() | async) ? 'default' : ((menuCollapsed | async) ? 'collapsed' : 'expanded')"
      class="navbar navbar-expand-lg navbar-light p-0 navbar-container" role="navigation"
      [attr.aria-label]="'nav.main.description' | translate">
-  <div class="navbar-inner-container w-100 h-100" [class.container]="!(isXsOrSm$ | async)">
+  <div class="navbar-inner-container w-100 h-100 px-0" [class.container]="!(isXsOrSm$ | async)">
     <a class="navbar-brand  d-none d-lg-flex" routerLink="/home">
       <img src="assets/images/imagesBiblored/logo-repositorio.svg" width="200" height="49"
            [attr.alt]="'menu.header.image.logo' | translate"/>
@@ -18,7 +18,7 @@
         <ds-impersonate-navbar class="navbar-collapsed"></ds-impersonate-navbar>-->
     <div id="collapsingNav" class="w-100 h-100">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0 h-100 justify-content-end">
-        <ds-search-navbar class="p-4"
+        <ds-search-navbar class="navbar-collapsed p-4"
                           *ngIf=" !(windowService.isSm() | async) && !(windowService.isMd() | async)"></ds-search-navbar>
         <!-- No quitar porque se daña en patallas en PC -->
         <ds-lang-switch class="navbar-collapsed"></ds-lang-switch>
