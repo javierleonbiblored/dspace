@@ -26,6 +26,19 @@
   --fs-h4: 20px;
   --fs-h5: 16px;
 
+
+  --fs-h1: 40px;
+  --fs-h2: 36px;
+  --fs-h3: 22px;
+  --fs-h4: 20px;
+  --fs-h5: 16px;
+
+  --fs-small-h1: 38px; /* Se editó tamaño*/
+  --fs-small-h2: 32px; /* Se editó tamaño*/
+  --fs-small-h3: 20px; /* Se editó tamaño*/
+  --fs-small-h4: 18px; /* Se editó tamaño*/
+  --fs-small-h5: 16px;
+
   // Tamaños de fuente para WorkSans
   --fs-works-sans: 20px; // Parrafos
 
@@ -47,16 +60,8 @@ Font size
   font-size: var(--fs-h2) !important;
 }
 
-@media  (min-width: 576px)  {
-  .font-size-h3 {
-    font-size: var(--fs-h3) !important;
-  }
-
-}
-@media  (max-width: 575px)  {
-  .font-size-h3 {
-    font-size: 20px !important;
-  }
+.font-size-h3 {
+  font-size:  var(--fs-h3)  !important;
 }
 
 .font-size-h4 {
@@ -65,6 +70,28 @@ Font size
 
 .font-size-h5 {
   font-size: var(--fs-h5) !important;
+}
+
+@media screen and (max-width: map-get($grid-breakpoints, sm)) {
+  .font-size-h1 {
+    font-size: var(--fs-small-h1) !important;
+  }
+
+  .font-size-h2 {
+    font-size: var(--fs-small-h2) !important;
+  }
+
+  .font-size-h3 {
+    font-size:  var(--fs-small-h3)  !important;
+  }
+
+  .font-size-h4 {
+    font-size: var(--fs-small-h4) !important;
+  }
+
+  .font-size-h5 {
+    font-size: var(--fs-small-h5) !important;
+  }
 }
 
 /****************
@@ -141,42 +168,67 @@ Montserrat-Bold h1 - h5
 .fs-montserrat-bold-h1 {
   font-family: var(--f-montserrat-bold);
   font-size: var(--fs-h1) !important;
+  line-height: 1.5;
 }
-
-@media  (min-width: 576px)  {
-  .fs-montserrat-bold-h2 {
-    font-family: var(--f-montserrat-bold);
-    font-size: var(--fs-h2) !important;
-  }
-}
-@media  (max-width: 575px)  {
-  .fs-montserrat-bold-h2 {
-    font-family: var(--f-montserrat-bold);
-    font-size: 30px !important;
-  }
+.fs-montserrat-bold-h2 {
+  font-family: var(--f-montserrat-bold);
+  font-size: var(--fs-h2) !important;
+  line-height: 1.5;
 }
 
 .fs-montserrat-bold-h3 {
   font-family: var(--f-montserrat-bold);
   font-size: var(--fs-h3) !important;
+  line-height: 1.5;
 }
 
 .fs-montserrat-bold-h4 {
   font-family: var(--f-montserrat-bold);
   font-size: var(--fs-h4) !important;
-}
+  line-height: 1.5;
 
-@media screen and (max-width: map-get($grid-breakpoints, sm)) {
-  .fs-montserrat-bold-h4{
-    font-family: var(--f-montserrat-bold);
-    font-size: var(--fs-h5) !important;
-  }
 }
-
 
 .fs-montserrat-bold-h5 {
   font-family: var(--f-montserrat-bold);
   font-size: var(--fs-h5) !important;
+  line-height: 1.5;
+}
+
+
+@media screen and (max-width: map-get($grid-breakpoints, sm)) {
+  .fs-montserrat-bold-h1 {
+    font-family: var(--f-montserrat-bold);
+    font-size: var(--fs-small-h1) !important;
+    line-height: 1.5;
+  }
+  .fs-montserrat-bold-h2 {
+    font-family: var(--f-montserrat-bold);
+    font-size: var(--fs-small-h2) !important;
+    line-height: 1.5;
+  }
+  .fs-montserrat-bold-h3 {
+    font-family: var(--f-montserrat-bold);
+    font-size: var(--fs-small-h3) !important;
+    line-height: 1.5;
+
+  }
+  .fs-montserrat-bold-h4{
+    font-family: var(--f-montserrat-bold);
+    font-size: var(--fs-small-h4) !important;
+    line-height: 1.5;
+  }
+  .fs-montserrat-bold-h5 {
+    font-family: var(--f-montserrat-bold);
+    font-size: var(--fs-small-h5) !important;
+    line-height: 1.5;
+  }
+
+  .fs-titulo-biblored {
+    font-family: var(--f-montserrat-bold);
+    font-size: var(--fs-small-h2) !important;
+    letter-spacing: -3px
+  }
 }
 
 /****************
@@ -193,7 +245,7 @@ parrafo
 ****************/
 .fs-parrafo {
   font-family: var(--f-montserrat-bold);
-  font-size: var(--fs-h1) !important;
+  font-size: var(--fs-h4) !important;
 }
 
 .fs-tags {
@@ -359,4 +411,12 @@ Botones
 
 .background-color-uno {
   background-color: var(--color-uno);
+}
+
+.descripcionText{
+  -webkit-line-clamp: 5;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  line-height: 1.5;
 }
