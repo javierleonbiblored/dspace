@@ -272,6 +272,7 @@ Links
 .link {
   color: var(--color-dos) !important;
   text-decoration: none;
+  cursor: pointer
 }
 
 .link:hover {
@@ -282,6 +283,7 @@ Links
 .link-title {
   color: var(--color-uno) !important;
   text-decoration: none;
+  cursor: pointer
 }
 
 .link-title:hover {
@@ -353,6 +355,17 @@ Botones
   background-color: var(--color-dos) !important;
 }
 
+.btn-secundary-bibliored{
+  border: 1px solid var(--color-dos) !important;
+  background: var(--color-dos);
+  color: white;
+}
+
+.btn-secundary-bibliored:hover{
+  border: 1px solid var(--color-dos) !important;
+  background: white;
+  color: var(--color-dos);
+}
 
 .btn-tags {
   background: var(--color-siete);
