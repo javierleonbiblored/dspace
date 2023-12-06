@@ -82,4 +82,8 @@ export class FileSectionComponent implements OnInit {
       }
     });
   }
+
+  dowloadFile(file: string): void{
+    window.location.href = file;
+  }
 }

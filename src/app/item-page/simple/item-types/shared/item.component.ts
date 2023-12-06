@@ -138,7 +138,7 @@ export class ItemComponent implements OnInit, AfterViewInit {
   }
 
   archivo(object: Item) {
-    console.log(JSON.stringify(object))
+    // console.log(JSON.stringify(object))
     this.bitstreamDataService.findAllByItemAndBundleName(object, 'ORIGINAL', {}).pipe(
       getFirstCompletedRemoteData(),
     ).subscribe((bitstreamsRD: RemoteData<PaginatedList<Bitstream>>) => {

@@ -22,9 +22,9 @@
                          <h5 class="card-title fs-montserrat-bold-h4 link-title"
                              data-toggle="tooltip" data-placement="top"
                              title="{{item?.allMetadata('dc.title')[0]?.value }}">{{item?.allMetadata('dc.title')[0]?.value }}</h5>
-                         <div class="text-uppercase">{{item?.allMetadata('dc.contributor.author')[0]?.value }}</div> <!-- dc.creator -->
-                         <div class="fs-tags pt-3 fixed-bottom position-absolute m-4">
-                           {{item?.allMetadata('dc.contributor.author')[0]?.value }} <!-- dc.subject-->
+                         <div class="text-uppercase">{{item?.allMetadata('dc.creator')[0]?.value }}</div>
+                         <div class="fs-tags pt-3">
+                           {{item?.allMetadata('dc.subject')[0]?.value }}
                          </div>
                      </div>
                  </div>

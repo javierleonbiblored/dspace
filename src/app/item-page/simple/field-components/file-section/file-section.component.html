@@ -1,7 +1,7 @@
 <ng-container *ngVar="(bitstreams$ | async) as bitstreams">
   <ds-metadata-field-wrapper *ngIf="bitstreams?.length > 0" [label]="label | translate">
-    <div class="file-section">
-      <ds-themed-file-download-link *ngFor="let file of bitstreams; let last=last;" [bitstream]="file" [item]="item">
+    <div class="file-section link">
+      <div *ngFor="let file of bitstreams; let last=last;" (click)="dowloadFile(file._links.content.href)">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#5F249F"
              class="bi bi-file-earmark-arrow-down-fill" viewBox="0 0 16 16">
           <path
@@ -10,7 +10,7 @@
         <span>{{file?.name.slice(file?.name.indexOf('.') + 1).toUpperCase() + ' '}}</span>
         <span>({{(file?.sizeBytes) | dsFileSize }})</span>
         <span *ngIf="!last" innerHTML="{{separator}}"></span>
-      </ds-themed-file-download-link>
+      </div>
       <ds-themed-loading *ngIf="isLoading" message="{{'loading.default' | translate}}"
                          [showMessage]="false"></ds-themed-loading>
       <div *ngIf="!isLastPage" class="mt-1" id="view-more">

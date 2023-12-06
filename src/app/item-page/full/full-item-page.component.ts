@@ -60,7 +60,6 @@ export class FullItemPageComponent extends ItemPageComponent implements OnInit, 
       filter((item: Item) => hasValue(item)),
       map((item: Item) => item.metadata),);
 
-    this.metadata$.subscribe(value => console.log(JSON.stringify(value)))
     this.subs.push(this.route.data.subscribe((data: Data) => {
         this.fromSubmissionObject = hasValue(data.wfi) || hasValue(data.wsi);
       })

@@ -72,7 +72,7 @@
           <a class="nav-link" id="tab2-tab" data-toggle="tab" href="#tab2">Tabla de contenido</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" id="tab3-tab" data-toggle="tab" href="#tab3" >Cómo citar</a>
+          <a class="nav-link" id="tab3-tab" data-toggle="tab" href="#tab3">Cómo citar</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" id="tab4-tab" data-toggle="tab" href="#tab4">Meta data</a>
@@ -87,32 +87,34 @@
               <div class="row">
                 <div class="col-9" *ngIf="bitstreamsOriginal !== []">
                   <div *ngFor="let file of bitstreamsOriginal;" class="mb-3">
-                    <div *ngIf="file.name.includes('.pdf') || file.name.includes('.epub')" class="pb-5">
+                    <div *ngIf="file._name.includes('.pdf') || file._name.includes('.epub')" class="pb-5">
                       <ngx-extended-pdf-viewer [src]="file._links.content.href" [useBrowserLocale]="true"
                                                [mobileFriendlyZoom]="'70%'"
                                                [logLevel]="logLevel"
                                                [height]="'40vh'" [zoom]="'auto'" [showPresentationModeButton]="true"
                                                [showHandToolButton]="false"
                                                [enablePinchOnMobile]="true" [showSecondaryToolbarButton]="true"
-                                               [textLayer]="false" [showFindHighlightAll]="false">
+                                               [textLayer]="false" [showFindHighlightAll]="false" >
                       </ngx-extended-pdf-viewer>
                     </div>
-                    <div *ngIf="file.name.includes('.mp4')" class="text-center">
+                    <div *ngIf="file._name.includes('.mp4')" class="text-center">
                       <video width="500" height="300" controls>
                         <source [src]="file._links.content.href" type="video/mp4">
                         <source [src]="file._links.content.href" type="video/ogg">
                       </video>
                     </div>
 
-                    <div *ngIf="file.name.includes('.mp3')" class="text-center">
+                    <div *ngIf="file._name.includes('.mp3')" class="text-center">
                       <audio controls>
                         <source [src]="file._links.content.href" type="audio/ogg">
                         <source [src]="file._links.content.href" type="audio/mpeg">
                       </audio>
                     </div>
 
-                    <div *ngIf="file.name.includes('.jpg') || file.name.includes('.png') || file.name.includes('.webp')"
-                         class="text-center" type="button">
+                    <div *ngIf="file._name.includes('.JPG') || file._name.includes('.jpg')  ||
+                    file._name.includes('.PNG') || file._name.includes('.png') ||
+                     file._name.includes('.WEBP') || file._name.includes('.webp')"
+                      class="text-center" type="button">
 
                       <angular-image-viewer [src]="[file._links.content.href]"
                                             [config]="config" [(index)]="imageIndex">
@@ -188,7 +190,7 @@
               <span>{{object.firstMetadataValue(['dc.creator'])}}</span>.
               <span> ({{object.firstMetadataValue(['dc.date'])}})</span>.
               <span class="font-italic"> {{object.firstMetadataValue(['dc.title'])}}</span>.
-              <span > {{object.firstMetadataValue(['dc.publisher'])}}</span>.
+              <span> {{object.firstMetadataValue(['dc.publisher'])}}</span>.
               <a href="{{urlPage}}"> {{urlPage}}</a>
             </div>
             <br>
@@ -246,7 +248,7 @@
           <a class="nav-link" id="tab2-tab-celular" data-toggle="tab" href="#tab2-celular">Tabla de contenido</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" id="tab3-tab-celular" data-toggle="tab" href="#tab3-celular" >Cómo citar</a>
+          <a class="nav-link" id="tab3-tab-celular" data-toggle="tab" href="#tab3-celular">Cómo citar</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" id="tab4-tab-celular" data-toggle="tab" href="#tab4-celular">Meta data</a>
@@ -387,7 +389,7 @@
               <span>{{object.firstMetadataValue(['dc.creator'])}}</span>.
               <span> ({{object.firstMetadataValue(['dc.date'])}})</span>.
               <span class="font-italic"> {{object.firstMetadataValue(['dc.title'])}}</span>.
-              <span > {{object.firstMetadataValue(['dc.publisher'])}}</span>.
+              <span> {{object.firstMetadataValue(['dc.publisher'])}}</span>.
               <a href="{{urlPage}}"> {{urlPage}}</a>
             </div>
             <br>
