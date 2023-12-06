@@ -475,13 +475,13 @@ const DIRECTIVES = [
 ];
 
 @NgModule({
-    imports: [
-        ...MODULES,
-        ...ROOT_MODULES,
-      ShareButtonsModule,
-      ShareIconsModule,
-      NgLeafletUniversalModule,
-    ],
+  imports: [
+    ...MODULES,
+    ...ROOT_MODULES,
+    ShareButtonsModule,
+    ShareIconsModule,
+    NgLeafletUniversalModule,
+  ],
   declarations: [
     ...PIPES,
     ...COMPONENTS,
