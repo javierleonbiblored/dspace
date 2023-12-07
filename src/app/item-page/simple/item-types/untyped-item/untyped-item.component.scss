@@ -65,3 +65,7 @@
   transform: rotate(38deg);
 }
 
+::ng-deep .button-container .button-container-bottom {
+  position: sticky !important;
+  bottom: 0;
+}

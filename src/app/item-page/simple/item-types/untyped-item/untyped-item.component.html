@@ -87,36 +87,35 @@
               <div class="row">
                 <div class="col-9">
                   <div *ngFor="let file of bitstreamsOriginal;" class="mb-3">
-                    <div *ngIf="file._name.includes('.pdf') || file._name.includes('.epub') && file._links.content.href" class="pb-5">
-                      <ngx-extended-pdf-viewer [src]="file._links.content.href" [useBrowserLocale]="true"
+                    <div *ngIf="file?._name?.includes('.pdf') || file?._name?.includes('.epub')" class="pb-5">
+                      <ngx-extended-pdf-viewer [src]="file?._links.content?.href" [useBrowserLocale]="true"
                                                [mobileFriendlyZoom]="'70%'"
                                                [logLevel]="logLevel"
                                                [height]="'40vh'" [zoom]="'auto'" [showPresentationModeButton]="true"
-                                               [showHandToolButton]="false"
-                                               [enablePinchOnMobile]="true" [showSecondaryToolbarButton]="true"
+                                               [showHandToolButton]="false" [showSecondaryToolbarButton]="true"
                                                [textLayer]="false" [showFindHighlightAll]="false" >
                       </ngx-extended-pdf-viewer>
                     </div>
-                    <div *ngIf="file._name.includes('.mp4')" class="text-center">
+                    <div *ngIf="file?._name?.includes('.mp4')" class="text-center">
                       <video width="500" height="300" controls>
-                        <source [src]="file._links.content.href" type="video/mp4">
-                        <source [src]="file._links.content.href" type="video/ogg">
+                        <source [src]="file?._links.content?.href" type="video/mp4">
+                        <source [src]="file?._links.content?.href" type="video/ogg">
                       </video>
                     </div>
 
-                    <div *ngIf="file._name.includes('.mp3')" class="text-center">
+                    <div *ngIf="file?._name?.includes('.mp3')" class="text-center">
                       <audio controls>
-                        <source [src]="file._links.content.href" type="audio/ogg">
-                        <source [src]="file._links.content.href" type="audio/mpeg">
+                        <source [src]="file?._links.content?.href" type="audio/ogg">
+                        <source [src]="file?._links.content?.href" type="audio/mpeg">
                       </audio>
                     </div>
 
-                    <div *ngIf="file._name.includes('.JPG') || file._name.includes('.jpg')  ||
-                    file._name.includes('.PNG') || file._name.includes('.png') ||
-                     file._name.includes('.WEBP') || file._name.includes('.webp')"
+                    <div *ngIf="file?._name?.includes('.JPG') || file?._name?.includes('.jpg')  ||
+                    file?._name?.includes('.PNG') || file?._name?.includes('.png') ||
+                     file?._name?.includes('.WEBP') || file?._name?.includes('.webp')"
                       class="text-center" type="button">
 
-                      <angular-image-viewer [src]="[file._links.content.href]"
+                      <angular-image-viewer [src]="[file?._links.content?.href]"
                                             [config]="config" [(index)]="imageIndex">
                       </angular-image-viewer>
 
@@ -128,7 +127,7 @@
                           <div class="modal-content">
                             <div class="modal-body">
 
-                              <angular-image-viewer [src]="[file._links.content.href]"
+                              <angular-image-viewer [src]="[file?._links.content?.href]"
                                                     [config]="config">
                               </angular-image-viewer>
                             </div>
@@ -264,33 +263,32 @@
                 <div class="col-12" *ngIf="bitstreamsOriginal !== []">
                   <div *ngFor="let file of bitstreamsOriginal;" class="mb-3">
                     <div *ngIf="file.name.includes('.pdf') || file.name.includes('.epub')" class="pb-5">
-                      <ngx-extended-pdf-viewer [src]="file._links.content.href" [useBrowserLocale]="true"
+                      <ngx-extended-pdf-viewer [src]="file?._links.content?.href" [useBrowserLocale]="true"
                                                [mobileFriendlyZoom]="'70%'"
                                                [logLevel]="logLevel"
                                                [height]="'40vh'" [zoom]="'auto'" [showPresentationModeButton]="true"
-                                               [showHandToolButton]="false"
-                                               [enablePinchOnMobile]="true" [showSecondaryToolbarButton]="true"
+                                               [showHandToolButton]="false" [showSecondaryToolbarButton]="true"
                                                [textLayer]="false" [showFindHighlightAll]="false">
                       </ngx-extended-pdf-viewer>
                     </div>
                     <div *ngIf="file.name.includes('.mp4')" class="text-center">
                       <video width="500" height="300" controls>
-                        <source [src]="file._links.content.href" type="video/mp4">
-                        <source [src]="file._links.content.href" type="video/ogg">
+                        <source [src]="file?._links.content?.href" type="video/mp4">
+                        <source [src]="file?._links.content?.href" type="video/ogg">
                       </video>
                     </div>
 
                     <div *ngIf="file.name.includes('.mp3')" class="text-center">
                       <audio controls>
-                        <source [src]="file._links.content.href" type="audio/ogg">
-                        <source [src]="file._links.content.href" type="audio/mpeg">
+                        <source [src]="file?._links.content?.href" type="audio/ogg">
+                        <source [src]="file?._links.content?.href" type="audio/mpeg">
                       </audio>
                     </div>
 
                     <div *ngIf="file.name.includes('.jpg') || file.name.includes('.png') || file.name.includes('.webp')"
                          class="text-center" type="button">
 
-                      <angular-image-viewer [src]="[file._links.content.href]"
+                      <angular-image-viewer [src]="[file?._links.content?.href]"
                                             [config]="config" [(index)]="imageIndex">
                       </angular-image-viewer>
 
@@ -302,7 +300,7 @@
                           <div class="modal-content">
                             <div class="modal-body">
 
-                              <angular-image-viewer [src]="[file._links.content.href]"
+                              <angular-image-viewer [src]="[file?._links.content?.href]"
                                                     [config]="config">
                               </angular-image-viewer>
                             </div>
