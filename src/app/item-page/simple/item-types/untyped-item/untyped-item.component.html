@@ -86,7 +86,7 @@
             <div class="container mb-3">
               <div class="row">
                 <div class="col-9">
-                  <span> prueba = {{bitstreamsOriginal.length}}</span>
+                  <span> prueba = {{bitstreamsOriginal?.length}}</span>
                   <div *ngFor="let file of bitstreamsOriginal;" class="mb-3">
                    <span> prueba = {{file?._links.content?.href}}</span>
                     <div *ngIf="file?._name?.includes('.pdf') || file?._name?.includes('.epub')" class="pb-5">
