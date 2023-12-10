@@ -61,7 +61,7 @@ Font size
 }
 
 .font-size-h3 {
-  font-size:  var(--fs-h3)  !important;
+  font-size: var(--fs-h3) !important;
 }
 
 .font-size-h4 {
@@ -82,7 +82,7 @@ Font size
   }
 
   .font-size-h3 {
-    font-size:  var(--fs-small-h3)  !important;
+    font-size: var(--fs-small-h3) !important;
   }
 
   .font-size-h4 {
@@ -170,6 +170,7 @@ Montserrat-Bold h1 - h5
   font-size: var(--fs-h1) !important;
   line-height: 1.5;
 }
+
 .fs-montserrat-bold-h2 {
   font-family: var(--f-montserrat-bold);
   font-size: var(--fs-h2) !important;
@@ -213,7 +214,7 @@ Montserrat-Bold h1 - h5
     line-height: 1.5;
 
   }
-  .fs-montserrat-bold-h4{
+  .fs-montserrat-bold-h4 {
     font-family: var(--f-montserrat-bold);
     font-size: var(--fs-small-h4) !important;
     line-height: 1.5;
@@ -336,9 +337,7 @@ Botones
 .btn-color-four {
   background: var(--color-dos);
   color: var(--color-siete);
-  font-family: var(--f-workSans-semiBold);
-  font-size: var(--fs-h5) !important;
-  padding: 5px 32px;
+
 }
 
 .btn-color-four:hover {
@@ -347,25 +346,41 @@ Botones
 }
 
 .btn-bibliored {
-  border: 1px solid var(--color-dos) !important;
+  background: var(--color-siete);
+  color: var(--color-uno);
+  border-color: var(--color-uno);;
   border-radius: 100rem;
+  font-family: var(--f-workSans-semiBold);
+  font-size: var(--fs-h5) !important;
+  padding: 5px 32px;
 }
 
-.btn-primary-secundary {
+.btn-bibliored:hover {
+  background: var(--color-uno);;
+  color: var(--color-siete);
+}
+
+.btn-bibliored-secundary {
   background-color: var(--color-dos) !important;
+  color: var(--color-cinco) !important;
+  border-radius: 100rem;
+  font-family: var(--f-workSans-semiBold);
+  font-size: var(--fs-h5) !important;
+  padding: 5px 32px;
 }
 
-.btn-primary-secundary:hover {
-  background-color: var(--color-cinco) !important;
+.btn-bibliored-secundary:hover {
+  background-color: var(--color-siete) !important;
+  color: var(--color-dos) !important
 }
 
-.btn-secundary-bibliored{
+.btn-secundary-bibliored {
   border: 1px solid var(--color-dos) !important;
   background: var(--color-dos);
   color: white;
 }
 
-.btn-secundary-bibliored:hover{
+.btn-secundary-bibliored:hover {
   border: 1px solid var(--color-dos) !important;
   background: white;
   color: var(--color-dos);
@@ -428,7 +443,7 @@ Botones
   background-color: var(--color-uno);
 }
 
-.descripcionText{
+.descripcionText {
   -webkit-line-clamp: 5;
   display: -webkit-box;
   -webkit-box-orient: vertical;
@@ -436,15 +451,51 @@ Botones
   line-height: 1.5;
 }
 
-.page-item .page-link{
+.page-item .page-link {
   color: var(--color-dos) !important;
 }
-.page-item.active .page-link{
+
+.page-item.active .page-link {
   color: var(--color-dos) !important;
   background: var(--color-tres) !important;
   border-color: var(--color-tres) !important;
 }
-.page-item .page-link:hover{
+
+.page-item .page-link:hover {
   color: var(--color-dos) !important;
   background: var(--color-tres) !important;
+}
+
+
+.cookie-modal .cm-btn.cm-btn-success, .klaro .context-notice .cm-btn.cm-btn-success, .klaro .cookie-notice .cm-btn.cm-btn-success {
+  background: var(--color-siete) !important;
+  color: var(--color-uno) !important;
+}
+
+.cookie-modal .cm-btn.cm-btn-success, .klaro .context-notice .cm-btn.cm-btn-success, .klaro .cookie-notice .cm-btn.cm-btn-success:hover {
+  background: var(--color-uno) !important;
+  color: var(--color-siete) !important;
+}
+
+.klaro .cookie-notice:not(.cookie-modal-notice) {
+  background: var(--color-seis) !important;
+  color: var(--color-uno) !important;
+}
+
+.klaro .cookie-modal .cm-btn, .klaro .context-notice .cm-btn, .klaro .cookie-notice .cm-btn {
+  background: var(--color-uno) !important;
+  color: var(--color-siete) !important;
+}
+
+.klaro .cookie-modal .cm-btn, .klaro .context-notice .cm-btn, .klaro .cookie-notice .cm-btn:hover {
+  background: var(--color-siete) !important;
+  color: var(--color-uno) !important;
+}
+
+.klaro .cookie-modal a, .klaro .context-notice a, .klaro .cookie-notice a {
+  color: var(--color-uno) !important;
+}
+
+.klaro .cookie-modal p, .klaro .cookie-modal strong, .klaro .cookie-modal h1, .klaro .cookie-modal h2, .klaro .cookie-modal ul, .klaro .cookie-modal li, .klaro .context-notice p, .klaro .context-notice strong, .klaro .context-notice h1, .klaro .context-notice h2, .klaro .context-notice ul, .klaro .context-notice li, .klaro .cookie-notice p, .klaro .cookie-notice strong, .klaro .cookie-notice h1, .klaro .cookie-notice h2, .klaro .cookie-notice ul, .klaro .cookie-notice li {
+  color: var(--color-dos) !important;
 }

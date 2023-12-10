@@ -53,5 +53,13 @@ export class UntypedItemComponent extends ItemComponent implements OnInit {
         prev: true
     },
   };
+  enviarUrl(value: string, creador: boolean, tema: boolean) {
+    if (tema){
+      this.router.navigate(['/search'], { queryParams: { query: 'dc.subject:' + value } });
+    }
+    if (creador){
+      this.router.navigate(['/search'], { queryParams: { query: 'dc.creator:' + value } });
+    }
+  }
 
 }

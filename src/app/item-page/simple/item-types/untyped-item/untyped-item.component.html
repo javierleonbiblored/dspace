@@ -25,15 +25,18 @@
       <ds-media-viewer [item]="object" [videoOptions]="mediaViewer.video"></ds-media-viewer>
     </ng-container>
 
-    <div class="pl-5">
+    <div class="pl-3">
       <ds-themed-item-page-file-section [item]="object"></ds-themed-item-page-file-section>
 
-      <ds-metadata-representation-list class="ds-item-page-mixed-author-field"
-                                       [parentItem]="object"
-                                       [itemType]="'Person'"
-                                       [metadataFields]="['dc.creator']"
-                                       [label]="'relationships.isAuthorOf' | translate">
-      </ds-metadata-representation-list>
+      <div class="pb-2">
+        <div class="fs-montserrat-bold-h5">Creador:</div>
+        <div class="link" *ngFor="let value of object.allMetadataValues('dc.creator')" >
+          <div  (click)="enviarUrl(value, true, false)">
+            {{value}}
+          </div>
+        </div>
+      </div>
+
       <!-- Autor -->
       <ds-generic-item-page-field [item]="object"
                                   [fields]="['dc.publisher']"
@@ -48,10 +51,20 @@
       </ds-generic-item-page-field>-->
       <ds-item-page-collections [item]="object"></ds-item-page-collections>
       <!-- Tema -->
-      <ds-generic-item-page-field [item]="object"
+
+
+    <!--  <ds-generic-item-page-field [item]="object"
                                   [fields]="['dc.subject']"
                                   [label]="'Tema'">
-      </ds-generic-item-page-field>
+      </ds-generic-item-page-field>-->
+      <div>
+        <div class="fs-montserrat-bold-h5">Tema:</div>
+        <div class="link" *ngFor="let value of object.allMetadataValues('dc.subject')" >
+          <div  (click)="enviarUrl(value, false, true)">
+            {{value}}
+          </div>
+        </div>
+      </div>
     </div>
 
   </div>
@@ -160,7 +173,7 @@
                   </ds-generic-item-page-field>
 
                   <ds-generic-item-page-field [item]="object"
-                                              [fields]="['dc.language.iso']"
+                                              [fields]="['dc.language']"
                                               [label]="'Idioma'">
                   </ds-generic-item-page-field>
 
@@ -356,7 +369,7 @@
                     </ds-generic-item-page-field>
 
                     <ds-generic-item-page-field [item]="object"
-                                                [fields]="['dc.language.iso']"
+                                                [fields]="['dc.language']"
                                                 [label]="'Idioma'">
                     </ds-generic-item-page-field>
 
