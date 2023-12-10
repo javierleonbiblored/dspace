@@ -543,4 +543,22 @@ a {
 }
 
 
+.nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link {
+  color: var(--color-cuatro);
+  background-color: #fff;
+  border-color: transparent transparent transparent;
+  border-bottom: 2px solid var(--color-cuatro);
+}
 
+.nav-tabs .nav-link:hover, .nav-tabs .nav-link:focus {
+  isolation: isolate;
+  border-color: transparent transparent transparent;
+  border-bottom: 2px solid var(--color-cuatro);
+}
+
+
+.link-fraquent-questions:hover {
+  text-decoration: underline;
+  transition: margin-left 0.5s;
+   margin-left: 30px;
+}

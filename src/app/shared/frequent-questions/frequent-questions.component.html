@@ -1,12 +1,12 @@
 <div class="container">
   <div class="row">
-    <div class="col-12  text-center py-5">
+    <div class="col-12   text-center pt-5">
       <div [ngClass]="href ? 'fs-montserrat-bold-h1' : 'fs-montserrat-bold-h2'" class=" text-center">Preguntas Frecuentes
       </div>
     </div>
 
-<!--    <div class="container mt-5">
-      <ul class="nav nav-tabs my-5 fs-workSans-semiBold" id="myTabs">
+    <div class="container ">
+      <ul class="nav nav-tabs my-5 fs-workSans-semiBold d-flex justify-content-center border-bottom-0" id="myTabs" *ngIf="href">
         <li class="nav-item">
           <a class="nav-link active" id="tab1-tab" data-toggle="tab" href="#tab1">General</a>
         </li>
@@ -22,37 +22,222 @@
       </ul>
 
 
-      <div class="tab-content mt-2" id="myTabsContent">
+      <div class="tab-content  col-md-8 offset-md-2" id="myTabsContent" [ngClass]="href ? 'mt-2' : 'mt-5' ">
+        <!-- accordionGeneral -->
         <div class="tab-pane fade show active" id="tab1">
-          <div id="accordion1">
-
+          <div class="accordion" id="accordionGeneral">
+            <!-- headingOne -->
+            <div class="card">
+              <div class="card-header" id="headingOne">
+                <h2 class="mb-0">
+                  <div class="fs-montserrat-bold-h3 link-fraquent-questions" data-toggle="collapse"
+                       data-target="#collapseOne"
+                       aria-expanded="true" aria-controls="collapseOne">Qué es un repositorio institucional
+                  </div>
+                </h2>
+              </div>
+              <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionGeneral">
+                <div class="card-body px-md-5 py-md-4 font-size-h4">
+                <span>
+                  Un repositorio es una estructura web que permite organizar, almacenar, preservar y difundir,
+                  de manera abierta, documentación de todo tipo y en todos los formatos posibles, producidos por una
+                  institución como resultado de sus actividades propias.
+                </span>
+                </div>
+              </div>
+            </div>
+            <hr>
+            <!-- headingTwo -->
+            <div class="card">
+              <div class="card-header" id="headingTwo">
+                <h2 class="mb-0">
+                  <div class="fs-montserrat-bold-h3 link-fraquent-questions" type="button" data-toggle="collapse"
+                       data-target="#collapseTwo"
+                       aria-expanded="false" aria-controls="collapseTwo">Qué es el Repositorio Institucional de BibloRed
+                  </div>
+                </h2>
+              </div>
+              <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionGeneral">
+                <div class="card-body font-size-h4">
+                  Es una plataforma donde se gestionan, en acceso abierto, los contenidos digitales desarrollados
+                  conjuntamente por usuarios de la  <a href="https://www.biblored.gov.co/" target="_blank"> Red Distrital de Bibliotecas Públicas de Bogotá, BibloRed</a>,
+                  en el marco de sus proyectos, programas y procesos.
+                  Esta gestión se extiende, además, a los contenidos producto de los proyectos editoriales
+                  de BibloRed y a los contenidos que constituyen la memoria institucional de la Red.
+                  Estos recursos abordan temas relacionados con la lectura, la escritura y la oralidad,
+                  la historia y memoria de Bogotá, así como el quehacer de las bibliotecas públicas,
+                  la cultura digital, entre otros, los cuales son puestos a disposición del público de manera abierta.
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
+        <!-- accordionContenidos -->
         <div class="tab-pane fade" id="tab2">
-          <div id="accordion2">
-            <h1>Tag2</h1>
-
+          <div class="accordion" id="accordionContenidos">
+            <!-- collapseThree -->
+            <div class="card">
+              <div class="card-header" id="headingThree">
+                <h2 class="mb-0">
+                  <div class="fs-montserrat-bold-h3 link-fraquent-questions" data-toggle="collapse"
+                       data-target="#collapseThree"
+                       aria-expanded="true" aria-controls="collapseThree">Qué tipo de recursos encuentro en el repositorio
+                  </div>
+                </h2>
+              </div>
+              <div id="collapseThree" class="collapse show" aria-labelledby="headingThree" data-parent="#accordionGeneral">
+                <div class="card-body px-md-5 py-md-4 font-size-h4">
+                <span>
+                 En el repositorio se encuentran recursos desarrollados conjuntamente por usuarios de la
+                  <a href="https://www.biblored.gov.co/" target="_blank"> Red Distrital de Bibliotecas Públicas de Bogotá, BibloRed</a>,
+                  en el marco de sus
+                  proyectos, programas y procesos, extendiéndose, además, a los contenidos producto de los
+                  proyectos editoriales de BibloRed y a los contenidos que constituyen la memoria institucional
+                  de la Red. Estos recursos abordan temas relacionados con la lectura, la escritura y la oralidad,
+                  la historia y memoria de Bogotá, patrimonio local, así como el quehacer de las bibliotecas públicas,
+                  la cultura digital, entre otros, los cuales son puestos a disposición del público de manera abierta.
+                </span>
+                </div>
+              </div>
+            </div>
+            <hr>
+            <!-- collapseFour -->
+            <div class="card">
+              <div class="card-header" id="headingFour">
+                <h2 class="mb-0">
+                  <div class="fs-montserrat-bold-h3 link-fraquent-questions" type="button" data-toggle="collapse"
+                       data-target="#collapseFour"
+                       aria-expanded="false" aria-controls="collapseFour">Qué tipo de formatos encuentro en el repositorio
+                  </div>
+                </h2>
+              </div>
+              <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionContenidos">
+                <div class="card-body font-size-h4">
+                  El repositorio institucional de BibloRed cuenta con una amplia variedad de contenidos,
+                  en formatos diversos: textos (PDF), imágenes (JPEG, PNG), videos (MP4), audio (MP3);
+                  estos formatos son estandarizados, abiertos, que pueden ser leídos tanto por software
+                  propietario como libre.
+                </div>
+              </div>
+            </div>
+            <hr>
+            <div class="card">
+              <div class="card-header" id="headingFive">
+                <h2 class="mb-0">
+                  <div class="fs-montserrat-bold-h3 link-fraquent-questions" type="button" data-toggle="collapse"
+                       data-target="#collapseFive"
+                       aria-expanded="false" aria-controls="collapseFive">Cómo consulto los contenidos del repositorio
+                  </div>
+                </h2>
+              </div>
+              <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordionContenidos">
+                <div class="card-body font-size-h4">
+                  Todos y cada uno de los recursos del repositorio pueden ser consultados a través del buscador
+                  de la plataforma; puede realizar una búsqueda sencilla por autor, título, palabras clave, o
+                  puede realizar una búsqueda avanzada cruzando los anteriores ítems. Una vez tenga los resultados
+                  de la búsqueda, los puede precisar aún más utilizando los diferentes filtros a su disposición.
+                </div>
+              </div>
+            </div>
+            <hr>
+            <div class="card">
+              <div class="card-header" id="headingSix">
+                <h2 class="mb-0">
+                  <div class="fs-montserrat-bold-h3 link-fraquent-questions" type="button" data-toggle="collapse"
+                       data-target="#collapseSix"
+                       aria-expanded="false" aria-controls="collapseSix">Qué puedo hacer con los recursos del Repositorio
+                  </div>
+                </h2>
+              </div>
+              <div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordionContenidos">
+                <div class="card-body font-size-h4">
+                  Los recursos del repositorio son de uso libre y abierto por lo que pueden ser consultados
+                  sin restricción y/o descargados para su consulta. Algunos recursos cuentan con
+                  <a href="https://creativecommons.org/licenses/?lang=es" target="_blank"> licencia creative commons</a>,
+                  que conceden ciertos derechos básicos,
+                  los cuales deben ser tenidos en cuenta a la hora de modificar y /o distribuir el contenido de los mismos.
+                </div>
+              </div>
+            </div>
+            <hr>
           </div>
         </div>
 
         <div class="tab-pane fade" id="tab3">
-          <div id="accordion3">
-
+          <div class="accordion" id="accordionCitar">
+            <!-- headingSeven -->
+            <div class="card">
+              <div class="card-header" id="headingSeven">
+                <h2 class="mb-0">
+                  <div class="fs-montserrat-bold-h3 link-fraquent-questions" data-toggle="collapse"
+                       data-target="#collapseSeven"
+                       aria-expanded="true" aria-controls="collapseSeven">Cómo citar
+                  </div>
+                </h2>
+              </div>
+              <div id="collapseSeven" class="collapse show" aria-labelledby="headingSeven" data-parent="#accordionCitar">
+                <div class="card-body px-md-5 py-md-4 font-size-h4">
+                <span>
+                 Cada recurso tiene la estructura de cómo debe ser citado. La citación de los recursos está construida
+                  con las normas APA, 7ma. edición Si necesita más información, en
+                  <a href="https://normas-apa.org/citas/" target="_blank">https://normas-apa.org/citas/</a>,
+                </span>
+                </div>
+              </div>
+            </div>
           </div>
+
         </div>
 
         <div class="tab-pane fade" id="tab4">
-          <div id="accordion4">
-
+          <div class="accordion" id="accordionPolíticas">
+            <!-- headingEight -->
+            <div class="card">
+              <div class="card-header" id="headingEight">
+                <h2 class="mb-0">
+                  <div class="fs-montserrat-bold-h3 link-fraquent-questions" data-toggle="collapse"
+                       data-target="#collapseEight"
+                       aria-expanded="true" aria-controls="collapseEight">Puedo subir contenidos al repositorio
+                  </div>
+                </h2>
+              </div>
+              <div id="collapseEight" class="collapse show" aria-labelledby="headingEight" data-parent="#accordionPolíticas">
+                <div class="card-body px-md-5 py-md-4 font-size-h4">
+                <span>
+                 El repositorio funciona con un modelo centralizado; los administradores de la plataforma se encargan
+                  de subir los contenidos previa evaluación y aprobación de los mismos, teniendo en cuenta los
+                  criterios referidos en el documento “Políticas del repositorio BibloRed” (link al documento)
+                </span>
+                </div>
+              </div>
+            </div>
+            <hr>
+            <!-- headingNine -->
+            <div class="card">
+              <div class="card-header" id="headingNine">
+                <h2 class="mb-0">
+                  <div class="fs-montserrat-bold-h3 link-fraquent-questions" type="button" data-toggle="collapse"
+                       data-target="#collapseNine"
+                       aria-expanded="false" aria-controls="collapseNine">Cómo puedo contactar a los administradores
+                  </div>
+                </h2>
+              </div>
+              <div id="collapseNine" class="collapse" aria-labelledby="headingNine" data-parent="#accordionPolíticas">
+                <div class="card-body font-size-h4">
+                  Referir directamente el (los) correo(s), o establecer un formulario de “contáctenos”, o ambas alternativas?
+                </div>
+              </div>
+            </div>
           </div>
+
         </div>
       </div>
-    </div>-->
+    </div>
 
 
 
-    <div class="col-12 col-md-8 offset-md-2 ">
+  <!--  <div class="col-12 col-md-8 offset-md-2 ">
 
       <div class="accordion" id="accordionExample">
         <div class="card">
@@ -183,6 +368,6 @@
         </div>
         <hr>
       </div>
-    </div>
+    </div>-->
   </div>
 </div>
