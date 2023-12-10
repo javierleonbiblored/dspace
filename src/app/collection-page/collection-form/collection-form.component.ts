@@ -71,6 +71,8 @@ export class CollectionFormComponent extends ComColFormComponent<Collection> imp
     if (this.dso && this.dso.metadata) {
       currentRelationshipValue = this.dso.metadata['dspace.entity.type'];
     }
+    console.log(JSON.stringify(this.dso))
+
 
     const entities$: Observable<ItemType[]> = this.entityTypeService.findAll({ elementsPerPage: 100, currentPage: 1 }).pipe(
       getFirstSucceededRemoteListPayload()

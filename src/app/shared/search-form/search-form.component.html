@@ -9,7 +9,7 @@
       <input type="text" [(ngModel)]="query" name="query" class="form-control" attr.aria-label="{{ searchPlaceholder }}"
              [attr.data-test]="'search-box' | dsBrowserOnly" >
       <span class="input-group-append">
-        <button type="submit" class="search-button btn btn-{{brandColor}} btn-bibliored btn-color-three border-0"
+        <button type="submit" class="search-button btn btn-{{brandColor}} btn-secundary-bibliored-search btn-color-three"
                 [attr.data-test]="'search-button' | dsBrowserOnly">
                 {{ ('search.form.search' | translate) }}<i class="fas fa-search ml-2"></i>
         </button>

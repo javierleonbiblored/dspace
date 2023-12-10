@@ -1,5 +1,5 @@
 <div class="row m-2 ">
-  <div *ngIf="showThumbnails" class="col-5 col-md-2 align-items-center d-flex">
+  <div *ngIf="showThumbnails" class="col-5 col-md-2">
     <a *ngIf="linkType != linkTypes.None" [target]="(linkType == linkTypes.ExternalLink) ? '_blank' : '_self'"
        rel="noopener noreferrer"
        [routerLink]="[itemPageRoute]" class="dont-break-out">

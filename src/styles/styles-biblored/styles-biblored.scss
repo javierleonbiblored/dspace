@@ -386,6 +386,22 @@ Botones
   color: var(--color-dos);
 }
 
+.btn-secundary-bibliored-search {
+  border: 1px solid var(--color-dos) !important;
+  background: var(--color-dos);
+  color: white;
+  border-radius: 100rem;
+  font-family: var(--f-workSans-semiBold);
+  font-size: var(--fs-h5) !important;
+  padding: 5px 32px;
+}
+
+.btn-secundary-bibliored-search:hover {
+  border: 1px solid var(--color-dos) !important;
+  background: white;
+  color: var(--color-dos);
+}
+
 .btn-tags {
   background: var(--color-siete);
   color: var(--color-uno);
@@ -462,8 +478,8 @@ Botones
 }
 
 .page-item .page-link:hover {
-  color: var(--color-dos) !important;
-  background: var(--color-tres) !important;
+  color: white !important;
+  background: var(--color-dos) !important;
 }
 
 
@@ -499,3 +515,32 @@ Botones
 .klaro .cookie-modal p, .klaro .cookie-modal strong, .klaro .cookie-modal h1, .klaro .cookie-modal h2, .klaro .cookie-modal ul, .klaro .cookie-modal li, .klaro .context-notice p, .klaro .context-notice strong, .klaro .context-notice h1, .klaro .context-notice h2, .klaro .context-notice ul, .klaro .context-notice li, .klaro .cookie-notice p, .klaro .cookie-notice strong, .klaro .cookie-notice h1, .klaro .cookie-notice h2, .klaro .cookie-notice ul, .klaro .cookie-notice li {
   color: var(--color-dos) !important;
 }
+
+
+a {
+  color: var(--color-dos);
+}
+/*a:hover {
+  color: var(--color-uno) !important;
+}*/
+
+
+.list-group-item.active {
+  z-index: 2;
+  color: #fff;
+  background-color: var(--color-uno);
+  border-color:var(--color-uno);
+}
+
+.btn-primary{
+  background:  var(--color-dos);
+  color: var(--color-siete);
+  border-color: var(--color-dos);
+}
+.btn-primary:hover{
+  background: var(--color-siete);
+  color: var(--color-dos);
+}
+
+
+

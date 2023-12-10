@@ -12,6 +12,7 @@
             <ds-comcol-page-header
               [name]="collection.name">
             </ds-comcol-page-header>
+            <!-- TODO: organizar estos datos quemados con el endpoint que se realiza desde el backend-->
             <div class="fs-workSans-semiBold">
               [99 Contenidos]
             </div>
@@ -21,35 +22,35 @@
             </div>
 
             <div class="row mt-4">
-              <!-- Collection description -->
-              <div class="col-7 mt-2">
-                <ds-truncatable-part [id]="collection.id" [minLines]="1" class="item-list-abstract">
-                  <span [ngClass]="{'text-muted': !collection.firstMetadataValue('dc.description.abstract')}"
-                        [innerHTML]="(collection.firstMetadataValue('dc.description.abstract')) || ('mydspace.results.no-abstract' | translate)">
-                  </span>
-                </ds-truncatable-part>
-                <div>
-                  <ds-share-buttons></ds-share-buttons>
-                </div>
-              </div>
-              <!-- Collection logo -->
-              <div class="col-5">
+              <div class="col-12 d-block d-sm-none">
                 <ds-comcol-page-logo *ngIf="logoRD$"
                                      [logo]="(logoRD$ | async)?.payload"
                                      [alternateText]="'Collection Logo'">
                 </ds-comcol-page-logo>
               </div>
+              <!-- Collection description -->
+              <div class="col-12 col-sm-7 mt-2">
+                <ds-truncatable-part [id]="collection.id" [minLines]="1" class="item-list-abstract">
+                  <span [ngClass]="{'text-muted': !collection.firstMetadataValue('dc.description.abstract')}"
+                        [innerHTML]="(collection.firstMetadataValue('dc.description.abstract')) || ('mydspace.results.no-abstract' | translate)">
+                  </span>
+                </ds-truncatable-part>
 
-
+                <div class="fixed-bottom position-absolute d-none d-sm-block pl-3">
+                  <ds-share-buttons></ds-share-buttons>
+                </div>
+                <div class="d-block d-sm-none mt-3">
+                  <ds-share-buttons></ds-share-buttons>
+                </div>
+              </div>
+              <!-- Collection logo -->
+              <div class="col-5 d-none d-sm-block">
+                <ds-comcol-page-logo *ngIf="logoRD$"
+                                     [logo]="(logoRD$ | async)?.payload"
+                                     [alternateText]="'Collection Logo'">
+                </ds-comcol-page-logo>
+              </div>
             </div>
-
-
-            <!-- Handle -->
-            <!--<ds-themed-comcol-page-handle
-              [content]="collection.handle"
-              [title]="'collection.page.handle'">
-            </ds-themed-comcol-page-handle>-->
-            <!-- Introductory text -->
             <ds-comcol-page-content
               [content]="collection.introductoryText"
               [hasInnerHtml]="true">
@@ -68,33 +69,6 @@
 
         </div>
         <ds-themed-search-page></ds-themed-search-page>
-        <!-- <section class="comcol-page-browse-section">
-           &lt;!&ndash; Browse-By Links &ndash;&gt;
-           &lt;!&ndash;<ds-themed-comcol-page-browse-by
-             [id]="collection.id"
-             [contentType]="collection.type">
-           </ds-themed-comcol-page-browse-by>&ndash;&gt;
-
-           <ng-container *ngVar="(itemRD$ | async) as itemRD">
-             <div class="mt-4" *ngIf="itemRD?.hasSucceeded" @fadeIn>
-               <h3 class="sr-only">{{'collection.page.browse.recent.head' | translate}}</h3>
-               <ds-viewable-collection
-                 [config]="paginationConfig"
-                 [sortConfig]="sortConfig"
-                 [objects]="itemRD"
-                 [hideGear]="true">
-               </ds-viewable-collection>
-             </div>
-             <ds-error *ngIf="itemRD?.hasFailed"
-                       message="{{'error.recent-submissions' | translate}}"></ds-error>
-             <ds-themed-loading *ngIf="!itemRD || itemRD.isLoading"
-                                message="{{'loading.recent-submissions' | translate}}"></ds-themed-loading>
-             <div *ngIf="!itemRD?.isLoading && itemRD?.payload?.page.length === 0" class="alert alert-info w-100"
-                  role="alert">
-               {{'collection.page.browse.recent.empty' | translate}}
-             </div>
-           </ng-container>
-         </section>-->
         <footer *ngIf="collection.copyrightText" class="border-top my-5 pt-4">
           <!-- Copyright -->
           <ds-comcol-page-content
