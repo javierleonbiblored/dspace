@@ -1,423 +1,457 @@
 <ds-themed-results-back-button *ngIf="showBackButton | async" [back]="back"></ds-themed-results-back-button>
 <div class="row" *ngIf="iiifEnabled">
-  <div class="col-12">
-    <ds-mirador-viewer id="iiif-viewer"
-                       [object]="object"
-                       [searchable]="iiifSearchEnabled"
-                       [query]="iiifQuery$ | async">
-    </ds-mirador-viewer>
-  </div>
+    <div class="col-12">
+        <ds-mirador-viewer id="iiif-viewer"
+                           [object]="object"
+                           [searchable]="iiifSearchEnabled"
+                           [query]="iiifQuery$ | async">
+        </ds-mirador-viewer>
+    </div>
 </div>
 
 <!-- diseño computador-->
 <div class="row d-none d-md-flex ">
-  <div class="col-xs-12 col-md-4">
-    <!--Thumbnail Item-->
+    <div class="col-xs-12 col-md-4">
+        <!--Thumbnail Item-->
 
-    <ng-container *ngIf="!mediaViewer.image">
-      <ds-metadata-field-wrapper [hideIfNoTextContent]="false">
-        <ds-thumbnail [thumbnail]="object?.thumbnail | async" [limitWidth]="false"></ds-thumbnail>
-      </ds-metadata-field-wrapper>
-    </ng-container>
-
-    <!--No hay imagen de thumbnail Item-->
-    <ng-container *ngIf="mediaViewer.image">
-      <ds-media-viewer [item]="object" [videoOptions]="mediaViewer.video"></ds-media-viewer>
-    </ng-container>
-
-    <div class="pl-3">
-      <ds-themed-item-page-file-section [item]="object"></ds-themed-item-page-file-section>
-
-      <div class="pb-2">
-        <div class="fs-montserrat-bold-h5">Creador:</div>
-        <div class="link" *ngFor="let value of object.allMetadataValues('dc.creator')" >
-          <div  (click)="enviarUrl(value, true, false)">
-            {{value}}
-          </div>
+        <div class="p-3">
+            <ng-container *ngIf="!mediaViewer.image">
+                <ds-metadata-field-wrapper [hideIfNoTextContent]="false">
+                    <ds-thumbnail [thumbnail]="object?.thumbnail | async" [limitWidth]="false"></ds-thumbnail>
+                </ds-metadata-field-wrapper>
+            </ng-container>
         </div>
-      </div>
-
-      <!-- Autor -->
-      <ds-generic-item-page-field [item]="object"
-                                  [fields]="['dc.publisher']"
-                                  [label]="'item.page.publisher'">
-      </ds-generic-item-page-field>
-      <!-- Fecha -->
-      <ds-item-page-date-field [item]="object"></ds-item-page-date-field>
-      <!-- Colección -->
-      <!--<ds-generic-item-page-field [item]="object"
-                                  [fields]="['dc.publisher']"
-                                  [label]="'Colección'">
-      </ds-generic-item-page-field>-->
-      <ds-item-page-collections [item]="object"></ds-item-page-collections>
-      <!-- Tema -->
 
 
-    <!--  <ds-generic-item-page-field [item]="object"
-                                  [fields]="['dc.subject']"
-                                  [label]="'Tema'">
-      </ds-generic-item-page-field>-->
-      <div>
-        <div class="fs-montserrat-bold-h5">Tema:</div>
-        <div class="link" *ngFor="let value of object.allMetadataValues('dc.subject')" >
-          <div  (click)="enviarUrl(value, false, true)">
-            {{value}}
-          </div>
+        <!--No hay imagen de thumbnail Item-->
+        <ng-container *ngIf="mediaViewer.image">
+            <ds-media-viewer [item]="object" [videoOptions]="mediaViewer.video"></ds-media-viewer>
+        </ng-container>
+
+        <div class="pl-3">
+            <ds-themed-item-page-file-section [item]="object"></ds-themed-item-page-file-section>
+
+            <div class="pb-2" *ngIf="object.allMetadataValues('dc.creator').length > 0">
+                <div class="fs-montserrat-bold-h5">Creador:</div>
+                <div class="link" *ngFor="let value of object.allMetadataValues('dc.creator')">
+                    <div (click)="enviarUrl(value, true, false)">
+                        {{value}}
+                    </div>
+                </div>
+            </div>
+
+            <!-- Autor -->
+            <ds-generic-item-page-field [item]="object"
+                                        [fields]="['dc.publisher']"
+                                        [label]="'item.page.publisher'">
+            </ds-generic-item-page-field>
+            <!-- Fecha -->
+            <ds-item-page-date-field [item]="object"></ds-item-page-date-field>
+            <!-- Colección -->
+            <!--<ds-generic-item-page-field [item]="object"
+                                        [fields]="['dc.publisher']"
+                                        [label]="'Colección'">
+            </ds-generic-item-page-field>-->
+            <ds-item-page-collections [item]="object"></ds-item-page-collections>
+            <!-- Tema -->
+
+
+            <!--  <ds-generic-item-page-field [item]="object"
+                                          [fields]="['dc.subject']"
+                                          [label]="'Tema'">
+              </ds-generic-item-page-field>-->
+            <div *ngIf="object.allMetadataValues('dc.subject').length > 0">
+                <div class="fs-montserrat-bold-h5">Tema:</div>
+                <div class="link" *ngFor="let value of object.allMetadataValues('dc.subject')">
+                    <div (click)="enviarUrl(value, false, true)">
+                        {{value}}
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
+
     </div>
+    <div class="col-xs-12 col-md-8 pt-5 mt-5">
+        <!--Title Item-->
 
-  </div>
-  <div class="col-xs-12 col-md-8 pt-5 mt-5">
-    <!--Title Item-->
+        <div class="d-flex flex-row">
+            <ds-item-page-title-field [item]="object" class="mr-auto fs-montserrat-bold-h1">
+            </ds-item-page-title-field>
+        </div>
 
-    <div class="d-flex flex-row">
-      <ds-item-page-title-field [item]="object" class="mr-auto fs-montserrat-bold-h1">
-      </ds-item-page-title-field>
-    </div>
-
-    <div class="container mt-5">
-      <ul class="nav nav-tabs my-5 fs-workSans-semiBold border-bottom-0" id="myTabs">
-        <li class="nav-item">
-          <a class="nav-link active" id="tab1-tab" data-toggle="tab" href="#tab1">Info general</a>
-        </li>
-        <li class="nav-item" *ngIf="object.allMetadata('dc.description.tableOfContents').length > 0">
-          <a class="nav-link" id="tab2-tab" data-toggle="tab" href="#tab2">Tabla de contenido</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" id="tab3-tab" data-toggle="tab" href="#tab3">Cómo citar</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" id="tab4-tab" data-toggle="tab" href="#tab4">Meta data</a>
-        </li>
-      </ul>
+        <div class="container mt-5">
+            <ul class="nav nav-tabs my-5 fs-workSans-semiBold" id="myTabs">
+                <li class="nav-item">
+                    <a class="nav-link active" id="tab1-tab" data-toggle="tab" href="#tab1">Info general</a>
+                </li>
+                <li class="nav-item" *ngIf="object.allMetadata('dc.description.tableOfContents').length > 0">
+                    <a class="nav-link" id="tab2-tab" data-toggle="tab" href="#tab2">Tabla de contenido</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="tab3-tab" data-toggle="tab" href="#tab3">Cómo citar</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="tab4-tab" data-toggle="tab" href="#tab4">Meta data</a>
+                </li>
+            </ul>
 
 
-      <div class="tab-content mt-2" id="myTabsContent">
-        <div class="tab-pane fade show active" id="tab1">
-          <div id="accordion1">
-            <div class="container mb-3">
-              <div class="row">
-                <div class="col-9">
-                  <span> prueba = {{bitstreamsOriginal?.length}}</span>
-                  <div *ngFor="let file of bitstreamsOriginal;" class="mb-3">
-                   <span> prueba = {{file?._links.content?.href}}</span>
-                    <div *ngIf="file?._name?.includes('.pdf') || file?._name?.includes('.epub')" class="pb-5">
-                      <ngx-extended-pdf-viewer [src]="file?._links.content?.href" [useBrowserLocale]="true"
-                                               [mobileFriendlyZoom]="'70%'"
-                                               [logLevel]="logLevel"
-                                               [height]="'40vh'" [zoom]="'auto'" [showPresentationModeButton]="true"
-                                               [showHandToolButton]="false" [showSecondaryToolbarButton]="true"
-                                               [textLayer]="false" [showFindHighlightAll]="false" >
-                      </ngx-extended-pdf-viewer>
-                    </div>
-                    <div *ngIf="file?._name?.includes('.mp4')" class="text-center">
-                      <video width="500" height="300" controls>
-                        <source [src]="file?._links.content?.href" type="video/mp4">
-                        <source [src]="file?._links.content?.href" type="video/ogg">
-                      </video>
-                    </div>
+            <div class="tab-content mt-2" id="myTabsContent">
+                <div class="tab-pane fade show active" id="tab1">
+                    <div id="accordion1">
+                        <div class="container mb-3">
+                            <div class="row">
+                                <div class="col-9">
+                                    <span> prueba = {{bitstreamsOriginal?.length}}</span>
+                                    <div *ngFor="let file of bitstreamsOriginal;" class="mb-3">
+                                        <span> prueba = {{file?._links.content?.href}}</span>
+                                        <div *ngIf="file?._name?.includes('.pdf') || file?._name?.includes('.epub')"
+                                             class="pb-5">
+                                            <ngx-extended-pdf-viewer [src]="file?._links.content?.href"
+                                                                     [useBrowserLocale]="true"
+                                                                     [mobileFriendlyZoom]="'70%'"
+                                                                     [logLevel]="logLevel"
+                                                                     [height]="'40vh'" [zoom]="'auto'"
+                                                                     [showPresentationModeButton]="true"
+                                                                     [showHandToolButton]="false"
+                                                                     [showSecondaryToolbarButton]="true"
+                                                                     [textLayer]="false" [showFindHighlightAll]="false">
+                                            </ngx-extended-pdf-viewer>
+                                        </div>
+                                        <div *ngIf="file?._name?.includes('.mp4')" class="text-center">
+                                            <video width="500" height="300" controls>
+                                                <source [src]="file?._links.content?.href" type="video/mp4">
+                                                <source [src]="file?._links.content?.href" type="video/ogg">
+                                            </video>
+                                        </div>
 
-                    <div *ngIf="file?._name?.includes('.mp3')" class="text-center">
-                      <audio controls>
-                        <source [src]="file?._links.content?.href" type="audio/ogg">
-                        <source [src]="file?._links.content?.href" type="audio/mpeg">
-                      </audio>
-                    </div>
+                                        <div *ngIf="file?._name?.includes('.mp3')" class="text-center">
+                                            <audio controls>
+                                                <source [src]="file?._links.content?.href" type="audio/ogg">
+                                                <source [src]="file?._links.content?.href" type="audio/mpeg">
+                                            </audio>
+                                        </div>
 
-                    <div *ngIf="file?._name?.includes('.JPG') || file?._name?.includes('.jpg')  ||
+                                        <div *ngIf="file?._name?.includes('.JPG') || file?._name?.includes('.jpg')  ||
                     file?._name?.includes('.PNG') || file?._name?.includes('.png') ||
                      file?._name?.includes('.WEBP') || file?._name?.includes('.webp')"
-                      class="text-center" type="button">
+                                             class="text-center" type="button">
 
-                      <angular-image-viewer [src]="[file?._links.content?.href]"
-                                            [config]="config" [(index)]="imageIndex">
-                      </angular-image-viewer>
+                                            <angular-image-viewer [src]="[file?._links.content?.href]"
+                                                                  [config]="config" [(index)]="imageIndex">
+                                            </angular-image-viewer>
 
-                      <div class="modal"
-                           [ngClass]="{'d-flex': visibleModal }" id="exampleModal" tabindex="-1"
-                           aria-labelledby="exampleModalLabel"
-                           aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable">
-                          <div class="modal-content">
-                            <div class="modal-body">
+                                            <div class="modal"
+                                                 [ngClass]="{'d-flex': visibleModal }" id="exampleModal" tabindex="-1"
+                                                 aria-labelledby="exampleModalLabel"
+                                                 aria-hidden="true">
+                                                <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable">
+                                                    <div class="modal-content">
+                                                        <div class="modal-body">
 
-                              <angular-image-viewer [src]="[file?._links.content?.href]"
-                                                    [config]="config">
-                              </angular-image-viewer>
+                                                            <angular-image-viewer [src]="[file?._links.content?.href]"
+                                                                                  [config]="config">
+                                                            </angular-image-viewer>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                    <ds-generic-item-page-field [item]="object"
+                                                                [fields]="['dc.description']"
+                                                                [label]="'item.page.description'">
+                                    </ds-generic-item-page-field>
+
+
+                                    <div class="map-wrapper" *ngIf="longitud && latitud">
+                                        <ng-leaflet-universal></ng-leaflet-universal>
+                                    </div>
+                                </div>
+                                <!-- Columna 3 -->
+                                <div class="col-3 pl-3">
+                                    <ds-dso-edit-menu></ds-dso-edit-menu>
+
+                                    <ds-generic-item-page-field [item]="object"
+                                                                [fields]="['dc.type']"
+                                                                [label]="'Tipo de contenido'">
+                                    </ds-generic-item-page-field>
+
+                                    <ds-generic-item-page-field [item]="object"
+                                                                [fields]="['dc.language']"
+                                                                [label]="'Idioma'">
+                                    </ds-generic-item-page-field>
+
+                                    <div class="pb-2">
+                                        <div class="fs-montserrat-bold-h5 pb-2">{{'item.page.subject' | translate}}:</div>
+                                        <div class="d-flex">
+                                            <div *ngFor="let value of object.allMetadataValues('local.tag')">
+                                                <div class="btn-tags d-inline px-3 mr-2">
+                                                    {{value}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- botones de compartir  -->
+                                    <ds-share-buttons></ds-share-buttons>
+                                </div>
                             </div>
-                          </div>
                         </div>
-                      </div>
 
                     </div>
-                  </div>
-
-                  <ds-generic-item-page-field [item]="object"
-                                              [fields]="['dc.description']"
-                                              [label]="'item.page.description'">
-                  </ds-generic-item-page-field>
-
-
-                  <div class="map-wrapper" *ngIf="longitud && latitud">
-                    <ng-leaflet-universal></ng-leaflet-universal>
-                  </div>
                 </div>
-                <!-- Columna 3 -->
-                <div class="col-3 pl-3">
-                  <ds-dso-edit-menu></ds-dso-edit-menu>
 
-                  <ds-generic-item-page-field [item]="object"
-                                              [fields]="['dc.type']"
-                                              [label]="'Tipo de contenido'">
-                  </ds-generic-item-page-field>
+                <div class="tab-pane fade" id="tab2">
+                    <div id="accordion2">
+                        <h1>Tag2</h1>
 
-                  <ds-generic-item-page-field [item]="object"
-                                              [fields]="['dc.language']"
-                                              [label]="'Idioma'">
-                  </ds-generic-item-page-field>
-
-                  <ds-generic-item-page-field [item]="object"
-                                              [fields]="['local.tag']"
-                                              [separator]="', '"
-                                              [label]="'item.page.subject'">
-                  </ds-generic-item-page-field>
-                  <!-- botones de compartir  -->
-                  <ds-share-buttons></ds-share-buttons>
+                    </div>
                 </div>
-              </div>
+
+                <div class="tab-pane fade" id="tab3">
+                    <div id="accordion3">
+                        <div>
+                            <span>{{object.firstMetadataValue(['dc.creator'])}}</span>.
+                            <span> ({{object.firstMetadataValue(['dc.date'])}})</span>.
+                            <span class="font-italic"> {{object.firstMetadataValue(['dc.title'])}}</span>.
+                            <span> {{object.firstMetadataValue(['dc.publisher'])}}</span>.
+                            <a href="{{urlPage}}"> {{urlPage}}</a>
+                        </div>
+                        <br>
+                        <br>
+                        <a href="https://normas-apa.org/citas/">Mas informacion en Normas APA</a>
+                    </div>
+                </div>
+
+                <div class="tab-pane fade" id="tab4">
+                    <div id="accordion4">
+                        <ds-full-item-page></ds-full-item-page>
+                    </div>
+                </div>
             </div>
-
-          </div>
         </div>
-
-        <div class="tab-pane fade" id="tab2">
-          <div id="accordion2">
-            <h1>Tag2</h1>
-
-          </div>
-        </div>
-
-        <div class="tab-pane fade" id="tab3">
-          <div id="accordion3">
-            <div>
-              <span>{{object.firstMetadataValue(['dc.creator'])}}</span>.
-              <span> ({{object.firstMetadataValue(['dc.date'])}})</span>.
-              <span class="font-italic"> {{object.firstMetadataValue(['dc.title'])}}</span>.
-              <span> {{object.firstMetadataValue(['dc.publisher'])}}</span>.
-              <a href="{{urlPage}}"> {{urlPage}}</a>
-            </div>
-            <br>
-            <br>
-            <a href="https://normas-apa.org/citas/">Mas informacion en Normas APA</a>
-          </div>
-        </div>
-
-        <div class="tab-pane fade" id="tab4">
-          <div id="accordion4">
-            <ds-full-item-page></ds-full-item-page>
-          </div>
-        </div>
-      </div>
     </div>
-  </div>
 </div>
 
 <!-- diseño celular-->
 <div class="row d-block d-md-none">
 
-  <div class="col-12">
-    <div class="d-flex flex-row">
-      <ds-item-page-title-field [item]="object" class="mr-auto fs-montserrat-bold-h1">
-      </ds-item-page-title-field>
+    <div class="col-12">
+        <div class="d-flex flex-row">
+            <ds-item-page-title-field [item]="object" class="mr-auto fs-montserrat-bold-h1">
+            </ds-item-page-title-field>
+        </div>
     </div>
-  </div>
-  <div class="col-12">
+    <div class="col-12">
 
 
-    <!--Thumbnail Item-->
-
-    <ng-container *ngIf="!mediaViewer.image">
-      <ds-metadata-field-wrapper [hideIfNoTextContent]="false">
-        <ds-thumbnail [thumbnail]="object?.thumbnail | async" [limitWidth]="false"></ds-thumbnail>
-      </ds-metadata-field-wrapper>
-    </ng-container>
-
-    <!--No hay imagen de thumbnail Item-->
-    <ng-container *ngIf="mediaViewer.image">
-      <ds-media-viewer [item]="object" [videoOptions]="mediaViewer.video"></ds-media-viewer>
-    </ng-container>
+        <!--Thumbnail Item-->
+        <div class="justify-content-center d-flex align-content-center align-items-center">
+            <div class="w-75">
+                <ng-container *ngIf="!mediaViewer.image">
+                    <ds-metadata-field-wrapper [hideIfNoTextContent]="false">
+                        <ds-thumbnail [thumbnail]="object?.thumbnail | async" [limitWidth]="false"></ds-thumbnail>
+                    </ds-metadata-field-wrapper>
+                </ng-container>
+            </div>
+        </div>
 
 
-  </div>
+        <!--No hay imagen de thumbnail Item-->
+        <ng-container *ngIf="mediaViewer.image">
+            <ds-media-viewer [item]="object" [videoOptions]="mediaViewer.video"></ds-media-viewer>
+        </ng-container>
+    </div>
 
-  <div class="col-xs-12 col-md-8">
-    <!--Title Item-->
-    <div class="container px-0">
-      <ul class="nav nav-tabs fs-workSans-semiBold" id="myTabs-celular">
-        <li class="nav-item">
-          <a class="nav-link active" id="tab1-tab-celular" data-toggle="tab" href="#tab1-celular">Info general</a>
-        </li>
-        <li class="nav-item" *ngIf="object.allMetadata('dc.description.tableOfContents').length > 0">
-          <a class="nav-link" id="tab2-tab-celular" data-toggle="tab" href="#tab2-celular">Tabla de contenido</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" id="tab3-tab-celular" data-toggle="tab" href="#tab3-celular">Cómo citar</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" id="tab4-tab-celular" data-toggle="tab" href="#tab4-celular">Meta data</a>
-        </li>
-      </ul>
+    <div class="col-xs-12 col-md-8">
+        <!--Title Item-->
+        <div class="container px-0">
+            <ul class="nav nav-tabs fs-workSans-semiBold" id="myTabs-celular">
+                <li class="nav-item">
+                    <a class="nav-link active" id="tab1-tab-celular" data-toggle="tab" href="#tab1-celular">Info
+                        general</a>
+                </li>
+                <li class="nav-item" *ngIf="object.allMetadata('dc.description.tableOfContents').length > 0">
+                    <a class="nav-link" id="tab2-tab-celular" data-toggle="tab" href="#tab2-celular">Tabla de
+                        contenido</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="tab3-tab-celular" data-toggle="tab" href="#tab3-celular">Cómo citar</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="tab4-tab-celular" data-toggle="tab" href="#tab4-celular">Meta data</a>
+                </li>
+            </ul>
 
 
-      <div class="tab-content mt-2" id="myTabsContent-celular">
-        <div class="tab-pane fade show active" id="tab1-celular">
-          <div id="accordion1-celular">
-            <div class="container mb-3">
-              <div class="row">
-                <div class="col-12" *ngIf="bitstreamsOriginal !== []">
-                  <div *ngFor="let file of bitstreamsOriginal;" class="mb-3">
-                    <div *ngIf="file.name.includes('.pdf') || file.name.includes('.epub')" class="pb-5">
-                      <ngx-extended-pdf-viewer [src]="file?._links.content?.href" [useBrowserLocale]="true"
-                                               [mobileFriendlyZoom]="'70%'"
-                                               [logLevel]="logLevel"
-                                               [height]="'40vh'" [zoom]="'auto'" [showPresentationModeButton]="true"
-                                               [showHandToolButton]="false" [showSecondaryToolbarButton]="true"
-                                               [textLayer]="false" [showFindHighlightAll]="false">
-                      </ngx-extended-pdf-viewer>
-                    </div>
-                    <div *ngIf="file.name.includes('.mp4')" class="text-center">
-                      <video width="500" height="300" controls>
-                        <source [src]="file?._links.content?.href" type="video/mp4">
-                        <source [src]="file?._links.content?.href" type="video/ogg">
-                      </video>
-                    </div>
+            <div class="tab-content mt-2" id="myTabsContent-celular">
+                <div class="tab-pane fade show active" id="tab1-celular">
+                    <div id="accordion1-celular">
+                        <div class="container mb-3">
+                            <div class="row">
+                                <div class="col-12" *ngIf="bitstreamsOriginal !== []">
+                                    <div *ngFor="let file of bitstreamsOriginal;" class="mb-3">
+                                        <div *ngIf="file.name.includes('.pdf') || file.name.includes('.epub')"
+                                             class="pb-5">
+                                            <ngx-extended-pdf-viewer [src]="file?._links.content?.href"
+                                                                     [useBrowserLocale]="true"
+                                                                     [mobileFriendlyZoom]="'70%'"
+                                                                     [logLevel]="logLevel"
+                                                                     [height]="'40vh'" [zoom]="'auto'"
+                                                                     [showPresentationModeButton]="true"
+                                                                     [showHandToolButton]="false"
+                                                                     [showSecondaryToolbarButton]="true"
+                                                                     [textLayer]="false" [showFindHighlightAll]="false">
+                                            </ngx-extended-pdf-viewer>
+                                        </div>
+                                        <div *ngIf="file.name.includes('.mp4')" class="text-center">
+                                            <video width="500" height="300" controls>
+                                                <source [src]="file?._links.content?.href" type="video/mp4">
+                                                <source [src]="file?._links.content?.href" type="video/ogg">
+                                            </video>
+                                        </div>
 
-                    <div *ngIf="file.name.includes('.mp3')" class="text-center">
-                      <audio controls>
-                        <source [src]="file?._links.content?.href" type="audio/ogg">
-                        <source [src]="file?._links.content?.href" type="audio/mpeg">
-                      </audio>
-                    </div>
+                                        <div *ngIf="file.name.includes('.mp3')" class="text-center">
+                                            <audio controls>
+                                                <source [src]="file?._links.content?.href" type="audio/ogg">
+                                                <source [src]="file?._links.content?.href" type="audio/mpeg">
+                                            </audio>
+                                        </div>
 
-                    <div *ngIf="file.name.includes('.jpg') || file.name.includes('.png') || file.name.includes('.webp')"
-                         class="text-center" type="button">
+                                        <div *ngIf="file.name.includes('.jpg') || file.name.includes('.png') || file.name.includes('.webp')"
+                                             class="text-center" type="button">
 
-                      <angular-image-viewer [src]="[file?._links.content?.href]"
-                                            [config]="config" [(index)]="imageIndex">
-                      </angular-image-viewer>
+                                            <angular-image-viewer [src]="[file?._links.content?.href]"
+                                                                  [config]="config" [(index)]="imageIndex">
+                                            </angular-image-viewer>
 
-                      <div class="modal"
-                           [ngClass]="{'d-flex': visibleModal }" id="exampleModal-celular" tabindex="-1"
-                           aria-labelledby="exampleModalLabel"
-                           aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable">
-                          <div class="modal-content">
-                            <div class="modal-body">
+                                            <div class="modal"
+                                                 [ngClass]="{'d-flex': visibleModal }" id="exampleModal-celular"
+                                                 tabindex="-1"
+                                                 aria-labelledby="exampleModalLabel"
+                                                 aria-hidden="true">
+                                                <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable">
+                                                    <div class="modal-content">
+                                                        <div class="modal-body">
 
-                              <angular-image-viewer [src]="[file?._links.content?.href]"
-                                                    [config]="config">
-                              </angular-image-viewer>
+                                                            <angular-image-viewer [src]="[file?._links.content?.href]"
+                                                                                  [config]="config">
+                                                            </angular-image-viewer>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <ds-generic-item-page-field [item]="object"
+                                                                [fields]="['dc.description']"
+                                                                [label]="'item.page.description'">
+                                    </ds-generic-item-page-field>
+
+                                    <div class="map-wrapper" *ngIf="longitud && latitud">
+                                        <ng-leaflet-universal></ng-leaflet-universal>
+                                    </div>
+                                </div>
+                                <div class="col-12 px-0">
+                                    <div class="pt-4">
+                                        <ds-themed-item-page-file-section
+                                                [item]="object"></ds-themed-item-page-file-section>
+
+                                        <div class="pb-2" *ngIf="object.allMetadataValues('dc.creator').length > 0">
+                                            <div class="fs-montserrat-bold-h5">Creador:</div>
+                                            <div class="link" *ngFor="let value of object.allMetadataValues('dc.creator')">
+                                                <div (click)="enviarUrl(value, true, false)">
+                                                    {{value}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Autor -->
+                                        <ds-generic-item-page-field [item]="object"
+                                                                    [fields]="['dc.publisher']"
+                                                                    [label]="'item.page.publisher'">
+                                        </ds-generic-item-page-field>
+                                        <!-- Fecha -->
+                                        <ds-item-page-date-field [item]="object"></ds-item-page-date-field>
+                                        <!-- Colección -->
+                                        <!--<ds-generic-item-page-field [item]="object"
+                                                                    [fields]="['dc.publisher']"
+                                                                    [label]="'Colección'">
+                                        </ds-generic-item-page-field>-->
+                                        <ds-item-page-collections [item]="object"></ds-item-page-collections>
+                                        <!-- Tema -->
+                                        <div *ngIf="object.allMetadataValues('dc.subject').length > 0">
+                                            <div class="fs-montserrat-bold-h5">Tema:</div>
+                                            <div class="link" *ngFor="let value of object.allMetadataValues('dc.subject')">
+                                                <div (click)="enviarUrl(value, false, true)">
+                                                    {{value}}
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <ds-generic-item-page-field [item]="object"
+                                                                    [fields]="['dc.type']"
+                                                                    [label]="'Tipo de contenido'">
+                                        </ds-generic-item-page-field>
+
+                                        <ds-generic-item-page-field [item]="object"
+                                                                    [fields]="['dc.language']"
+                                                                    [label]="'Idioma'">
+                                        </ds-generic-item-page-field>
+
+                                        <div class="pb-2">
+                                            <div class="fs-montserrat-bold-h5 pb-2">{{'item.page.subject' | translate}}:</div>
+                                            <div class="d-flex">
+                                                <div *ngFor="let value of object.allMetadataValues('local.tag')">
+                                                    <div class="btn-tags d-inline px-3 mr-2">
+                                                        {{value}}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- botones de compartir  -->
+                                    <div>
+                                        <ds-share-buttons></ds-share-buttons>
+                                    </div>
+                                </div>
                             </div>
-                          </div>
                         </div>
-                      </div>
                     </div>
-                  </div>
-
-                  <ds-generic-item-page-field [item]="object"
-                                              [fields]="['dc.description']"
-                                              [label]="'item.page.description'">
-                  </ds-generic-item-page-field>
-
-                  <div class="map-wrapper" *ngIf="longitud && latitud">
-                    <ng-leaflet-universal></ng-leaflet-universal>
-                  </div>
                 </div>
-                <div class="col-12 px-0">
-                  <div class="pt-4">
-                    <ds-themed-item-page-file-section [item]="object"></ds-themed-item-page-file-section>
 
-                    <ds-metadata-representation-list class="ds-item-page-mixed-author-field"
-                                                     [parentItem]="object"
-                                                     [itemType]="'Person'"
-                                                     [metadataFields]="['dc.creator']"
-                                                     [label]="'relationships.isAuthorOf' | translate">
-                    </ds-metadata-representation-list>
-                    <!-- Autor -->
-                    <ds-generic-item-page-field [item]="object"
-                                                [fields]="['dc.publisher']"
-                                                [label]="'item.page.publisher'">
-                    </ds-generic-item-page-field>
-                    <!-- Fecha -->
-                    <ds-item-page-date-field [item]="object"></ds-item-page-date-field>
-                    <!-- Colección -->
-                    <!--<ds-generic-item-page-field [item]="object"
-                                                [fields]="['dc.publisher']"
-                                                [label]="'Colección'">
-                    </ds-generic-item-page-field>-->
-                    <ds-item-page-collections [item]="object"></ds-item-page-collections>
-                    <!-- Tema -->
-                    <ds-generic-item-page-field [item]="object"
-                                                [fields]="['dc.subject']"
-                                                [label]="'Tema'">
-                    </ds-generic-item-page-field>
+                <div class="tab-pane fade" id="tab2-celular">
+                    <div id="accordion2-celular">
+                        <h1>Tag2</h1>
 
-                    <ds-generic-item-page-field [item]="object"
-                                                [fields]="['dc.type']"
-                                                [label]="'Tipo de contenido'">
-                    </ds-generic-item-page-field>
-
-                    <ds-generic-item-page-field [item]="object"
-                                                [fields]="['dc.language']"
-                                                [label]="'Idioma'">
-                    </ds-generic-item-page-field>
-
-                    <ds-generic-item-page-field [item]="object"
-                                                [fields]="['local.tag']"
-                                                [separator]="', '"
-                                                [label]="'item.page.subject'">
-                    </ds-generic-item-page-field>
-                  </div>
-                  <!-- botones de compartir  -->
-                  <div>
-                    <ds-share-buttons></ds-share-buttons>
-                  </div>
+                    </div>
                 </div>
-              </div>
+
+                <div class="tab-pane fade" id="tab3-celular">
+                    <div id="accordion3-celular">
+                        <div>
+                            <span>{{object.firstMetadataValue(['dc.creator'])}}</span>.
+                            <span> ({{object.firstMetadataValue(['dc.date'])}})</span>.
+                            <span class="font-italic"> {{object.firstMetadataValue(['dc.title'])}}</span>.
+                            <span> {{object.firstMetadataValue(['dc.publisher'])}}</span>.
+                            <a href="{{urlPage}}"> {{urlPage}}</a>
+                        </div>
+                        <br>
+                        <br>
+                        <a href="https://normas-apa.org/citas/">Mas informacion en Normas APA</a>
+                    </div>
+                </div>
+
+                <div class="tab-pane fade" id="tab4-celular">
+                    <div id="accordion4-celular">
+                        <ds-full-item-page></ds-full-item-page>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-
-        <div class="tab-pane fade" id="tab2-celular">
-          <div id="accordion2-celular">
-            <h1>Tag2</h1>
-
-          </div>
-        </div>
-
-        <div class="tab-pane fade" id="tab3-celular">
-          <div id="accordion3-celular">
-            <div>
-              <span>{{object.firstMetadataValue(['dc.creator'])}}</span>.
-              <span> ({{object.firstMetadataValue(['dc.date'])}})</span>.
-              <span class="font-italic"> {{object.firstMetadataValue(['dc.title'])}}</span>.
-              <span> {{object.firstMetadataValue(['dc.publisher'])}}</span>.
-              <a href="{{urlPage}}"> {{urlPage}}</a>
-            </div>
-            <br>
-            <br>
-            <a href="https://normas-apa.org/citas/">Mas informacion en Normas APA</a>
-          </div>
-        </div>
-
-        <div class="tab-pane fade" id="tab4-celular">
-          <div id="accordion4-celular">
-            <ds-full-item-page></ds-full-item-page>
-          </div>
-        </div>
-      </div>
     </div>
-  </div>
 </div>
 

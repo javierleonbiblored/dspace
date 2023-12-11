@@ -403,23 +403,24 @@ Botones
 }
 
 .btn-tags {
-  background: var(--color-siete);
-  color: var(--color-uno);
-  font-family: var(--f-workSans-semiBold);
-  font-size: var(--fs-tags) !important;
-  padding: 0 10px;
+  background: white;
+  color: var(--color-dos);
+  font-family: var(--f-workSans-regular);
+  font-size: var(--fs-h4) !important;
+  border-radius: 100rem;
+  border: 1px solid var(--color-dos) !important;
 }
 
 
 .btn-tags:hover {
-  background: var(--color-uno);
-  color: var(--color-siete);
+  background: white;
+  color: var(--color-dos);
 }
 
 
 .btn-tags:focus {
-  background: var(--color-uno);
-  color: var(--color-siete);
+  background: white;
+  color: var(--color-dos);
 }
 
 .btn-tags-number {
