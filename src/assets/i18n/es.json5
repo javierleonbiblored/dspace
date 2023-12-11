@@ -5455,10 +5455,10 @@
   "search.sidebar.results": "resultados",
 
   // "search.sidebar.settings.rpp": "Results per page",
-  "search.sidebar.settings.rpp": "resultados por página",
+  "search.sidebar.settings.rpp": "Resultados por página",
 
   // "search.sidebar.settings.sort-by": "Sort By",
-  "search.sidebar.settings.sort-by": "Ordenar por",
+  "search.sidebar.settings.sort-by": "Ordenar",
 
   // "search.sidebar.settings.title": "Settings",
   "search.sidebar.settings.title": "Ajustes",
@@ -5483,7 +5483,7 @@
   "sorting.DESC": "Descendente",
 
   // "sorting.dc.title.ASC": "Title Ascending",
-  "sorting.dc.title.ASC": "Título Ascendente",
+  "sorting.dc.title.ASC": "De la A a la Z",
 
   // "sorting.dc.title.DESC": "Title Descending",
   "sorting.dc.title.DESC": "Título Descendente",
@@ -5498,13 +5498,13 @@
   "sorting.dc.date.issued.ASC": "Fecha de publicación Ascendente",
 
   // "sorting.dc.date.issued.DESC": "Date Issued Descending",
-  "sorting.dc.date.issued.DESC": "Fecha de publicación Descendente",
+  "sorting.dc.date.issued.DESC": "Más antiguo",
 
   // "sorting.dc.date.accessioned.ASC": "Accessioned Date Ascending",
   "sorting.dc.date.accessioned.ASC": "Fecha de envío Ascendente",
 
   // "sorting.dc.date.accessioned.DESC": "Accessioned Date Descending",
-  "sorting.dc.date.accessioned.DESC": "Fecha de envío Descendente",
+  "sorting.dc.date.accessioned.DESC": "Más reciente",
 
   // "sorting.lastModified.ASC": "Last modified Ascending",
   "sorting.lastModified.ASC": "Última modificación Ascendente",

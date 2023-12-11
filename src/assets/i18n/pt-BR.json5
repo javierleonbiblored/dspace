@@ -2001,7 +2001,7 @@
 
   //"confirmation-modal.export-batch.info": "Are you sure you want to export batch (ZIP) for {{ dsoName }}",
   "confirmation-modal.export-batch.info": "Você tem certeza que deseja exportar o lote (ZIP) para {{ dsoName }}",
-  
+
   //"confirmation-modal.export-batch.cancel": "Cancel",
   "confirmation-modal.export-batch.cancel": "Cancelar",
 
@@ -3802,7 +3802,7 @@
 
   // "menu.section.import_batch": "Batch Import (ZIP)",
   "menu.section.import_batch": "Importação em Lote (ZIP)",
-  
+
   // "menu.section.export_batch": "Batch Export (ZIP)",
   "menu.section.export_batch": "Exportação em Lote (ZIP)",
 
@@ -5189,7 +5189,7 @@
   "search.sidebar.settings.rpp": "Resultados por página",
 
   // "search.sidebar.settings.sort-by": "Sort By",
-  "search.sidebar.settings.sort-by": "Ordenar por",
+  "search.sidebar.settings.sort-by": "Ordenar",
 
   // "search.sidebar.settings.title": "Settings",
   "search.sidebar.settings.title": "Configurações",
@@ -5210,7 +5210,7 @@
   "sorting.DESC": "Descendente",
 
   // "sorting.dc.title.ASC": "Title Ascending",
-  "sorting.dc.title.ASC": "Título Ascendente",
+  "sorting.dc.title.ASC": "De la A a la Z",
 
   // "sorting.dc.title.DESC": "Title Descending",
   "sorting.dc.title.DESC": "Título Descendente",
@@ -6132,7 +6132,7 @@
 
   // "submission.sections.accesses.form.until-placeholder": "Until",
   "submission.sections.accesses.form.until-placeholder": "Até",
-  
+
   // "submission.sections.license.granted-label": "Confirmo a licença acima",
   "submission.sections.license.granted-label": "I confirm the license above",
 
@@ -6835,7 +6835,7 @@
 
   // "person.orcid.registry.auth": "ORCID Autorizações",
   "person.orcid.registry.auth": "ORCID Autorizações",
-  
+
   // "home.recent-submissions.head": "Recent Submissions",
   "home.recent-submissions.head": "Submissões Recentes",
 

@@ -314,6 +314,7 @@ export class SearchComponent implements OnInit {
       // if so retrieve new related results otherwise skip it
       if (JSON.stringify(newSearchOptions) !== JSON.stringify(this.searchOptions$.value)) {
         // Initialize variables
+        console.log(searchSortOptions)
         this.currentConfiguration$.next(configuration);
         this.currentSortOptions$.next(newSearchOptions.sort);
         this.currentScope$.next(newSearchOptions.scope);

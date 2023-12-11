@@ -61,7 +61,7 @@
                                           [label]="'Tema'">
               </ds-generic-item-page-field>-->
             <div *ngIf="object.allMetadataValues('dc.subject').length > 0">
-                <div class="fs-montserrat-bold-h5">Tema:</div>
+                <div class="fs-montserrat-bold-h5">Temas:</div>
                 <div class="link" *ngFor="let value of object.allMetadataValues('dc.subject')">
                     <div (click)="enviarUrl(value, false, true)">
                         {{value}}
@@ -91,7 +91,7 @@
                     <a class="nav-link" id="tab3-tab" data-toggle="tab" href="#tab3">Cómo citar</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" id="tab4-tab" data-toggle="tab" href="#tab4">Meta data</a>
+                    <a class="nav-link" id="tab4-tab" data-toggle="tab" href="#tab4">Metadata</a>
                 </li>
             </ul>
 
@@ -184,7 +184,7 @@
                                                                 [label]="'Idioma'">
                                     </ds-generic-item-page-field>
 
-                                    <div class="pb-2">
+                                    <div class="pb-2" *ngIf="object.allMetadataValues('local.tag').length > 0">
                                         <div class="fs-montserrat-bold-h5 pb-2">{{'item.page.subject' | translate}}:
                                         </div>
                                         <div class="d-flex">
@@ -292,7 +292,7 @@
                     <a class="nav-link" id="tab3-tab-celular" data-toggle="tab" href="#tab3-celular">Cómo citar</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" id="tab4-tab-celular" data-toggle="tab" href="#tab4-celular">Meta data</a>
+                    <a class="nav-link" id="tab4-tab-celular" data-toggle="tab" href="#tab4-celular">Metadata</a>
                 </li>
             </ul>
 
@@ -395,7 +395,7 @@
                                         <ds-item-page-collections [item]="object"></ds-item-page-collections>
                                         <!-- Tema -->
                                         <div *ngIf="object.allMetadataValues('dc.subject').length > 0">
-                                            <div class="fs-montserrat-bold-h5">Tema:</div>
+                                            <div class="fs-montserrat-bold-h5">Temas:</div>
                                             <div class="link"
                                                  *ngFor="let value of object.allMetadataValues('dc.subject')">
                                                 <div (click)="enviarUrl(value, false, true)">
@@ -414,9 +414,8 @@
                                                                     [label]="'Idioma'">
                                         </ds-generic-item-page-field>
 
-                                        <div class="pb-2">
-                                            <div class="fs-montserrat-bold-h5 pb-2">{{'item.page.subject' | translate}}
-                                                :
+                                        <div class="pb-2" *ngIf="object.allMetadataValues('local.tag').length > 0">
+                                            <div class="fs-montserrat-bold-h5 pb-2">{{'item.page.subject' | translate}}:
                                             </div>
                                             <div class="d-flex">
                                                 <div *ngFor="let value of object.allMetadataValues('local.tag')">

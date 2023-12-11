@@ -95,7 +95,10 @@ export class CollectionFormComponent extends ComColFormComponent<Collection> imp
           }
         });
 
-        this.formModel = [...collectionFormModels, this.entityTypeSelection];
+        // TODO se comenta para no mostrar el tipo de coleccionen
+        this.formModel = [...collectionFormModels];
+
+      //  this.formModel = [...collectionFormModels, this.entityTypeSelection];
 
         super.ngOnInit();
     });

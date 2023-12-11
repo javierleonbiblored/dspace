@@ -5,7 +5,7 @@
                          [id]="'search-sidebar-sort'"
                          [label]="'search.sidebar.settings.sort-by'"
                          (change)="reloadOrder($event)">
-        <option *ngFor="let sortOptionsEntry of sortOptionsList"
+        <option *ngFor="let sortOptionsEntry of sortOptionsList" class="text-"
                 [value]="sortOptionsEntry.field + ',' + sortOptionsEntry.direction.toString()"
                 [selected]="sortOptionsEntry.field === currentSortOption?.field && sortOptionsEntry.direction === (currentSortOption?.direction)? 'selected': null">
             {{'sorting.' + sortOptionsEntry.field + '.' + sortOptionsEntry.direction | translate}}

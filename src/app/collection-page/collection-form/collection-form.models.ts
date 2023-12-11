@@ -12,6 +12,8 @@ export const collectionFormEntityTypeSelectionConfig: DynamicSelectModelConfig<s
  * The dynamic form fields used for creating/editing a collection
  * @type {(DynamicInputModel | DynamicTextAreaModel)[]}
  */
+
+/*TODO se comentas campos que no se van a utilzar solo se deja titulo, descripción y la carga de imagen*/
 export const collectionFormModels: DynamicFormControlModel[] = [
   new DynamicInputModel({
     id: 'title',
@@ -24,17 +26,17 @@ export const collectionFormModels: DynamicFormControlModel[] = [
       required: 'Please enter a name for this title'
     },
   }),
-  new DynamicTextAreaModel({
+/*  new DynamicTextAreaModel({
     id: 'description',
     name: 'dc.description',
     spellCheck: environment.form.spellCheck,
-  }),
+  }),*/
   new DynamicTextAreaModel({
     id: 'abstract',
     name: 'dc.description.abstract',
     spellCheck: environment.form.spellCheck,
   }),
-  new DynamicTextAreaModel({
+  /*new DynamicTextAreaModel({
     id: 'rights',
     name: 'dc.rights',
     spellCheck: environment.form.spellCheck,
@@ -48,5 +50,5 @@ export const collectionFormModels: DynamicFormControlModel[] = [
     id: 'license',
     name: 'dc.rights.license',
     spellCheck: environment.form.spellCheck,
-  })
+  })*/
 ];
