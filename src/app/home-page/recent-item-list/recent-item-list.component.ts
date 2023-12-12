@@ -18,6 +18,7 @@ import { APP_CONFIG, AppConfig } from '../../../config/app-config.interface';
 import { isPlatformBrowser } from '@angular/common';
 import { setPlaceHolderAttributes } from '../../shared/utils/object-list-utils';
 import { DSpaceObjectType } from '../../core/shared/dspace-object-type.model';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'ds-recent-item-list',
@@ -49,6 +50,7 @@ export class RecentItemListComponent implements OnInit {
     protected elementRef: ElementRef,
     @Inject(APP_CONFIG) private appConfig: AppConfig,
     @Inject(PLATFORM_ID) private platformId: Object,
+    private router: Router,
   ) {
 
     this.paginationConfig = Object.assign(new PaginationComponentOptions(), {
@@ -104,5 +106,8 @@ export class RecentItemListComponent implements OnInit {
     return this._placeholderFontClass;
   }
 
+  viewPage(){
+    this.router.navigate(['/community-list'])
+  }
 }
 

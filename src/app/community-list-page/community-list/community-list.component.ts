@@ -7,6 +7,8 @@ import { FlatTreeControl } from '@angular/cdk/tree';
 import { isEmpty } from '../../shared/empty.util';
 import { FlatNode } from '../flat-node.model';
 import { FindListOptions } from '../../core/data/find-list-options.model';
+import {getBitstreamFormatsModuleRoute} from "../../admin/admin-registries/admin-registries-routing-paths";
+import {Route, Router} from "@angular/router";
 
 /**
  * A tree-structured list of nodes representing the communities, their subCommunities and collections.
@@ -32,7 +34,10 @@ export class CommunityListComponent implements OnInit, OnDestroy {
 
   paginationConfig: FindListOptions;
 
-  constructor(private communityListService: CommunityListService) {
+  constructor(
+    private communityListService: CommunityListService,
+    protected router: Router,
+  ) {
     this.paginationConfig = new FindListOptions();
     this.paginationConfig.elementsPerPage = 2;
     this.paginationConfig.currentPage = 1;
@@ -41,6 +46,18 @@ export class CommunityListComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.dataSource = new CommunityListDatasource(this.communityListService);
+   this.dataSource.communityList$.subscribe(value =>
+   {
+     value.forEach( value1 => {
+       //console.log(JSON.stringify())
+
+       if(value1.name.toLowerCase() === 'biblored'){
+         console.log(value1.name)
+         this.router.navigate(['/communities/' + value1.id])
+       }
+     })
+     // console.log(JSON.stringify(value))
+   })
     this.communityListService.getLoadingNodeFromStore().pipe(take(1)).subscribe((result) => {
       this.loadingNode = result;
     });

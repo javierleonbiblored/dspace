@@ -14,7 +14,7 @@ import { FindListOptions } from '../core/data/find-list-options.model';
  */
 export class CommunityListDatasource implements DataSource<FlatNode> {
 
-  private communityList$ = new BehaviorSubject<FlatNode[]>([]);
+  public communityList$ = new BehaviorSubject<FlatNode[]>([]);
   public loading$ = new BehaviorSubject<boolean>(false);
   private subLoadCommunities: Subscription;
 

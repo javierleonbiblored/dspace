@@ -15,6 +15,7 @@ import {APP_CONFIG, AppConfig} from "../../../config/app-config.interface";
 import {Bitstream} from "../../core/shared/bitstream.model";
 import {isPlatformBrowser} from "@angular/common";
 import value from "*.json";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'ds-recommended-contents',
@@ -28,6 +29,7 @@ export class RecommendedContentsComponent implements OnInit {
 
   constructor(
     private searchService: SearchService,
+    private router: Router,
     @Inject(APP_CONFIG) private appConfig: AppConfig,
     @Inject(PLATFORM_ID) private _platformId: Object
   ) {
@@ -77,5 +79,9 @@ export class RecommendedContentsComponent implements OnInit {
         }
       }
     })
+  }
+
+  viewPage(){
+    this.router.navigate(['/search'], { queryParams: { 'spc.sf': 'dc.date.accessioned'} })
   }
 }
