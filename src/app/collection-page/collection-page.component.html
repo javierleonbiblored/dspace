@@ -4,11 +4,16 @@
     <div *ngIf="collectionRD?.hasSucceeded" @fadeInOut>
       <div *ngIf="collectionRD?.payload as collection">
         <ds-view-tracker [object]="collection"></ds-view-tracker>
-        <div class="d-flex flex-row border-bottom mb-4 pb-4">
-          <header class="comcol-header mr-auto">
+        <div class="row mb-3">
+          <div class="col-12 justify-content-end d-flex">
+            <ds-dso-edit-menu></ds-dso-edit-menu>
+            <div class="pl-2 space-children-mr">
+              <ds-dso-page-subscription-button [dso]="collection"></ds-dso-page-subscription-button>
+            </div>
+          </div>
 
 
-            <!-- Collection Name -->
+          <div class="col-12">
             <ds-comcol-page-header
               [name]="collection.name">
             </ds-comcol-page-header>
@@ -20,55 +25,37 @@
             <div class="">
               Última actualización: 24 Noviembre, 2020
             </div>
-
-            <div class="row mt-4">
-              <div class="col-12 d-block d-sm-none">
-                <ds-comcol-page-logo *ngIf="logoRD$"
-                                     [logo]="(logoRD$ | async)?.payload"
-                                     [alternateText]="'Collection Logo'">
-                </ds-comcol-page-logo>
-              </div>
-              <!-- Collection description -->
-              <div class="col-12 col-sm-7 mt-2">
-                <ds-truncatable-part [id]="collection.id" [minLines]="1" class="item-list-abstract">
-                  <span [ngClass]="{'text-muted': !collection.firstMetadataValue('dc.description.abstract')}"
-                        [innerHTML]="(collection.firstMetadataValue('dc.description.abstract')) || ('mydspace.results.no-abstract' | translate)">
-                  </span>
-                </ds-truncatable-part>
-
-                <div class="fixed-bottom position-absolute d-none d-sm-block pl-3">
-                  <ds-share-buttons></ds-share-buttons>
-                </div>
-                <div class="d-block d-sm-none mt-3">
-                  <ds-share-buttons></ds-share-buttons>
-                </div>
-              </div>
-              <!-- Collection logo -->
-              <div class="col-5 d-none d-sm-block">
-                <ds-comcol-page-logo *ngIf="logoRD$"
-                                     [logo]="(logoRD$ | async)?.payload"
-                                     [alternateText]="'Collection Logo'">
-                </ds-comcol-page-logo>
-              </div>
-            </div>
-            <!--<ds-comcol-page-content
-              [content]="collection.introductoryText"
-              [hasInnerHtml]="true">
-            </ds-comcol-page-content>
-            &lt;!&ndash; News &ndash;&gt;
-            <ds-comcol-page-content
-              [content]="collection.sidebarText"
-              [hasInnerHtml]="true"
-              [title]="'collection.page.news'">
-            </ds-comcol-page-content>-->
-          </header>
-          <ds-dso-edit-menu></ds-dso-edit-menu>
-          <div class="pl-2 space-children-mr">
-            <ds-dso-page-subscription-button [dso]="collection"></ds-dso-page-subscription-button>
           </div>
 
+          <div class="col-12 d-sm-none justify-content-center d-flex">
+            <div class="w-75">
+            <ds-comcol-page-logo *ngIf="logoRD$"
+                                 [logo]="(logoRD$ | async)?.payload"
+                                 [alternateText]="'Collection Logo'">
+            </ds-comcol-page-logo>
+            </div>
+          </div>
+          <!-- Collection description -->
+          <div class="col-12 col-sm-7 mt-2">
+                <span>
+                  {{collection.firstMetadataValue('dc.description.abstract')}}
+                </span>
+
+
+            <div class="mt-3">
+              <ds-share-buttons></ds-share-buttons>
+            </div>
+          </div>
+          <!-- Collection logo -->
+          <div class="col-5 d-none d-sm-block">
+            <ds-comcol-page-logo *ngIf="logoRD$"
+                                 [logo]="(logoRD$ | async)?.payload"
+                                 [alternateText]="'Collection Logo'">
+            </ds-comcol-page-logo>
+          </div>
         </div>
-        <ds-themed-search-page></ds-themed-search-page>
+
+          <ds-themed-search-page></ds-themed-search-page>
         <footer *ngIf="collection.copyrightText" class="border-top my-5 pt-4">
           <!-- Copyright -->
           <ds-comcol-page-content
