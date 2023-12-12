@@ -1,7 +1,7 @@
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" >
   <!--*ngFor="let json of data; let i = index"-->
  <!-- {{json.titulo}}-->
-  <ol class="carousel-indicators" *ngIf="dataXml.length > 1" >
+  <ol class="carousel-indicators" *ngIf="dataXml?.length > 1" >
     <li  data-target="#carouselExampleIndicators" *ngFor="let json of dataXml; let i = index" [attr.data-slide-to]="i" [ngClass]="{'active': i === 0}"></li>
   </ol>
     <div class="carousel-inner w-100">

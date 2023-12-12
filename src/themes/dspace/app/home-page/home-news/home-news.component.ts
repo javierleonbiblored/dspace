@@ -11,16 +11,8 @@ import {isPlatformBrowser} from "@angular/common";
 /**
  * Component to render the news section on the home page
  */
-export class HomeNewsComponent extends BaseComponent implements OnInit{
-  ngOnInit(): void {
-     /*if (isPlatformBrowser(this._platformId)) {
-      new Promise(function(resolve) {
-        setTimeout(resolve, 5000);
-      }).then(function() {
-        document.getElementById('carouselExampleIndicator')?.click();
-      });
-     }*/
-  }
+export class HomeNewsComponent extends BaseComponent{
+
   paginaDestino(urlEnlace: string): void{
     if (isPlatformBrowser(this._platformId)) {
        window.location.href = urlEnlace;
