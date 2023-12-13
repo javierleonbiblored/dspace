@@ -50,7 +50,7 @@ export class CommunityListComponent implements OnInit, OnDestroy {
    {
      value.forEach( value1 => {
         // TODO ESTE TEXTO DEBE SER IGUAL AL TEXTO DE LA COMUNIDAD
-       if(value1.name.toLowerCase() === ' Red Distrital de Bibliotecas Públicas de Bogotá - BibloRed'){
+       if(value1.name.toLowerCase() === 'Red Distrital de Bibliotecas Públicas de Bogotá - BibloRed'.toLowerCase()){
          console.log(value1.name)
          this.router.navigate(['/communities/' + value1.id])
        }

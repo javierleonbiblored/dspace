@@ -7151,5 +7151,23 @@
   // "listable-notification-object.default-message": "This object couldn't be retrieved",
   "listable-notification-object.default-message": "Este objeto no se pudo recuperar",
 
-
+  "dc.contributor": "Colaborador(es)",
+  "dc.creator": "Autor(es)",
+  "dc.date": "Fecha",
+  "dc.description": "Descripción",
+  "dc.extent": "Extensión",
+  "dc.format": "Formato",
+  "dc.identifier": "Identificador",
+  "dc.publisher": "Publicador",
+  "dc.spatial": "Lugar de creación",
+  "dc.title": "Título",
+  "dc.type": "Tipo de contenido",
+  "dc.subject": "Temas",
+  "dc.rights": "Licencia de uso",
+  "dc.language": "Idioma",
+  "dc.audience": "Audiencia",
+  "dc.description.tableofcontents": "Tabla de contenido",
+  "local.latitud": "Latitud",
+  "local.longitud": "Longitud",
+  "local.tag": "Longitud"
 }

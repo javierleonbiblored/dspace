@@ -82,7 +82,7 @@
         <div class="container mt-5">
             <ul class="nav nav-tabs my-5 fs-workSans-semiBold" id="myTabs">
                 <li class="nav-item">
-                    <a class="nav-link active" id="tab1-tab" data-toggle="tab" href="#tab1">Info general</a>
+                    <a class="nav-link active" id="tab1-tab" data-toggle="tab" href="#tab1">Información general</a>
                 </li>
                 <li class="nav-item" *ngIf="object.allMetadata('dc.description.tableofcontents').length > 0">
                     <a class="nav-link" id="tab2-tab" data-toggle="tab" href="#tab2">Tabla de contenido</a>
@@ -210,7 +210,7 @@
                     <div id="accordion2">
 
                         <div class="table-responsive">
-                            <table class="table  table-striped">
+                            <table class="table table-striped">
                                 <tbody>
                                     <tr *ngFor="let value of object.allMetadataValues('dc.description.tableofcontents')">
                                         <td>{{value}}</td>
