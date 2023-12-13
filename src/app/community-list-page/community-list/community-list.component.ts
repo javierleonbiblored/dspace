@@ -49,14 +49,12 @@ export class CommunityListComponent implements OnInit, OnDestroy {
    this.dataSource.communityList$.subscribe(value =>
    {
      value.forEach( value1 => {
-       //console.log(JSON.stringify())
-
-       if(value1.name.toLowerCase() === 'biblored'){
+        // TODO ESTE TEXTO DEBE SER IGUAL AL TEXTO DE LA COMUNIDAD
+       if(value1.name.toLowerCase() === ' Red Distrital de Bibliotecas Públicas de Bogotá - BibloRed'){
          console.log(value1.name)
          this.router.navigate(['/communities/' + value1.id])
        }
      })
-     // console.log(JSON.stringify(value))
    })
     this.communityListService.getLoadingNodeFromStore().pipe(take(1)).subscribe((result) => {
       this.loadingNode = result;
