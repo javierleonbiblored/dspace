@@ -21,10 +21,9 @@
             <ng-container *ngFor="let mdEntry of (metadata$ | async) | keyvalue">
               <tr *ngFor="let mdValue of mdEntry.value">
                 <td *ngIf="!mdEntry.key.includes('dc.date.accessioned') && !mdEntry.key.includes('dc.date.available') && mdValue.value?.slice(mdValue?.value.lastIndexOf('ISBN:')) !== 'ISBN:'">
-                  {{mdEntry.key}}</td>
+                  {{mdEntry.key | translate}}</td>
                 <td *ngIf="!mdEntry.key.includes('dc.date.accessioned') && !mdEntry.key.includes('dc.date.available') && mdValue.value?.slice(mdValue?.value.lastIndexOf('ISBN:')) !== 'ISBN:'">
                   {{mdValue.value}}</td>
-                <!--<td>{{mdValue.language}}</td>-->
               </tr>
             </ng-container>
             </tbody>
