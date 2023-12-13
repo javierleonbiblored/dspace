@@ -11,14 +11,14 @@ export class ContentTypeComponent implements OnInit {
   constructor(@Inject(PLATFORM_ID) protected _platformId: Object) { }
 
   ngOnInit(): void {
-    /*if (isPlatformBrowser(this._platformId)) {
+    if (isPlatformBrowser(this._platformId)) {
       new Promise(function(resolve) {
         setTimeout(resolve, 5000);
       }).then(function() {
         document.getElementById('carouselTemasWeb')?.click();
-        document.getElementById('carouselTemasMovil')?.click();
+        document.getElementById('carouselTemasWebMovil')?.click();
       });
-    }*/
+    }
   }
 
 }
