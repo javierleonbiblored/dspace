@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'ds-type-content',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TypeContentComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    protected router: Router,
+  ) { }
 
   ngOnInit(): void {
+  }
+
+  viewPage(value: string): void {
+    this.router.navigate(['/search'], {queryParams: {query: 'dc.type:' + value}});
   }
 
 }

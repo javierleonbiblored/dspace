@@ -143,12 +143,14 @@ export class SearchFormComponent implements OnInit, OnChanges {
     this.queryBusquedaAvanzada = this.activatedRoute.snapshot.queryParamMap.get('query');
     if (this.queryBusquedaAvanzada?.includes('dc.subject:') || this.queryBusquedaAvanzada?.includes('dc.creator:') || this.queryBusquedaAvanzada?.includes('dc.title:')) {
       this.organizarPalabras(this.quitarEspacios(this.queryBusquedaAvanzada));
+    }else if (this.queryBusquedaAvanzada?.includes('dc.type:')){
+      this.query = '';
     }
   }
 
   organizarPalabras(frase: string) {
     this.crearFormularioQuery();
-    this.query = ''
+    this.query = '';
     while (frase.includes(":")) {
       frase = frase.replace(":", " ");
     }

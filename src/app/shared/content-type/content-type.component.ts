@@ -1,5 +1,6 @@
 import {Component, Inject, OnInit, PLATFORM_ID} from '@angular/core';
 import {isPlatformBrowser} from "@angular/common";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'ds-content-type',
@@ -8,17 +9,24 @@ import {isPlatformBrowser} from "@angular/common";
 })
 export class ContentTypeComponent implements OnInit {
 
-  constructor(@Inject(PLATFORM_ID) protected _platformId: Object) { }
+
+  constructor(
+    protected router: Router,
+    @Inject(PLATFORM_ID) protected _platformId: Object) {
+  }
 
   ngOnInit(): void {
     if (isPlatformBrowser(this._platformId)) {
-      new Promise(function(resolve) {
+      new Promise(function (resolve) {
         setTimeout(resolve, 5000);
-      }).then(function() {
+      }).then(function () {
         document.getElementById('carouselTemasWeb')?.click();
         document.getElementById('carouselTemasWebMovil')?.click();
       });
     }
   }
 
+  viewPage(value: string): void {
+    this.router.navigate(['/search'], {queryParams: {query: 'dc.type:' + value}});
+  }
 }
