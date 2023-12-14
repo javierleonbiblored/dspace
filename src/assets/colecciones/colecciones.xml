@@ -3,14 +3,14 @@
   <coleccion>
     <nombreColeccion>Bogotá: Leer para la Vida</nombreColeccion>
     <Descripcion>La Colección Bogotá "Leer para la vida" es un proyecto editorial de la Dirección de Lectura y Bibliotecas de la Secretaría de Cultura, Recreación y Deporte que rescata y reivindica contenidos de diversos géneros y temas relacionados con la cultura y el patrimonio bibliográfico de la ciudad.</Descripcion>
-    <ubicacionImagen>assets/colecciones/imagenes/Leer para la Vida.png</ubicacionImagen>
+    <ubicacionImagen>http://192.168.200.34:8080/server/api/core/bitstreams/be119bd0-c8d3-4a6e-851b-168f8d9ced21/content</ubicacionImagen>
     <urlEnlace>http://192.168.200.34:4000/collections/38a32b26-7406-4a25-b91f-bcbe62732af6?scope=38a32b26-7406-4a25-b91f-bcbe62732af6</urlEnlace>
   </coleccion>
 
   <coleccion>
     <nombreColeccion>Los bogotanos del Bogotazo</nombreColeccion>
     <Descripcion>La colección "Los bogotanos del Bogotazo" reúne contenidos digitales sobre la memoria en torno a la figura de Jorge Eliécer Gaitán. Fueron producidos por los usuarios de la Red Distrital de Bibliotecas Públicas en el marco de actividades de recolección de memoria local. La colección está compuesta por testimonios y narraciones orales. En una segunda fase, su objetivo general es reunir un acervo de voces, textos, imágenes y objetos en donde se exploren los lugares que ocupa Gaitán dentro de la memoria de los bogotanos.</Descripcion>
-    <ubicacionImagen>assets/colecciones/imagenes/Los bogotanos del Bogotazo.jpg</ubicacionImagen>
+    <ubicacionImagen>https://www.biblored.gov.co/sites/default/files/2023-04/Gait%C3%A1n_exposicion.jpg</ubicacionImagen>
     <urlEnlace>http://192.168.200.34:4000/collections/364f0d7f-a81a-4c02-8e11-044d8c7fe9bb?scope=364f0d7f-a81a-4c02-8e11-044d8c7fe9bb</urlEnlace>
   </coleccion>
 
