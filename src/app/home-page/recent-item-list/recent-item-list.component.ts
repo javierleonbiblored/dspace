@@ -60,7 +60,6 @@ export class RecentItemListComponent implements OnInit {
     private ngxXml2jsonService: NgxXml2jsonService,
     private httpClient: HttpClient
   ) {
-    this.loadXML();
     this.paginationConfig = Object.assign(new PaginationComponentOptions(), {
       id: 'hp',
       pageSize: environment.homePage.recentSubmissions.pageSize,
@@ -89,6 +88,7 @@ export class RecentItemListComponent implements OnInit {
     ).pipe(
       toDSpaceObjectListRD()
     ) as Observable<RemoteData<PaginatedList<Item>>>;
+    this.loadXML();
   }
 
   ngOnDestroy(): void {
