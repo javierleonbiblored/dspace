@@ -47,9 +47,8 @@ export class RecentItemListComponent implements OnInit {
 
   private _placeholderFontClass: string;
 
-  xmltoJson: XmlColecciones;
-  dataXml: Coleccion[]
-  xml = ``;
+  xmltoJsonCarrusel: XmlColecciones;
+  dataXmlCarrusel: Coleccion[]
   constructor(
     private searchService: SearchService,
     private paginationService: PaginationService,
@@ -130,8 +129,9 @@ export class RecentItemListComponent implements OnInit {
   colecciones(data): void {
     const parser = new DOMParser();
     const xml = parser.parseFromString(data, 'text/xml');
-    this.xmltoJson = this.ngxXml2jsonService.xmlToJson(xml) as XmlColecciones;
-    this.dataXml = this.xmltoJson.colecciones.coleccion;
+    this.xmltoJsonCarrusel = this.ngxXml2jsonService.xmlToJson(xml) as XmlColecciones;
+    this.dataXmlCarrusel = this.xmltoJsonCarrusel.colecciones.coleccion;
+    console.log(this.dataXmlCarrusel)
   }
 
   viewPageDestino(url): void{
