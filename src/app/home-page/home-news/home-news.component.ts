@@ -18,22 +18,17 @@ export class HomeNewsComponent{
 
   xmltoJson: XmlCarruseles;
   dataXml: Carrusel[]
-  xml = ``;
 
   constructor(
     private ngxXml2jsonService: NgxXml2jsonService,
     @Inject(PLATFORM_ID) protected _platformId: Object,
     private httpClient: HttpClient) {
-    if (isPlatformBrowser(this._platformId)) {
-    }
     this.loadXML();
   }
 
   loadXML(): void {
-    console.log('Prueba')
     this.httpClient.get('assets/images/carruselXML/imagenescarrusel.xml', { responseType: 'text' })
       .subscribe((data: string) => {
-        console.log('Prueba1')
         this.convertidorXmltoJson(data);
       });
   }
