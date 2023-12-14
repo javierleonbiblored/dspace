@@ -11,7 +11,7 @@
         </div>
       </div>
       <div *ngFor="let json of dataXml; let i = index">
-        <div class="col-12" *ngIf="i === 0" (click)="viewPageDestino(json.urlEnlace)">
+        <div class="col-12 cursor-poiter" *ngIf="i === 0" (click)="viewPageDestino(json.urlEnlace)">
           <div class="container">
             <div class="row align-items-center">
               <div class="col-12 col-md-5 px-0 d-none d-md-flex justify-content-center">
@@ -38,7 +38,7 @@
           </div>
         </div>
 
-        <div class="col-12 pt-md-5" *ngIf="i === 1"  (click)="viewPageDestino(json.urlEnlace)">
+        <div class="col-12 pt-md-5 cursor-poiter" *ngIf="i === 1"  (click)="viewPageDestino(json.urlEnlace)">
           <div class="container">
             <div class="row align-items-center">
               <div class="col-12 col-md-7 py-5 px-0 px-md-5">
