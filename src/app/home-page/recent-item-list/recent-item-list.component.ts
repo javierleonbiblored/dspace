@@ -120,7 +120,7 @@ export class RecentItemListComponent implements OnInit {
   }
 
   loadXML(): void {
-    this.httpClient.get('assets/colecciones/colecciones.xml', {responseType: 'text'})
+    this.httpClient.get('assets/colecciones/coleccionesprincipales.xml', {responseType: 'text'})
       .subscribe((data: string) => {
         this.colecciones(data);
       });
