@@ -67,6 +67,7 @@ export class RecentItemListComponent implements OnInit {
       maxSize: 1
     });
     this.sortConfig = new SortOptions(environment.homePage.recentSubmissions.sortField, SortDirection.DESC);
+    this.loadXML();
   }
 
   ngOnInit(): void {
@@ -88,7 +89,6 @@ export class RecentItemListComponent implements OnInit {
     ).pipe(
       toDSpaceObjectListRD()
     ) as Observable<RemoteData<PaginatedList<Item>>>;
-    this.loadXML();
   }
 
   ngOnDestroy(): void {
