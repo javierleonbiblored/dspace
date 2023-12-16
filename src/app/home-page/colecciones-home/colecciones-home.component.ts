@@ -11,7 +11,7 @@ import {Coleccion, XmlColecciones} from "./tb_xmltoJson.type";
 })
 export class ColeccionesHomeComponent implements OnInit {
     xmltoJsonCarrusel: XmlColecciones;
-    dataXmlCarrusel: Coleccion[]
+    dataXmlCarrusel: Coleccion[] = [];
   constructor(
       private router: Router,
       private ngxXml2jsonService: NgxXml2jsonService,
