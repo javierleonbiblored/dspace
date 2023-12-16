@@ -38,6 +38,7 @@ export class HomeNewsComponent{
     const xml = parser.parseFromString(data, 'text/xml');
     this.xmltoJson = this.ngxXml2jsonService.xmlToJson(xml) as XmlCarruseles;
     this.dataXml = this.xmltoJson.carruseles.carrusel;
+    console.log(JSON.stringify(this.dataXml))
   }
 
 

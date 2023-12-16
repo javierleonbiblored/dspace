@@ -10,7 +10,7 @@
           </button>
         </div>
       </div>
-      <div class="d-none">{{dataXmlCarrusel[0]?.ubicacionImagen}}</div>
+      <div class="d-none">{{dataXmlCarrusel}}</div>
       <div *ngFor="let carrusel of dataXmlCarrusel; let i = index">
         <div class="col-12 cursor-poiter" *ngIf="i === 0" (click)="viewPageDestino(carrusel?.urlEnlace)">
           <div class="container">
