@@ -13,6 +13,7 @@ import { RecentItemListComponent } from './recent-item-list/recent-item-list.com
 import { JournalEntitiesModule } from '../entity-groups/journal-entities/journal-entities.module';
 import { ResearchEntitiesModule } from '../entity-groups/research-entities/research-entities.module';
 import { TypeContentComponent } from './type-content/type-content.component';
+import { ColeccionesHomeComponent } from './colecciones-home/colecciones-home.component';
 
 const DECLARATIONS = [
   HomePageComponent,
@@ -35,9 +36,11 @@ const DECLARATIONS = [
   ],
   declarations: [
     ...DECLARATIONS,
+    ColeccionesHomeComponent,
   ],
   exports: [
     ...DECLARATIONS,
+    ColeccionesHomeComponent,
   ],
 })
 export class HomePageModule {

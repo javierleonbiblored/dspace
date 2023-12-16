@@ -1,5 +1,5 @@
 <ng-container *ngVar="(itemRD$ | async) as itemRD">
-  <div class="container pb-5">
+  <!--<div class="container pb-5">
     <hr>
     <div class="row">
       <div class="col-12 py-5">
@@ -10,47 +10,47 @@
           </button>
         </div>
       </div>
-
+      <div class="d-none">{{dataXmlCarrusel[0]?.ubicacionImagen}}</div>
       <div *ngFor="let carrusel of dataXmlCarrusel; let i = index">
-        <div class="col-12 cursor-poiter" *ngIf="i === 0" (click)="viewPageDestino(dataXmlCarrusel[i]?.urlEnlace)">
+        <div class="col-12 cursor-poiter" *ngIf="i === 0" (click)="viewPageDestino(carrusel?.urlEnlace)">
           <div class="container">
             <div class="row align-items-center">
               <div class="col-12 col-md-5 px-0 d-none d-md-flex justify-content-center">
                 <img
-                  [src]="dataXmlCarrusel[i]?.ubicacionImagen"
+                  [src]="carrusel?.ubicacionImagen"
                   class=" img-thumbnail w-75" alt="..." height="400">
               </div>
               <div class="col-12 col-md-7 px-0">
-                <div class="fs-montserrat-bold-h3 pb-3">{{dataXmlCarrusel[i]?.nombreColeccion}}
+                <div class="fs-montserrat-bold-h3 pb-3">{{carrusel?.nombreColeccion}}
                 </div>
-               <!-- <div>
+               &lt;!&ndash; <div>
                   [25 Contenidos]
-                </div>-->
+                </div>&ndash;&gt;
                 <div class="font-size-h3 descripcionText">
-                  {{dataXmlCarrusel[i]?.Descripcion}}
+                  {{carrusel?.Descripcion}}
                 </div>
               </div>
               <div class="col-12 col-md-5 px-0 d-flex d-md-none pt-3 justify-content-center">
                 <img
-                  [src]="dataXmlCarrusel[i]?.ubicacionImagen"
+                  [src]="carrusel?.ubicacionImagen"
                   class="w-50 img-thumbnail" alt="..." height="400">
               </div>
             </div>
           </div>
         </div>
 
-        <div class="col-12 pt-md-5 cursor-poiter" *ngIf="i === 1"  (click)="viewPageDestino(dataXmlCarrusel[i]?.urlEnlace)">
+        <div class="col-12 pt-md-5 cursor-poiter" *ngIf="i === 1"  (click)="viewPageDestino(carrusel?.urlEnlace)">
           <div class="container">
             <div class="row align-items-center">
               <div class="col-12 col-md-7 py-5 px-0 px-md-5">
-                <div class="fs-montserrat-bold-h3 pb-3">{{dataXmlCarrusel[i]?.nombreColeccion}}</div>
+                <div class="fs-montserrat-bold-h3 pb-3">{{carrusel?.nombreColeccion}}</div>
                 <div class="font-size-h3 descripcionText">
-                  {{dataXmlCarrusel[i]?.Descripcion}}
+                  {{carrusel?.Descripcion}}
                 </div>
               </div>
               <div class="col-12 col-md-5 d-flex justify-content-center px-0">
                 <img
-                  [src]="dataXmlCarrusel[i]?.ubicacionImagen"
+                  [src]="carrusel?.ubicacionImagen"
                   class=" img-thumbnail" alt="..." >
               </div>
             </div>
@@ -65,7 +65,7 @@
         </button>
       </div>
     </div>
-  </div>
+  </div>-->
   <!--
 
 

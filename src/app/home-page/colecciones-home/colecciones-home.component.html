@@ -1,0 +1,67 @@
+<div class="container pb-5">
+  <hr>
+  <div class="row">
+    <div class="col-12 py-5">
+      <div class="d-flex justify-content-lg-between justify-content-around align-items-center">
+        <div class="fs-montserrat-bold-h2 text-lg-center">Colecciones recomendadas</div>
+        <button type="button" class="btn btn-bibliored btn-color-primary d-none d-lg-block" (click)="viewPage()">Ir a
+          colecciones
+        </button>
+      </div>
+    </div>
+    <div class="d-none">{{dataXmlCarrusel[0]?.ubicacionImagen}}</div>
+    <div *ngFor="let carrusel of dataXmlCarrusel; let i = index">
+      <div class="col-12 cursor-poiter" *ngIf="i === 0" (click)="viewPageDestino(carrusel?.urlEnlace)">
+        <div class="container">
+          <div class="row align-items-center">
+            <div class="col-12 col-md-5 px-0 d-none d-md-flex justify-content-center">
+              <img
+                [src]="carrusel?.ubicacionImagen"
+                class=" img-thumbnail w-75" alt="..." height="400">
+            </div>
+            <div class="col-12 col-md-7 px-0">
+              <div class="fs-montserrat-bold-h3 pb-3">{{carrusel?.nombreColeccion}}
+              </div>
+              <!-- <div>
+                 [25 Contenidos]
+               </div>-->
+              <div class="font-size-h3 descripcionText">
+                {{carrusel?.Descripcion}}
+              </div>
+            </div>
+            <div class="col-12 col-md-5 px-0 d-flex d-md-none pt-3 justify-content-center">
+              <img
+                [src]="carrusel?.ubicacionImagen"
+                class="w-50 img-thumbnail" alt="..." height="400">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 pt-md-5 cursor-poiter" *ngIf="i === 1"  (click)="viewPageDestino(carrusel?.urlEnlace)">
+        <div class="container">
+          <div class="row align-items-center">
+            <div class="col-12 col-md-7 py-5 px-0 px-md-5">
+              <div class="fs-montserrat-bold-h3 pb-3">{{carrusel?.nombreColeccion}}</div>
+              <div class="font-size-h3 descripcionText">
+                {{carrusel?.Descripcion}}
+              </div>
+            </div>
+            <div class="col-12 col-md-5 d-flex justify-content-center px-0">
+              <img
+                [src]="carrusel?.ubicacionImagen"
+                class=" img-thumbnail" alt="..." >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="col-12 d-flex justify-content-center pt-5">
+      <button type="button" class="btn-bibliored btn-color-primary jumbotron d-lg-none" (click)="viewPage()">Ir a
+        colecciones
+      </button>
+    </div>
+  </div>
+</div>

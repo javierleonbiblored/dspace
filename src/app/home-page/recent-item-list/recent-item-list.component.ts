@@ -19,10 +19,8 @@ import {isPlatformBrowser} from '@angular/common';
 import {setPlaceHolderAttributes} from '../../shared/utils/object-list-utils';
 import {DSpaceObjectType} from '../../core/shared/dspace-object-type.model';
 import {Router} from "@angular/router";
-import {Carrusel, XmlCarruseles} from "../home-news/tb_xmltoJson.type";
 import {NgxXml2jsonService} from "ngx-xml2json";
 import {HttpClient} from "@angular/common/http";
-import {Coleccion, XmlColecciones} from "./tb_xmltoJson.type";
 
 @Component({
   selector: 'ds-recent-item-list',
@@ -47,8 +45,6 @@ export class RecentItemListComponent implements OnInit {
 
   private _placeholderFontClass: string;
 
-  xmltoJsonCarrusel: XmlColecciones;
-  dataXmlCarrusel: Coleccion[]
   constructor(
     private searchService: SearchService,
     private paginationService: PaginationService,
@@ -67,7 +63,6 @@ export class RecentItemListComponent implements OnInit {
       maxSize: 1
     });
     this.sortConfig = new SortOptions(environment.homePage.recentSubmissions.sortField, SortDirection.DESC);
-    this.loadXML();
   }
 
   ngOnInit(): void {
@@ -113,29 +108,6 @@ export class RecentItemListComponent implements OnInit {
       }
     }
     return this._placeholderFontClass;
-  }
-
-  viewPage() {
-    this.router.navigate(['/community-list'])
-  }
-
-  loadXML(): void {
-    this.httpClient.get('assets/colecciones/coleccionesprincipales.xml', {responseType: 'text'})
-      .subscribe((data: string) => {
-        this.colecciones(data);
-      });
-  }
-
-  colecciones(data): void {
-    const parser = new DOMParser();
-    const xml = parser.parseFromString(data, 'text/xml');
-    this.xmltoJsonCarrusel = this.ngxXml2jsonService.xmlToJson(xml) as XmlColecciones;
-    this.dataXmlCarrusel = this.xmltoJsonCarrusel.colecciones.coleccion;
-    console.log(this.dataXmlCarrusel)
-  }
-
-  viewPageDestino(url): void{
-    window.open(url)
   }
 
 }
